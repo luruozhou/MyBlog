@@ -11,6 +11,8 @@ log.use(app);
 app.use('/static', express.static('dest/views/static'));
 app.use('/widget', express.static('dest/views/widget/static'));
 
+
+//设置模板引擎
 app.set('views', './views/page')
 app.set('view engine', 'tpl');
 
