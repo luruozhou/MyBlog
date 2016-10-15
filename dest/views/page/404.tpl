@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-
+<link rel="stylesheet" href="../static/404.css">
 <p>然后呢</p>
 <img src="./static/404.png" alt="404">
 <img src="./guide.png" alt="">

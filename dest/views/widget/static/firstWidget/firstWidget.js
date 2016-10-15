@@ -1,3 +1,1 @@
-var d = "第一个组件";
-
-console.log(d)
+"use strict";var d="第一个组件";console.log(d);
