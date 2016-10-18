@@ -13,7 +13,7 @@ app.use('/widget', express.static('dest/views/widget/static'));
 
 
 //设置模板引擎
-app.set('views', './views/page')
+app.set('views', './dest/views/page')
 app.set('view engine', 'tpl');
 
 app.engine('tpl', swig.renderFile);
