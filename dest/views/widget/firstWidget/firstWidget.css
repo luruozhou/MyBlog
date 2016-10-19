@@ -1,0 +1,8 @@
+body {
+  background: #ffff00;
+}
+body .first {
+  background: url(/views/widget/firstWidget/img/banner-4.png?v=9938ac30cb1383da2ba63ccdd481542a) no-repeat;
+}
+
+/*# sourceMappingURL=firstWidget.css.map?v=7f5c800b473a17ecf12a4f228b037768*/

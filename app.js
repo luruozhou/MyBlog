@@ -9,7 +9,9 @@ var app = express();
 
 log.use(app);
 app.use('/static', express.static('dest/views/static'));
-app.use('/widget', express.static('dest/views/widget/static'));
+app.use('/views/static', express.static('dest/views/static'));
+app.use('/widget', express.static('dest/views/widget'));
+app.use('/views/widget', express.static('dest/views/widget'));
 
 
 //设置模板引擎
@@ -28,11 +30,11 @@ var server = app.listen(config.ServerHost.port, function () {
 
 // 其他 router ...
 // 404
-app.get('*', function(req, res){
-    res.render('404', {
-        title: 'No Found'
-    })
-});
+// app.get('*', function(req, res){
+//     res.render('404', {
+//         title: 'No Found'
+//     })
+// });
 
 
 
