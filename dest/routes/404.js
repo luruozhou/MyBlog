@@ -11,9 +11,6 @@ exports.default = function (req, res) {
     };
 };
 
-/**
- * Created by Administrator on 2016/10/19.
- */
 var routeSettings = exports.routeSettings = {
     default: {}
 };

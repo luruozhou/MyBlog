@@ -15,7 +15,7 @@ exports.aa = aa;
 exports.bb = bb;
 var routeSettings = exports.routeSettings = {
     default: {
-        route: "/default"
+        route: ""
     },
     aa: {
         route: /t\/(\d+)/

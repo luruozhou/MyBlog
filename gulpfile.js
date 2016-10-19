@@ -23,7 +23,6 @@ var gulp = require('gulp');
 var assetRev = require('gulp-asset-rev');
 
 
-
 gulp.task("compile-server", function () {
     return gulp.src("server/**/*.js")
         .pipe(plumber())
@@ -39,20 +38,19 @@ gulp.task("compile-routes", function () {
 });
 
 
-
 // gulp.task("compile-template", function () {
 //     return gulp.src("views/**/*.!(js|less)")
 //         .pipe(plumber())
 //         .pipe(gulp.dest("dest/views"));
 // });
 
-gulp.task("webpack", function(callback) {
+gulp.task("webpack", function (callback) {
     var myConfig = Object.create(webpackConfig);
     // run webpack
     webpack(
         // configuration
         webpackConfig
-        , function(err, stats) {
+        , function (err, stats) {
             // if(err) throw new gutil.PluginError("webpack", err);
             // gutil.log("[webpack]", stats.toString({
             //	 // output options
@@ -106,24 +104,23 @@ gulp.task("webpack", function(callback) {
 // });
 
 
-
 gulp.task('build', function (callback) {
 //删除dist文件夹
-    exec('rm -rf dest',function(err,out) {
-        console.log(out); err && console.log(err);
-        // gulp.start('compile-template');
-        gulp.start('compile-server');
-        gulp.start('compile-routes');
-        gulp.start('webpack');
-        // gulp.start('compile-static-js');
-        // gulp.start('compile-static-less');
-        // gulp.start('rev');
+//     exec('rm -rf dest',function(err,out) {
+//
+//     });
+    // gulp.start('compile-template');
+    gulp.start('compile-server');
+    gulp.start('compile-routes');
+    gulp.start('webpack');
+    // gulp.start('compile-static-js');
+    // gulp.start('compile-static-less');
+    // gulp.start('rev');
 
-        // gulp.watch('views/**/*.!(js|less)', ['compile-template']);
-        gulp.watch('views/**/*', ['webpack']);
-        gulp.watch('server/**/*.js', ['compile-server']);
-        gulp.watch('routes/**/*.js', ['compile-routes']);
-    });
+    // gulp.watch('views/**/*.!(js|less)', ['compile-template']);
+    gulp.watch('views/**/*', ['webpack']);
+    gulp.watch('server/**/*.js', ['compile-server']);
+    gulp.watch('routes/**/*.js', ['compile-routes']);
 
 
 });

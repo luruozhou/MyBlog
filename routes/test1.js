@@ -1,6 +1,6 @@
 export var routeSettings = {
     default: {
-        route: "/default"
+        route: ""
     },
     aa: {
         route: /t\/(\d+)/

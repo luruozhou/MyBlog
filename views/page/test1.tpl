@@ -1,16 +1,20 @@
-{% extends 'layout.tpl' %}
+<!doctype html>
+<html>
 
-{% block title %}{{title}}{%endblock%}
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    {{title}}
+</head>
 
-{% block head %}
-
-{% endblock %}
-
-{% block content %}
-<link rel="stylesheet" href="../static/test1/test1.css">
+<body>
 <h1>
     {{a}}{{b}}
 </h1>
 <p>test页面蛤蛤蛤蛤</p>
-<script src="../static/test1/test1.js"></script>
-{% endblock %}
+</body>
+
+</html>
+
+
+

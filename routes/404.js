@@ -1,6 +1,3 @@
-/**
- * Created by Administrator on 2016/10/19.
- */
 export var routeSettings = {
     default: {
 

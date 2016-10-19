@@ -4,6 +4,12 @@ var config = require("./dest/server/config")
 var log = require('./dest/server/logger');
 var Path = require("path")
 var Router = require("./dest/server/utils/page-router.js").Router;
+var FS = require('fs-extra');
+var ChildProcess = require('child_process');
+var program = require("commander");
+
+program.parse(process.argv);
+
 
 var app = express();
 

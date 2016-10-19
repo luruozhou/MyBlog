@@ -4,12 +4,28 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var glob = require('glob');
 var fs = require('fs');
+var staticData = require("./tools/jsconfig")
+
+function getEntries(data) {
+    var returnData = {};
+    data.forEach(function (item, i) {
+        returnData[item.entry]="./"+item.entry;
+    })
+    console.log(returnData)
+    return returnData;
+}
+
+function getTemplate(data) {
+    var returnData = {};
+    for (var key in data) {
+        returnData[key] = "./" + key;
+    }
+    console.log(returnData)
+    return returnData;
+}
 
 module.exports = {
-    entry: {
-        "views/static/404/404": "./views/static/404/404.js",
-        "views/widget/firstWidget/firstWidget": "./views/widget/firstWidget/firstWidget.js",
-    },
+    entry: getEntries(staticData),
     // 输出配置
     output: {
         path: "dest/",
@@ -61,30 +77,18 @@ module.exports = {
 
         ]
     },
-    plugins: [
-        // 提取css为单文件
-        new ExtractTextPlugin("[name].css?v=[contenthash]"),
-        new HtmlWebpackPlugin({
+    plugins: staticData.map(function (item, i) {
+        return new HtmlWebpackPlugin({
             // filename: path.resolve(__dirname, '../dist/index.html'),
-            filename: './views/page/404.tpl',
-            template: './views/page/404.tpl',
-            chunks: ['views/static/404/404'],
+            filename: item.template,
+            template: item.template,
+            chunks: [item.entry],
             inject: true,
             minify: {
                 // removeComments: true,
                 // collapseWhitespace: true,
                 // removeAttributeQuotes: true
             },
-        }), new HtmlWebpackPlugin({
-            // filename: path.resolve(__dirname, '../dist/index.html'),
-            filename: './views/widget/firstWidget/firstWidget.tpl',
-            template: './views/widget/firstWidget/firstWidget.tpl',
-            chunks: ['views/widget/firstWidget/firstWidget'],
-            inject: true,
-            minify: {
-                // removeComments: true,
-                // collapseWhitespace: true,
-                // removeAttributeQuotes: true
-            },
-        })]
+        })
+    }).concat(new ExtractTextPlugin("[name].css?v=[contenthash]"))
 }
