@@ -4,25 +4,17 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var glob = require('glob');
 var fs = require('fs');
-var staticData = require("./tools/jsconfig")
+var staticData = require("./tools/jsconfig.json").files;
 
 function getEntries(data) {
     var returnData = {};
     data.forEach(function (item, i) {
         returnData[item.entry]="./"+item.entry;
     })
-    console.log(returnData)
+
     return returnData;
 }
 
-function getTemplate(data) {
-    var returnData = {};
-    for (var key in data) {
-        returnData[key] = "./" + key;
-    }
-    console.log(returnData)
-    return returnData;
-}
 
 module.exports = {
     entry: getEntries(staticData),

@@ -3,4 +3,4 @@
     hehhehe
     <img src="/views/widget/firstWidget/img/pkFire.png?v=3d25268c12a5372076df34d7d2821191" alt="">
 </div>
-<script type="text/javascript" src="/views/widget/firstWidget/firstWidget.js?v=5c7368208e226f6b12d5"></script>
+<script type="text/javascript" src="/views/widget/firstWidget/firstWidget.js?v=da7f2f45a5085a06fcb7"></script>

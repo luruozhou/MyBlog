@@ -1,29 +1,24 @@
 {
-    "files": [
-        {
-            "entry": "views/static/404/404",
-            "template": "views/page/404.tpl"
-        },
-        {
-            "entry": "views/static/index/index",
-            "template": "views/page/index.tpl"
-        },
-        {
-            "entry": "views/static/next/test4/test4",
-            "template": "views/page/next/test4.tpl"
-        },
-        {
-            "entry": "views/static/test1/test1",
-            "template": "views/page/test1.tpl"
-        },
-        {
-            "entry": "views/widget/firstWidget/firstWidget",
-            "template": "views/widget/firstWidget/firstWidget.tpl"
-        },
-        {
-            "entry": "views/static/akk/akk",
-            "template": "views/page/akk.tpl",
-            "type": "page"
-        }
-    ]
+  "files": [
+    {
+      "entry": "views/static/index/index",
+      "template": "views/page/index.tpl",
+      "type": "page"
+    },
+    {
+      "entry": "views/widget/firstWidget/firstWidget",
+      "template": "views/widget/firstWidget/firstWidget.tpl",
+      "type": "widget"
+    },
+    {
+      "entry": "views/widget/secondWidget/secondWidget",
+      "template": "views/widget/secondWidget/secondWidget.tpl",
+      "type": "widget"
+    },
+    {
+      "entry": "views/widget/sub/forthWidget/forthWidget",
+      "template": "views/widget/sub/forthWidget/forthWidget.tpl",
+      "type": "widget"
+    }
+  ]
 }

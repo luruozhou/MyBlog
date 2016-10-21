@@ -40,27 +40,14 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
-/***/ function(module, exports, __webpack_require__) {
+/******/ ([
+/* 0 */
+/***/ function(module, exports) {
 
 	"use strict";
 	
-	__webpack_require__(7);
-	
-	var d = "第一个组件";
-	
-	console.log(d);
-
-/***/ },
-
-/***/ 7:
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
+	console.log("第四个组件");
 
 /***/ }
-
-/******/ });
-//# sourceMappingURL=firstWidget.js.map?v=da7f2f45a5085a06fcb7
+/******/ ]);
+//# sourceMappingURL=forthWidget.js.map?v=da7f2f45a5085a06fcb7

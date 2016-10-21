@@ -30,31 +30,27 @@ if (program.args.length < 1)
 var path = program.args[0].replace(/\\/g, '/');
 var nameArr = path.split("/");
 var fileName = nameArr[nameArr.length - 1];
-var routeTpl = FS.readFileSync(__dirname + '/templates/route.js.tpl', 'utf-8');
-var pageTpl = FS.readFileSync(__dirname + '/templates/route.page.tpl', 'utf-8');
-var routePath = Path.join(__dirname, '..', 'routes', path) + '.js';
-
-createFile(routePath, routeTpl);
-var pageTplPath = Path.join(__dirname, '../views', 'page', path) + '.tpl';
 
 
-var staticJsPath = Path.join(__dirname, '../views', 'static', path, fileName) + '.js';
-var staticCssPath = Path.join(__dirname, '../views', 'static', path, fileName) + '.less';
-
-var addedTsFile = createFile(staticJsPath) && createFile(pageTplPath, pageTpl);
+var staticJsPath = Path.join(__dirname, '../views', 'widget', path, fileName) + '.js';
+var staticCssPath = Path.join(__dirname, '../views', 'widget', path, fileName) + '.less';
+var widgeTPLPath = Path.join(__dirname, '../views', 'widget', path, fileName) + '.tpl';
 
 createFile(staticCssPath);
+var addedTsFile = createFile(widgeTPLPath) && createFile(staticJsPath);
+
 
 if (addedTsFile) {
     console.log('syncing jsconfig.json...');
     var jsConfig = require('./jsConfig.json');
 
     var addEntry = {}
-    pageTplPath = pageTplPath.replace(/\\/g, '/').match(/views\/page.+/g);
-    staticJsPath = staticJsPath.replace(/\\/g, '/').match(/views\/static[^.]+/g);
+    widgeTPLPath = widgeTPLPath.replace(/\\/g, '/').match(/views\/widget.+/g);
+    staticJsPath = staticJsPath.replace(/\\/g, '/').match(/views\/widget[^.]+/g);
+
     addEntry.entry = staticJsPath[0];
-    addEntry.template = pageTplPath[0];
-    addEntry.type = "page";
+    addEntry.template = widgeTPLPath[0];
+    addEntry.type = "widget";
     jsConfig.files.push(addEntry);
 
     fs.writeFile('tools/jsConfig.json', JSON.stringify(jsConfig, null, '    ') + '\n', function (err) {

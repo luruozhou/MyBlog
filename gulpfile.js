@@ -106,21 +106,19 @@ gulp.task("webpack", function (callback) {
 
 gulp.task('build', function (callback) {
 //删除dist文件夹
-//     exec('rm -rf dest',function(err,out) {
-//
-//     });
-    // gulp.start('compile-template');
-    gulp.start('compile-server');
-    gulp.start('compile-routes');
-    gulp.start('webpack');
-    // gulp.start('compile-static-js');
-    // gulp.start('compile-static-less');
-    // gulp.start('rev');
+    exec('rm -rf dest', function (err, out) {
+// gulp.start('compile-template');
+        gulp.start('compile-server');
+        gulp.start('compile-routes');
+        gulp.start('webpack');
+        // gulp.start('compile-static-js');
+        // gulp.start('compile-static-less');
+        // gulp.start('rev');
 
-    // gulp.watch('views/**/*.!(js|less)', ['compile-template']);
-    gulp.watch('views/**/*', ['webpack']);
-    gulp.watch('server/**/*.js', ['compile-server']);
-    gulp.watch('routes/**/*.js', ['compile-routes']);
-
+        // gulp.watch('views/**/*.!(js|less)', ['compile-template']);
+        gulp.watch('views/**/*', ['webpack']);
+        gulp.watch('server/**/*.js', ['compile-server']);
+        gulp.watch('routes/**/*.js', ['compile-routes']);
+    });
 
 });
