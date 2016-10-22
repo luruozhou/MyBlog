@@ -6,6 +6,9 @@ var Path = require("path")
 var Router = require("./dest/server/utils/page-router.js").Router;
 
 
+// var ChildProcess = require('child_process');
+// ChildProcess.exec('gulp build');
+
 var app = express();
 
 log.use(app);

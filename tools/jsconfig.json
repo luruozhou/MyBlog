@@ -1,24 +1,29 @@
 {
-  "files": [
-    {
-      "entry": "views/static/index/index",
-      "template": "views/page/index.tpl",
-      "type": "page"
-    },
-    {
-      "entry": "views/widget/firstWidget/firstWidget",
-      "template": "views/widget/firstWidget/firstWidget.tpl",
-      "type": "widget"
-    },
-    {
-      "entry": "views/widget/secondWidget/secondWidget",
-      "template": "views/widget/secondWidget/secondWidget.tpl",
-      "type": "widget"
-    },
-    {
-      "entry": "views/widget/sub/forthWidget/forthWidget",
-      "template": "views/widget/sub/forthWidget/forthWidget.tpl",
-      "type": "widget"
-    }
-  ]
+    "files": [
+        {
+            "entry": "views/static/index/index",
+            "template": "views/page/index.tpl",
+            "type": "page"
+        },
+        {
+            "entry": "views/static/admin/addArticle/addArticle",
+            "template": "views/page/admin/addArticle.tpl",
+            "type": "page"
+        },
+        {
+            "entry": "views/widget/admin/header/header",
+            "template": "views/widget/admin/header/header.tpl",
+            "type": "widget"
+        },
+        {
+            "entry": "views/widget/admin/footer/footer",
+            "template": "views/widget/admin/footer/footer.tpl",
+            "type": "widget"
+        },
+        {
+            "entry": "views/widget/admin/asider/asider",
+            "template": "views/widget/admin/asider/asider.tpl",
+            "type": "widget"
+        }
+    ]
 }

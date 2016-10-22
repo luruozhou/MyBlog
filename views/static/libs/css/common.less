@@ -1,0 +1,87 @@
+@import url("base.less");
+@import url("veryless.less");
+@import url("util.less");
+
+@font-face {
+  font-family: 'iconfont';
+  src: url('//at.alicdn.com/t/font_1450252365_0320423.eot'); /* IE9*/
+  src: url('//at.alicdn.com/t/font_1450252365_0320423.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('//at.alicdn.com/t/font_1450252365_0320423.woff') format('woff'), /* chrome、firefox */
+  url('//at.alicdn.com/t/font_1450252365_0320423.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('//at.alicdn.com/t/font_1450252365_0320423.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.layout{
+    margin: 0 auto;
+    width: 1170px;
+    overflow: visible;
+}
+
+@media screen and (max-width: 1170px) {
+    .layout {
+        margin: 0 auto;
+        // width: 970px;
+        width: 1170px;
+    }
+}
+@media screen and (min-width: 1170px) {
+    .layout {
+        margin: 0 auto;
+        width: 1170px;
+    }
+}
+#wrapper{
+    // min-width: 970px;
+    min-width: 1170px;
+    overflow: hidden;
+}
+.layout970 {
+  margin: 0 auto;
+  width: 970px;
+}
+body {
+    margin: 0 auto;
+    font: 12px/1.5 "Microsoft YaHei",DengXian,Arial,Simsun,SimHei,sans-serif;
+    @media screen and (max-width: 1170px) {
+      min-width: 970px;
+    }
+    @media screen and (min-width: 1170px) {
+      min-width: 1170px;
+    }
+}
+
+a:link {
+  outline: none;
+}
+
+a:active {
+  outline: none;
+}
+
+//placeholder样式
+::-webkit-input-placeholder {
+    color: #c3c3c3;
+    font-size: 12px;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: #c3c3c3;
+    font-size: 12px;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    color: #c3c3c3;
+    font-size: 12px;  
+}
+
+:-ms-input-placeholder {  
+   color: #c3c3c3;
+   font-size: 12px;  
+}
+//功能文字样式
+.text-muted {
+    font-size: 12px;
+    color: #c3c3c3;
+}
+
+

@@ -1,1 +1,0 @@
-<div>第四个组件</div><script type="text/javascript" src="/views/widget/sub/forthWidget/forthWidget.js?v=da7f2f45a5085a06fcb7"></script>

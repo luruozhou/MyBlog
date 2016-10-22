@@ -5,11 +5,12 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var glob = require('glob');
 var fs = require('fs');
 var staticData = require("./tools/jsconfig.json").files;
+var webpack = require("webpack");
 
 function getEntries(data) {
     var returnData = {};
     data.forEach(function (item, i) {
-        returnData[item.entry]="./"+item.entry;
+        returnData[item.entry] = "./" + item.entry;
     })
 
     return returnData;
@@ -56,7 +57,7 @@ module.exports = {
                 loader: 'url',
                 query: {
                     limit: 10000,
-                    name: 'fonts/[name].[hash:7].[ext]'
+                    name: '[path][name]/[name].[ext]?v=[hash]'
                 }
             }, {
                 test: /\.less$/,
@@ -70,6 +71,9 @@ module.exports = {
         ]
     },
     plugins: staticData.map(function (item, i) {
+        if(!item.template){
+            return null;
+        }
         return new HtmlWebpackPlugin({
             // filename: path.resolve(__dirname, '../dist/index.html'),
             filename: item.template,
@@ -82,5 +86,9 @@ module.exports = {
                 // removeAttributeQuotes: true
             },
         })
-    }).concat(new ExtractTextPlugin("[name].css?v=[contenthash]"))
+    }).concat([new ExtractTextPlugin("[name].css?v=[contenthash]"), new webpack.ProvidePlugin({
+        $: path.join(__dirname, './views/static/libs/js/jquery.js'),
+        jQuery: path.join(__dirname, './views/static/libs/js/jquery.js'),
+        "window.jQuery": path.join(__dirname, './views/static/libs/js/jquery.js'),
+    })])
 }

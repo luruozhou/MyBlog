@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 
 exports.default = function (req, res) {
     return {
-        a: "hha",
+        a: [{ name: "john" }, { name: "mary" }, { name: "haha" }, { name: "jiang" }],
         b: "说胡好"
     };
 };
