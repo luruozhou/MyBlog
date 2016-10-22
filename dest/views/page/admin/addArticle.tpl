@@ -44,7 +44,7 @@
     </div>
 </div>
 
-<script type="text/javascript" src="/views/static/admin/addArticle/addArticle.js?v=5f88cfd9aab49a471dee"></script></body>
+<script type="text/javascript" src="/views/static/admin/addArticle/addArticle.js?v=37a79e98a546a3c94d54"></script></body>
 
 </html>
 

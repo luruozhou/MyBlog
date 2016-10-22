@@ -1,5 +1,4 @@
 import "./addArticle.less";
-// require('imports?$=jQuery!../../libs/js/sceditor/jquery.sceditor.bbcode.min.js');
 import "../../libs/js/sceditor/jquery.sceditor.bbcode.min.js";
 import "../../libs/js/sceditor/square.min.less";
 

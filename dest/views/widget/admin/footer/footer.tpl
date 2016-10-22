@@ -1,1 +1,1 @@
-<script type="text/javascript" src="/views/widget/admin/footer/footer.js?v=5f88cfd9aab49a471dee"></script>
+<script type="text/javascript" src="/views/widget/admin/footer/footer.js?v=37a79e98a546a3c94d54"></script>

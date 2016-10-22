@@ -12,7 +12,7 @@
 </head>
 
 <body>
-{% include "../widget/sub/forthWidget/forthWidget.tpl"%}
+
 </body>
 
 </html>

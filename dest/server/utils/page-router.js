@@ -12,15 +12,11 @@ var _bluebird = require("bluebird");
 
 var _bluebird2 = _interopRequireDefault(_bluebird);
 
-var _test_model = require("../modules/mongodb-models/test_model");
+var _articleModel = require("../modules/mysql-models/article-model");
+
+var _articleModel2 = _interopRequireDefault(_articleModel);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_test_model.Model.create({
-    name: "嫌疑犯x",
-    mobile: "13386198107",
-    age: 27
-});
 
 exports.Router = function (app) {
     this.app = app; //express 实例

@@ -72,7 +72,9 @@ module.exports = {
     },
     plugins: staticData.map(function (item, i) {
         if(!item.template){
-            return null;
+            return function () {
+
+            };
         }
         return new HtmlWebpackPlugin({
             // filename: path.resolve(__dirname, '../dist/index.html'),

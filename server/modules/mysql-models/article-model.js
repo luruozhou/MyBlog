@@ -1,0 +1,31 @@
+import * as Sequelize from 'sequelize';
+import sequelize from '../core/sequelize';
+
+var Model = sequelize.define(
+    'ElectronicAgreement', {
+        title: {
+            type: Sequelize.STRING,
+            allowNull: false,
+            defaultValue: ''
+        },
+        html_content: {
+            type: Sequelize.TEXT,
+            allowNull: true
+        },
+        sid: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            defaultValue: 1
+        },
+        sub_sid: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            defaultValue: 1
+        }
+    }, {
+        tableName: 'articles',
+        timestamps: false
+    }
+);
+Model.sync();
+export default Model;

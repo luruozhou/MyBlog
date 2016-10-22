@@ -18,7 +18,9 @@
     "fs-extra": "^0.30.0",
     "log4js": "^0.6.38",
     "mongoose": "^4.6.3",
+    "mysql": "^2.11.1",
     "request": "^2.75.0",
+    "sequelize": "^3.24.5",
     "swig": "^1.4.2"
   },
   "devDependencies": {

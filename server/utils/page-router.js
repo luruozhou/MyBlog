@@ -1,13 +1,7 @@
 import Path from "path";
 import IO from "./io.js";
 import BlueBird from "bluebird";
-import  {Model as TESTmodel} from "../modules/mongodb-models/test_model"
-
-TESTmodel.create({
-    name:"嫌疑犯x",
-    mobile:"13386198107",
-    age:27
-})
+import  TESTmodel from "../modules/mysql-models/article-model";
 
 exports.Router = function (app) {
     this.app = app; //express 实例
