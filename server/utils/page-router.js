@@ -10,10 +10,12 @@ exports.Router = function (app) {
     for (var routeFile of routeFiles) {
         var routeModule = require(routeFile);  //每个路由文件export的对象
         for (var key in routeModule) {
-            if(key !="routeSettings"){
+            if (key != "routeSettings") {
                 attach(routeModule, key)
             }
 
+
+            
         }
     }
 
@@ -41,8 +43,8 @@ exports.Router = function (app) {
             BlueBird
                 .resolve()
                 .then(function () {
-                    if(!routeHandler){
-                      return  res.redirect("404");
+                    if (!routeHandler) {
+                        return res.redirect("404");
                     }
                     return routeHandler(req, res)
                 })

@@ -38,7 +38,10 @@ var Model = _sequelize3.default.define('ElectronicAgreement', {
     }
 }, {
     tableName: 'articles',
-    timestamps: false
+    timestamps: true,
+    underscored: true,
+    charset: 'utf8',
+    collate: 'utf8_unicode_ci'
 });
 Model.sync();
 exports.default = Model;

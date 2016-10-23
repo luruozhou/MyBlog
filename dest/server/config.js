@@ -4,7 +4,13 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 var db = exports.db = {
-
+    mysql: {
+        name: 'test',
+        host: '121.40.83.12',
+        port: 3306,
+        user: 'forge',
+        password: 'zhangmen1dui1'
+    },
     mongodb: {
         db: 'mongodb://luruozhou:123456@127.0.0.1/luruozhou', //本地
         opts: {
