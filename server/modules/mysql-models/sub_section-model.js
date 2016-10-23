@@ -2,28 +2,27 @@ import * as Sequelize from 'sequelize';
 import sequelize from '../core/sequelize';
 
 var Model = sequelize.define(
-    'articles', {
-        title: {
+    'sub_sections', {
+        name: {
             type: Sequelize.STRING,
             allowNull: false,
             defaultValue: ''
         },
-        html_content: {
-            type: Sequelize.TEXT,
+        tab: {
+            type: Sequelize.STRING,
             allowNull: true
         },
-        sid: {
+        parent_id: {
             type: Sequelize.INTEGER,
-            allowNull: false,
-            defaultValue: 1
+            allowNull: true
         },
-        sub_sid: {
+        show_status: {
             type: Sequelize.INTEGER,
             allowNull: false,
             defaultValue: 1
         }
     }, {
-        tableName: 'articles',
+        tableName: 'sub_sections',
         timestamps: true,
         underscored: true,
         charset: 'utf8',

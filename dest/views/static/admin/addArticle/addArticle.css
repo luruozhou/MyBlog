@@ -337,12 +337,12 @@ a:active {
 }
 .main .box .box-header select {
   width: 88px;
-  height: 30px;
+  height: 40px;
   font-size: 14px;
 }
 .main .box .box-header input {
-  width: 588px;
-  height: 30px;
+  width: 688px;
+  height: 40px;
   font-size: 14px;
   display: inline-block;
   -webkit-box-sizing: border-box;
@@ -870,4 +870,4 @@ div.sceditor-group:first-child {
   border: 1px solid #ddd;
 }
 
-/*# sourceMappingURL=addArticle.css.map?v=7fcadaec3905414094c4907f5f109553*/
+/*# sourceMappingURL=addArticle.css.map?v=ed28e57f47fe844e8b82221a56e41fec*/

@@ -16,28 +16,28 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
-var Model = _sequelize3.default.define('articles', {
-    title: {
+var Model = _sequelize3.default.define('sections', {
+    name: {
         type: Sequelize.STRING,
         allowNull: false,
         defaultValue: ''
     },
-    html_content: {
-        type: Sequelize.TEXT,
+    tab: {
+        type: Sequelize.STRING,
         allowNull: true
     },
-    sid: {
+    show_status: {
         type: Sequelize.INTEGER,
         allowNull: false,
         defaultValue: 1
     },
-    sub_sid: {
+    sort_order: {
         type: Sequelize.INTEGER,
         allowNull: false,
         defaultValue: 1
     }
 }, {
-    tableName: 'articles',
+    tableName: 'sections',
     timestamps: true,
     underscored: true,
     charset: 'utf8',

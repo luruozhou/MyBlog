@@ -16,7 +16,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.Router = function (app) {
     this.app = app; //express 实例
-    var routeFileDir = _path2.default.resolve("dest/routes"); //路由根目录
+    var routeFileDir = _path2.default.resolve("dest/server/api"); //路由根目录
     var routeFiles = _io2.default.listFiles(routeFileDir, /\.js$/); //获取目录下所有路由文件
     var _iteratorNormalCompletion = true;
     var _didIteratorError = false;
@@ -51,28 +51,46 @@ exports.Router = function (app) {
     function attach(routeModule, key) {
         var routeSetting = routeModule.routeSettings && routeModule.routeSettings[key] || {};
         var routeHandler = routeModule[key];
-        var urlPath, tplPath;
+        var method = routeSetting.method || "get";
+        var urlPath;
         if (routeSetting.route) {
             urlPath = routeSetting.route;
         } else {
             urlPath = '/' + _path2.default.relative(routeFileDir, routeFile).replace(/\\/g, '/').replace(/\.js$/, '');
         }
-        if (routeSetting.template) {
-            tplPath = routeSetting.template;
-        } else {
-            tplPath = _path2.default.relative(routeFileDir, routeFile).replace(/\\/g, '/').replace(/\.js$/, '').replace(/^\/+/i, "");
+
+        if (key != "default") {
+            urlPath += "/" + key;
         }
 
-        app.get(urlPath, function (req, res) {
+        app[method](urlPath, function (req, res) {
             _bluebird2.default.resolve().then(function () {
                 if (!routeHandler) {
-                    return res.redirect("404");
+                    res.sendStatus(403);
+                    return;
                 }
                 return routeHandler(req, res);
             }).then(function (returnData) {
-
-                res.render(tplPath, returnData);
+                return getJson(returnData);
+            }).then(function (data) {
+                res.send(data);
             });
         });
     }
 };
+
+function getJson(data) {
+    if (!data || data.length == 0) {
+        return {
+            code: 0,
+            data: null,
+            msg: "error"
+        };
+    } else {
+        return {
+            code: 1,
+            data: data,
+            msg: ""
+        };
+    }
+}

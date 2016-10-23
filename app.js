@@ -3,7 +3,8 @@ var swig = require('swig');
 var config = require("./dest/server/config")
 var log = require('./dest/server/logger');
 var Path = require("path")
-var Router = require("./dest/server/utils/page-router.js").Router;
+var PAGERouter = require("./dest/server/utils/page-router.js").Router;
+var APIRouter = require("./dest/server/utils/api-router.js").Router;
 
 
 // var ChildProcess = require('child_process');
@@ -24,7 +25,9 @@ app.set('view engine', 'tpl');
 
 app.engine('tpl', swig.renderFile);
 
-new Router(app);
+new PAGERouter(app);
+new APIRouter(app);
+
 
 var server = app.listen(config.ServerHost.port, function () {
     var host = server.address().address;

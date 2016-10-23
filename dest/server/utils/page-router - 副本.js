@@ -12,6 +12,10 @@ var _bluebird = require("bluebird");
 
 var _bluebird2 = _interopRequireDefault(_bluebird);
 
+var _articleModel = require("../modules/mysql-models/article-model");
+
+var _articleModel2 = _interopRequireDefault(_articleModel);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.Router = function (app) {

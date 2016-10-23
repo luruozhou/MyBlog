@@ -9,7 +9,7 @@
     <title>{{title}}</title>
     <meta name="keywords" content="{{keywords}}">
     <meta name="description" content="{{description}}" name="description">
-<link href="/views/static/admin/addArticle/addArticle.css?v=7fcadaec3905414094c4907f5f109553" rel="stylesheet"></head>
+<link href="/views/static/admin/addArticle/addArticle.css?v=ed28e57f47fe844e8b82221a56e41fec" rel="stylesheet"></head>
 
 <body>
 
@@ -44,7 +44,7 @@
     </div>
 </div>
 
-<script type="text/javascript" src="/views/static/admin/addArticle/addArticle.js?v=37a79e98a546a3c94d54"></script></body>
+<script type="text/javascript" src="/views/static/admin/addArticle/addArticle.js?v=4c9a795f60c2a74802ce"></script></body>
 
 </html>
 
