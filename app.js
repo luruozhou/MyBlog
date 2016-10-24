@@ -5,10 +5,9 @@ var log = require('./dest/server/logger');
 var Path = require("path")
 var PAGERouter = require("./dest/server/utils/page-router.js").Router;
 var APIRouter = require("./dest/server/utils/api-router.js").Router;
+var bodyParser = require('body-parser');
+var multer = require('multer');
 
-
-// var ChildProcess = require('child_process');
-// ChildProcess.exec('gulp build');
 
 var app = express();
 
@@ -17,7 +16,9 @@ app.use('/static', express.static('dest/views/static'));
 app.use('/views/static', express.static('dest/views/static'));
 app.use('/widget', express.static('dest/views/widget'));
 app.use('/views/widget', express.static('dest/views/widget'));
-
+app.use(bodyParser.json({limit: '50mb'})); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' })); // for parsing application/x-www-form-urlencoded
+app.use(multer()); // for parsing multipart/form-data
 
 //设置模板引擎
 app.set('views', './dest/views/page')

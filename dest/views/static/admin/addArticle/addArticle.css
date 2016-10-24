@@ -349,6 +349,23 @@ a:active {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+.main .box .box-footer .submit {
+  display: inline-block;
+  height: 40px;
+  border: none;
+  background: #2b669a;
+  width: 100px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  float: right;
+  margin: 20px;
+  cursor: pointer;
+}
+.main .box .box-footer .submit:hover {
+  background: #4b86ba;
+}
 /*! SCEditor | (C) 2011-2013, Sam Clarke | sceditor.com/license */
 .sceditor-button div,
 div.sceditor-grip {
@@ -870,4 +887,4 @@ div.sceditor-group:first-child {
   border: 1px solid #ddd;
 }
 
-/*# sourceMappingURL=addArticle.css.map?v=ed28e57f47fe844e8b82221a56e41fec*/
+/*# sourceMappingURL=addArticle.css.map?v=8629a6af5f0da1aea2c35e075ec7a45a*/

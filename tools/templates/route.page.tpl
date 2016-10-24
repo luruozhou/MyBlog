@@ -9,6 +9,11 @@
     <title>{{title}}</title>
     <meta name="keywords" content="{{keywords}}">
     <meta name="description" content="{{description}}" name="description">
+    {%if extras%}
+        <script type="application/json" data-id="data.extras">
+            {% autoescape false %} {{ extras|json }} {% endautoescape %}
+        </script>
+    {%endif%}
 </head>
 
 <body>

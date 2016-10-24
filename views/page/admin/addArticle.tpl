@@ -9,10 +9,14 @@
     <title>{{title}}</title>
     <meta name="keywords" content="{{keywords}}">
     <meta name="description" content="{{description}}" name="description">
+    {%if extras%}
+        <script type="application/json" data-id="data.extras">
+            {% autoescape false %} {{ extras|json }} {% endautoescape %}
+        </script>
+    {%endif%}
 </head>
 
 <body>
-
 <div id="wrapper">
     {% include "../../widget/admin/header/header.tpl"%}
     {% include "../../widget/admin/asider/asider.tpl"%}
@@ -22,25 +26,30 @@
             <div class="box-header">
                 <div class="form-control">
                     <select name="category" id="category">
-                        <option value="0">技术</option>
-                        <option value="1">生活</option>
+                        <option value=""}>请选择</option>
+                        {%for section in sections%}
+                            <option value="{{section.id}}"}>{{section.name}}</option>
+                        {%endfor%}
                     </select>
                 </div>
                 <div class="form-control">
                     <select name="sub_category" id="sub_category">
-                        <option value="0">js</option>
-                        <option value="1">node</option>
-                        <option value="2">css</option>
+                        <option value="">请选择</option>
                     </select>
                 </div>
                 <div class="form-control">
-                    <input type="text" class="title" name="title">
+                    <input type="text" class="article_title" name="title">
                 </div>
             </div>
+            <div class="box-body">
+                <textarea name="" id="" cols="30" rows="10" style="width: 100%;height:300px;"></textarea>
+            </div>
+
+            <div class="box-footer">
+                <button class="submit">提交</button>
+            </div>
         </div>
-        <div class="box-body">
-            <textarea name="" id="" cols="30" rows="10" style="width: 100%;height:300px;"></textarea>
-        </div>
+
     </div>
 </div>
 

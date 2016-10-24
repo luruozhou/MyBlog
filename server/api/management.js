@@ -1,17 +1,17 @@
+import BlueBird from "bluebird";
+import * as Management from "../modules/management"
+
 export var routeSettings = {
-    default:{
+    addArticle:{
         method:"post"
     }
 };
 
-export default function (req, res) {
-
-
-}
-
-export var hh = function (req, res) {
-
-    return {
-        b: "说胡好"
-    }
+/**
+ * 后台添加文章
+ */
+export function addArticle(req, res) {
+    var article = req.body;
+    console.log(article)
+    return Management.addArticle(article);
 }

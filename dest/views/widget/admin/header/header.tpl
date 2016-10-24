@@ -4,4 +4,4 @@
         <span class="log-out"></span>
         <span class="user-name">路若洲</span>
     </div>
-</div><script type="text/javascript" src="/views/widget/admin/header/header.js?v=4c9a795f60c2a74802ce"></script>
+</div><script type="text/javascript" src="/views/widget/admin/header/header.js?v=8d2001e21f0926f386af"></script>

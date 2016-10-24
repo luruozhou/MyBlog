@@ -1,6 +1,6 @@
-import BlueBird from "bluebird";
-import  SubSectionTmodel from "../../server/modules/mysql-models/sub_section-model";
-import  SectionTmodel from "../../server/modules/mysql-models/section-model";
+// import BlueBird from "bluebird";
+// import  SectionTmodel from "../../server/modules/mysql-models/section-model";
+import * as Management from "../../server/modules/management";
 
 //路由的配置项
 export var routeSettings = {
@@ -12,26 +12,55 @@ export var routeSettings = {
 
 export default function (req, res) {
     let sections = [];
-    let sub_sections = [];
 
-
-    return BlueBird.resolve()
-        .then(function () {
-            return SectionTmodel.findAll({
-                where: {"show_status": 1}
-            })
-        })
-        .then(res => {
-            sections = res;
-            return SubSectionTmodel.findAll({
-                where: {"show_status": 1}
-            })
-        })
+    return Management.querySections()
         .then(data =>{
-            sub_sections=data;
+            sections=makeTree(data);
+
             return {
                 sections,
-                sub_sections
+                extras:{
+                    sections
+                }
             }
         })
+}
+
+function makeTree(sections) {
+    var returnData =[];
+    var dataMap = {};
+    if(!sections ||sections.length ==0){
+        return returnData;
+    }
+
+    sections.forEach(function (item, i) {
+        if(!dataMap[item.id]){
+            dataMap[item.id]={
+                id:item.id,
+                name:item.name,
+                tab:item.tab,
+                sons:[]
+            }
+            if(item.son_id){
+                dataMap[item.id].sons.push({
+                    id:item.son_id,
+                    name:item.son_name,
+                    tab:item.son_tab,
+                })
+            }
+        }else{
+            dataMap[item.id].sons.push({
+                id:item.son_id,
+                name:item.son_name,
+                tab:item.son_tab,
+            })
+        }
+    })
+
+
+    for(let key in dataMap){
+        returnData.push(dataMap[key])
+    }
+
+    return returnData;
 }

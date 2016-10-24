@@ -12,6 +12,11 @@ var Model = sequelize.define(
             type: Sequelize.STRING,
             allowNull: true
         },
+        parent_id: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            defaultValue: 0
+        },
         show_status: {
             type: Sequelize.INTEGER,
             allowNull: false,

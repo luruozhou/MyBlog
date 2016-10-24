@@ -7,39 +7,24 @@ exports.routeSettings = undefined;
 
 exports.default = function (req, res) {
     var sections = [];
-    var sub_sections = [];
 
-    return _bluebird2.default.resolve().then(function () {
-        return _sectionModel2.default.findAll({
-            where: { "show_status": 1 }
-        });
-    }).then(function (res) {
-        sections = res;
-        return _sub_sectionModel2.default.findAll({
-            where: { "show_status": 1 }
-        });
-    }).then(function (data) {
-        sub_sections = data;
+    return Management.querySections().then(function (data) {
+        sections = makeTree(data);
+
         return {
             sections: sections,
-            sub_sections: sub_sections
+            extras: {
+                sections: sections
+            }
         };
     });
 };
 
-var _bluebird = require("bluebird");
+var _management = require("../../server/modules/management");
 
-var _bluebird2 = _interopRequireDefault(_bluebird);
+var Management = _interopRequireWildcard(_management);
 
-var _sub_sectionModel = require("../../server/modules/mysql-models/sub_section-model");
-
-var _sub_sectionModel2 = _interopRequireDefault(_sub_sectionModel);
-
-var _sectionModel = require("../../server/modules/mysql-models/section-model");
-
-var _sectionModel2 = _interopRequireDefault(_sectionModel);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 //路由的配置项
 var routeSettings = exports.routeSettings = {
@@ -47,4 +32,44 @@ var routeSettings = exports.routeSettings = {
         // route:"",       //访问路径
         // template:"",    //用到的模板
     }
-};
+}; // import BlueBird from "bluebird";
+// import  SectionTmodel from "../../server/modules/mysql-models/section-model";
+
+
+function makeTree(sections) {
+    var returnData = [];
+    var dataMap = {};
+    if (!sections || sections.length == 0) {
+        return returnData;
+    }
+
+    sections.forEach(function (item, i) {
+        if (!dataMap[item.id]) {
+            dataMap[item.id] = {
+                id: item.id,
+                name: item.name,
+                tab: item.tab,
+                sons: []
+            };
+            if (item.son_id) {
+                dataMap[item.id].sons.push({
+                    id: item.son_id,
+                    name: item.son_name,
+                    tab: item.son_tab
+                });
+            }
+        } else {
+            dataMap[item.id].sons.push({
+                id: item.son_id,
+                name: item.son_name,
+                tab: item.son_tab
+            });
+        }
+    });
+
+    for (var key in dataMap) {
+        returnData.push(dataMap[key]);
+    }
+
+    return returnData;
+}

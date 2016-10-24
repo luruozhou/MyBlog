@@ -20,7 +20,7 @@
    {#
     {% include "../widget/sub/forthWidget/forthWidget.tpl"%}
     #}
-<script type="text/javascript" src="/views/static/index/index.js?v=4c9a795f60c2a74802ce"></script></body>
+<script type="text/javascript" src="/views/static/index/index.js?v=8d2001e21f0926f386af"></script></body>
 
 </html>
 

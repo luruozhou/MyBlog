@@ -1,6 +1,6 @@
 import Path from "path";
 import IO from "./io.js";
-import BlueBird from "bluebird";
+import Promise from "bluebird";
 
 exports.Router = function (app) {
     this.app = app; //express 实例
@@ -36,7 +36,7 @@ exports.Router = function (app) {
         }
 
         app.get(urlPath, function (req, res) {
-            BlueBird
+            Promise
                 .resolve()
                 .then(function () {
                     if (!routeHandler) {

@@ -8,6 +8,11 @@ var Model = sequelize.define(
             allowNull: false,
             defaultValue: ''
         },
+        description: {
+            type: Sequelize.STRING,
+            allowNull: false,
+            defaultValue: ''
+        },
         html_content: {
             type: Sequelize.TEXT,
             allowNull: true
