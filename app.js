@@ -7,7 +7,9 @@ var PAGERouter = require("./dest/server/utils/page-router.js").Router;
 var APIRouter = require("./dest/server/utils/api-router.js").Router;
 var bodyParser = require('body-parser');
 var multer = require('multer');
-
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
+var sessionMiddleware = require('./server/conf/session-middleware.js').sessionMiddleware;
 
 var app = express();
 
@@ -17,8 +19,10 @@ app.use('/views/static', express.static('dest/views/static'));
 app.use('/widget', express.static('dest/views/widget'));
 app.use('/views/widget', express.static('dest/views/widget'));
 app.use(bodyParser.json({limit: '50mb'})); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' })); // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended: true, limit: '50mb'})); // for parsing application/x-www-form-urlencoded
 app.use(multer()); // for parsing multipart/form-data
+app.use(cookieParser());
+app.use(sessionMiddleware);
 
 //设置模板引擎
 app.set('views', './dest/views/page')
@@ -35,6 +39,8 @@ var server = app.listen(config.ServerHost.port, function () {
     var port = server.address().port;
     console.log('Example app listening at http://%s:%s', host, port);
 });
+
+
 
 // 其他 router ...
 // 404

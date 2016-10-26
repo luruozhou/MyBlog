@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <h1>welcome to Home Page-=-=-</h1>
+    <h1>welcome to Home Page!</h1>
     {%for i in a %}
         <p>{{i.name}}</p>
     {%endfor%}

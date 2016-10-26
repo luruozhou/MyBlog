@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="box-body">
-                <textarea name="" id="" cols="30" rows="10" style="width: 100%;height:300px;"></textarea>
+                <textarea name="" id="" cols="30" rows="10"></textarea>
             </div>
 
             <div class="box-footer">

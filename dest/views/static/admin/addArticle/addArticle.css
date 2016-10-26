@@ -349,6 +349,10 @@ a:active {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+.main .box .box-body textarea {
+  width: 100%;
+  height: 400px;
+}
 .main .box .box-footer .submit {
   display: inline-block;
   height: 40px;
@@ -887,4 +891,4 @@ div.sceditor-group:first-child {
   border: 1px solid #ddd;
 }
 
-/*# sourceMappingURL=addArticle.css.map?v=8629a6af5f0da1aea2c35e075ec7a45a*/
+/*# sourceMappingURL=addArticle.css.map?v=f4cca30f34683491b464971ebfda3a3b*/

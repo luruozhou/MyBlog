@@ -2957,4 +2957,4 @@
 
 /***/ }
 /******/ ]);
-//# sourceMappingURL=addArticle.js.map?v=8d2001e21f0926f386af
+//# sourceMappingURL=addArticle.js.map?v=055a7cf91e9b4364bd27

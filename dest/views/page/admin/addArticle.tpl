@@ -14,7 +14,7 @@
             {% autoescape false %} {{ extras|json }} {% endautoescape %}
         </script>
     {%endif%}
-<link href="/views/static/admin/addArticle/addArticle.css?v=8629a6af5f0da1aea2c35e075ec7a45a" rel="stylesheet"></head>
+<link href="/views/static/admin/addArticle/addArticle.css?v=f4cca30f34683491b464971ebfda3a3b" rel="stylesheet"></head>
 
 <body>
 <div id="wrapper">
@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="box-body">
-                <textarea name="" id="" cols="30" rows="10" style="width: 100%;height:300px"></textarea>
+                <textarea name="" id="" cols="30" rows="10"></textarea>
             </div>
 
             <div class="box-footer">
@@ -53,7 +53,7 @@
     </div>
 </div>
 
-<script type="text/javascript" src="/views/static/admin/addArticle/addArticle.js?v=8d2001e21f0926f386af"></script></body>
+<script type="text/javascript" src="/views/static/admin/addArticle/addArticle.js?v=055a7cf91e9b4364bd27"></script></body>
 
 </html>
 
