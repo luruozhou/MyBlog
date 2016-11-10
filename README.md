@@ -23,5 +23,6 @@ $ cd MyBlog
 $ npm install
 $ gulp build 
 $ npm run build 
+$ 应该还是跑不起来，蛤蛤
 ```
 //todo

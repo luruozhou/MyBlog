@@ -12,6 +12,12 @@ var _bluebird = require("bluebird");
 
 var _bluebird2 = _interopRequireDefault(_bluebird);
 
+var _management = require("../modules/management");
+
+var Management = _interopRequireWildcard(_management);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.Router = function (app) {
@@ -70,9 +76,52 @@ exports.Router = function (app) {
                 }
                 return routeHandler(req, res);
             }).then(function (returnData) {
+                return Management.querySections().then(function (data) {
+                    returnData.sections = makeSectionTree(data);
+                    return returnData;
+                });
+            }).then(function (returnData) {
 
                 res.render(tplPath, returnData);
             });
         });
     }
 };
+
+function makeSectionTree(sections) {
+    var returnData = [];
+    var dataMap = {};
+    if (!sections || sections.length == 0) {
+        return returnData;
+    }
+
+    sections.forEach(function (item, i) {
+        if (!dataMap[item.id]) {
+            dataMap[item.id] = {
+                id: item.id,
+                name: item.name,
+                tab: item.tab,
+                sons: []
+            };
+            if (item.son_id) {
+                dataMap[item.id].sons.push({
+                    id: item.son_id,
+                    name: item.son_name,
+                    tab: item.son_tab
+                });
+            }
+        } else {
+            dataMap[item.id].sons.push({
+                id: item.son_id,
+                name: item.son_name,
+                tab: item.son_tab
+            });
+        }
+    });
+
+    for (var key in dataMap) {
+        returnData.push(dataMap[key]);
+    }
+
+    return returnData;
+}

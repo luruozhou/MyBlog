@@ -24,6 +24,11 @@
             "entry": "views/widget/admin/asider/asider",
             "template": "views/widget/admin/asider/asider.tpl",
             "type": "widget"
+        },
+        {
+            "entry": "views/static/article-list/article-list",
+            "template": "views/page/article-list.tpl",
+            "type": "page"
         }
     ]
 }

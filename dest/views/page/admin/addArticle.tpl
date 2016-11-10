@@ -53,7 +53,7 @@
     </div>
 </div>
 
-<script type="text/javascript" src="/views/static/admin/addArticle/addArticle.js?v=055a7cf91e9b4364bd27"></script></body>
+<script type="text/javascript" src="/views/static/admin/addArticle/addArticle.js?v=f45acbf8cdbf93f47b26"></script></body>
 
 </html>
 

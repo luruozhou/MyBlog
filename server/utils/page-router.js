@@ -1,6 +1,7 @@
 import Path from "path";
 import IO from "./io.js";
 import Promise from "bluebird";
+import * as Management from "../modules/management";
 
 exports.Router = function (app) {
     this.app = app; //express 实例
@@ -45,10 +46,56 @@ exports.Router = function (app) {
                     return routeHandler(req, res)
                 })
                 .then(function (returnData) {
+                    return Management.querySections()
+                        .then(data =>{
+                            returnData.sections=makeSectionTree(data);
+                            return returnData;
+                        })
+                })
+                .then(function (returnData) {
 
                     res.render(tplPath, returnData);
                 })
         })
     }
+}
+
+function makeSectionTree(sections) {
+    var returnData =[];
+    var dataMap = {};
+    if(!sections ||sections.length ==0){
+        return returnData;
+    }
+
+    sections.forEach(function (item, i) {
+        if(!dataMap[item.id]){
+            dataMap[item.id]={
+                id:item.id,
+                name:item.name,
+                tab:item.tab,
+                sons:[]
+            }
+            if(item.son_id){
+                dataMap[item.id].sons.push({
+                    id:item.son_id,
+                    name:item.son_name,
+                    tab:item.son_tab,
+                })
+            }
+        }else{
+            dataMap[item.id].sons.push({
+                id:item.son_id,
+                name:item.son_name,
+                tab:item.son_tab,
+            })
+        }
+    })
+
+
+    for(let key in dataMap){
+        returnData.push(dataMap[key])
+    }
+
+    return returnData;
 }
 

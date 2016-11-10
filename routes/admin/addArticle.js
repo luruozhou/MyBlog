@@ -15,7 +15,7 @@ export default function (req, res) {
 
     return Management.querySections()
         .then(data =>{
-            sections=makeTree(data);
+            sections=makeSectionTree(data);
 
             return {
                 sections,
@@ -26,7 +26,7 @@ export default function (req, res) {
         })
 }
 
-function makeTree(sections) {
+function makeSectionTree(sections) {
     var returnData =[];
     var dataMap = {};
     if(!sections ||sections.length ==0){

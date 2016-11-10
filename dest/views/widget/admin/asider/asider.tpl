@@ -21,4 +21,4 @@
             </a>
         </li>
     </ul>
-</div><script type="text/javascript" src="/views/widget/admin/asider/asider.js?v=055a7cf91e9b4364bd27"></script>
+</div><script type="text/javascript" src="/views/widget/admin/asider/asider.js?v=f45acbf8cdbf93f47b26"></script>

@@ -12,7 +12,8 @@ var defaultSessionOptions = {
     name: 'connect.haha.sid',
     secret: 'session-key',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: { secure: false }
 };
 
 

@@ -9,7 +9,7 @@ exports.default = function (req, res) {
     var sections = [];
 
     return Management.querySections().then(function (data) {
-        sections = makeTree(data);
+        sections = makeSectionTree(data);
 
         return {
             sections: sections,
@@ -36,7 +36,7 @@ var routeSettings = exports.routeSettings = {
 // import  SectionTmodel from "../../server/modules/mysql-models/section-model";
 
 
-function makeTree(sections) {
+function makeSectionTree(sections) {
     var returnData = [];
     var dataMap = {};
     if (!sections || sections.length == 0) {
