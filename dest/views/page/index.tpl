@@ -26,6 +26,7 @@
 
     <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
         <ul class="am-nav am-nav-pills am-topbar-nav">
+            {{JSON.stringify(sections)}}
             <li class="am-active"><a href="#">首页</a></li>
             {%for section in sections%}
             <li class="{%if section.sons && section.sons.length>0%}am-dropdown{%endif%}" data-am-dropdown>
@@ -154,7 +155,7 @@
         <small>© Copyright XXX. by the AmazeUI Team.</small>
     </p>
 </footer>
-<script type="text/javascript" src="/views/static/index/index.js?v=f45acbf8cdbf93f47b26"></script></body>
+<script type="text/javascript" src="/views/static/index/index.js?v=87d8903e51f93e572439"></script></body>
 
 </html>
 

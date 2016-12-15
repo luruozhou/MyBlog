@@ -47,11 +47,11 @@
 
 	"use strict";
 	
-	__webpack_require__(29);
+	__webpack_require__(28);
 
 /***/ },
 
-/***/ 29:
+/***/ 28:
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
@@ -59,4 +59,4 @@
 /***/ }
 
 /******/ });
-//# sourceMappingURL=asider.js.map?v=f45acbf8cdbf93f47b26
+//# sourceMappingURL=asider.js.map?v=87d8903e51f93e572439

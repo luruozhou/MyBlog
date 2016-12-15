@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "build": "supervisor -w dest/,app.js app.js",
-    "dev": "supervisor -w dest/routes,dest/servers,dev-server.js dev-server.js"
+    "dev": "supervisor -w dest/routes,dest/servers,dev-server.js dev-server.js",
+    "test": "webpack-dev-server --inline --hot"
   },
   "author": "luruozhou",
   "license": "ISC",

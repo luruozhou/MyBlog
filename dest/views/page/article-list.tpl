@@ -148,7 +148,7 @@
     </div>
 
 </div>
-<script type="text/javascript" src="/views/static/article-list/article-list.js?v=f45acbf8cdbf93f47b26"></script></body>
+<script type="text/javascript" src="/views/static/article-list/article-list.js?v=87d8903e51f93e572439"></script></body>
 
 </html>
 
