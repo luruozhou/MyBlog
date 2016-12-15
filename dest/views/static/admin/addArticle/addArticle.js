@@ -10146,6 +10146,7 @@
 /* 6 */
 /***/ function(module, exports) {
 
+<<<<<<< HEAD
 	module.exports = function(module) {
 		if(!module.webpackPolyfill) {
 			module.deprecate = function() {};
@@ -10156,6 +10157,18 @@
 		}
 		return module;
 	}
+=======
+	module.exports = function(module) {
+		if(!module.webpackPolyfill) {
+			module.deprecate = function() {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	}
+>>>>>>> 2f7231ed0b22ff02a8fe571013fac636e5c46c3b
 
 
 /***/ },
@@ -11278,4 +11291,8 @@
 
 /***/ }
 /******/ ]);
+<<<<<<< HEAD
 //# sourceMappingURL=addArticle.js.map?v=0511d96b9b82d5fa6211
+=======
+//# sourceMappingURL=addArticle.js.map?v=87d8903e51f93e572439
+>>>>>>> 2f7231ed0b22ff02a8fe571013fac636e5c46c3b
