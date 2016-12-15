@@ -1,4 +1,4 @@
-<head><link href="/views/widget/admin/asider/asider.css?v=8c7d397f1269e17322cff29018e9b8a8" rel="stylesheet"></head><div class="left-panel">
+<head><link href="/views/widget/admin/asider/asider.css?v=a6e417d9cb5c11e1145e4f10fbf11cfe" rel="stylesheet"></head><div class="left-panel">
     <ul class="side-menu">
         <li>
             <a href="/">
@@ -21,4 +21,4 @@
             </a>
         </li>
     </ul>
-</div><script type="text/javascript" src="/views/widget/admin/asider/asider.js?v=f45acbf8cdbf93f47b26"></script>
+</div><script type="text/javascript" src="/views/widget/admin/asider/asider.js?v=0511d96b9b82d5fa6211"></script>

@@ -14,7 +14,7 @@
             {% autoescape false %} {{ extras|json }} {% endautoescape %}
         </script>
     {%endif%}
-<link href="/views/static/admin/addArticle/addArticle.css?v=f4cca30f34683491b464971ebfda3a3b" rel="stylesheet"></head>
+<link href="/views/static/admin/addArticle/addArticle.css?v=3399a27f27927cab64f2d74be6b475ac" rel="stylesheet"></head>
 
 <body>
 <div id="wrapper">
@@ -53,7 +53,7 @@
     </div>
 </div>
 
-<script type="text/javascript" src="/views/static/admin/addArticle/addArticle.js?v=f45acbf8cdbf93f47b26"></script></body>
+<script type="text/javascript" src="/views/static/admin/addArticle/addArticle.js?v=0511d96b9b82d5fa6211"></script></body>
 
 </html>
 

@@ -14,22 +14,58 @@
         {% autoescape false %} {{ extras|json }} {% endautoescape %}
     </script>
     {%endif%}
-<link href="/views/static/index/index.css?v=191ef9527f8d51a65fc6d2e76ca50184" rel="stylesheet"></head>
+    <script type="text/javascript">
+        [
+            {"id":1,"name":"技术","tab":"technology",
+                "sons":[
+                    {"id":4,"name":"javascript","tab":"javascript"},
+                    {"id":5,"name":"nodeJS","tab":"nodeJS"},
+                    {"id":6,"name":"css","tab":"css"}
+                ]
+            },
+            {"id":2,"name":"文学","tab":"literature","sons":[]},
+            {"id":3,"name":"生活","tab":"life","sons":[]}
+        ]
+
+    </script>
+<link href="/views/static/index/index.css?v=1af2fa128e2670bb26a0e62014099e75" rel="stylesheet"></head>
 
 <body>
-<header class="am-topbar">
+    <header class="topbar">
+        <a href="#" title="">首页</a> >>
+        <ul class="topbar-nav">
+            {%for section in sections%}
+            <li>{{section.name}} </li>
+                {%if section.sons.length%}
+                    <ul class="dropdown-content">
+                    {%for son in section.sons%}
+                        <li>{{son.name}}</li>
+                    {%endfor%}
+                </ul>
+                {%endif%}
+            {%endfor%}
+        </ul>
+    </header>
+    <div class="main">
+        main
+    </div>
+<!-- /header -->
+<!-- <header class="am-topbar">
     <h1 class="am-topbar-brand">
         <a href="#">blog</a>
     </h1>
 
-    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
+            data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span
+            class="am-icon-bars"></span></button>
 
     <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
         <ul class="am-nav am-nav-pills am-topbar-nav">
             <li class="am-active"><a href="#">首页</a></li>
             {%for section in sections%}
             <li class="{%if section.sons && section.sons.length>0%}am-dropdown{%endif%}" data-am-dropdown>
-                <a class="{%if section.sons && section.sons.length>0%}am-dropdown-toggle{%endif%}" data-am-dropdown-toggle href="/{{section.tab}}" data-id="{{section.id}}">
+                <a class="{%if section.sons && section.sons.length>0%}am-dropdown-toggle{%endif%}"
+                   data-am-dropdown-toggle href="/{{section.tab}}" data-id="{{section.id}}">
                     {{section.name}} <span class="am-icon-caret-down"></span>
                 </a>
                 {%if section.sons && section.sons.length>0%}
@@ -61,7 +97,7 @@
 
             <div class="am-g blog-content">
                 <div class="am-u-lg-7">
-                    <p><!-- 本demo来自 http://blog.justfont.com/ -->你自信滿滿的跟客戶進行第一次 demo。秀出你精心設計的內容時，你原本期許客戶冷不防地掉下感動的眼淚。</p>
+                    <p>本demo来自 http://blog.justfont.com/你自信滿滿的跟客戶進行第一次 demo。秀出你精心設計的內容時，你原本期許客戶冷不防地掉下感動的眼淚。</p>
 
                     <p>因為那實在是太高級了。</p>
 
@@ -92,7 +128,7 @@
 
             <div class="am-g blog-content">
                 <div class="am-u-lg-7">
-                    <p><!--本demo文字来自 http://blog.justfont.com/--> 这次要介绍的是大家似乎都狠熟悉却又狠陌生的字体：Arial。不只是对 Typography
+                    <p>本demo文字来自 http://blog.justfont.com/ 这次要介绍的是大家似乎都狠熟悉却又狠陌生的字体：Arial。不只是对 Typography
                         特别有兴趣的人、碰过排版的人，就算毫无接触，只要打开过电脑的字型选单，应该都有看过这个字型吧。尤其它还是以 A 开头，总是会出现在选单最前面。</p>
 
                     <p>Arial 常常跟 Helvetica 搞混，也常被当作是没有 Helvetica 时的替代字体使用。事实上 Arial 确实就是故意做得跟 Helvetica
@@ -150,11 +186,11 @@
 </div>
 
 <footer class="blog-footer">
-    <p>blog template<br>
+    <p>blog template<br/>
         <small>© Copyright XXX. by the AmazeUI Team.</small>
     </p>
-</footer>
-<script type="text/javascript" src="/views/static/index/index.js?v=f45acbf8cdbf93f47b26"></script></body>
+</footer> -->
+<script type="text/javascript" src="/views/static/index/index.js?v=0511d96b9b82d5fa6211"></script></body>
 
 </html>
 

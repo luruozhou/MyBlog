@@ -14,10 +14,43 @@
         {% autoescape false %} {{ extras|json }} {% endautoescape %}
     </script>
     {%endif%}
+    <script type="text/javascript">
+        [
+            {"id":1,"name":"技术","tab":"technology",
+                "sons":[
+                    {"id":4,"name":"javascript","tab":"javascript"},
+                    {"id":5,"name":"nodeJS","tab":"nodeJS"},
+                    {"id":6,"name":"css","tab":"css"}
+                ]
+            },
+            {"id":2,"name":"文学","tab":"literature","sons":[]},
+            {"id":3,"name":"生活","tab":"life","sons":[]}
+        ]
+
+    </script>
 </head>
 
 <body>
-<header class="am-topbar">
+    <header  class="topbar">
+        <a href="#" title="">首页</a> >>
+        <ul  class="topbar-nav">
+            {%for section in sections%}
+            <li>{{section.name}} </li>
+                {%if section.sons.length%}
+                    <ul class="dropdown-content">
+                    {%for son in section.sons%}
+                        <li>{{son.name}}</li>
+                    {%endfor%}
+                </ul>
+                {%endif%}
+            {%endfor%}
+        </ul>
+    </header>
+    <div class="main">
+        main
+    </div>
+<!-- /header -->
+<!-- <header class="am-topbar">
     <h1 class="am-topbar-brand">
         <a href="#">blog</a>
     </h1>
@@ -64,7 +97,7 @@
 
             <div class="am-g blog-content">
                 <div class="am-u-lg-7">
-                    <p><!-- 本demo来自 http://blog.justfont.com/ -->你自信滿滿的跟客戶進行第一次 demo。秀出你精心設計的內容時，你原本期許客戶冷不防地掉下感動的眼淚。</p>
+                    <p>本demo来自 http://blog.justfont.com/你自信滿滿的跟客戶進行第一次 demo。秀出你精心設計的內容時，你原本期許客戶冷不防地掉下感動的眼淚。</p>
 
                     <p>因為那實在是太高級了。</p>
 
@@ -95,7 +128,7 @@
 
             <div class="am-g blog-content">
                 <div class="am-u-lg-7">
-                    <p><!--本demo文字来自 http://blog.justfont.com/--> 这次要介绍的是大家似乎都狠熟悉却又狠陌生的字体：Arial。不只是对 Typography
+                    <p>本demo文字来自 http://blog.justfont.com/ 这次要介绍的是大家似乎都狠熟悉却又狠陌生的字体：Arial。不只是对 Typography
                         特别有兴趣的人、碰过排版的人，就算毫无接触，只要打开过电脑的字型选单，应该都有看过这个字型吧。尤其它还是以 A 开头，总是会出现在选单最前面。</p>
 
                     <p>Arial 常常跟 Helvetica 搞混，也常被当作是没有 Helvetica 时的替代字体使用。事实上 Arial 确实就是故意做得跟 Helvetica
@@ -156,7 +189,7 @@
     <p>blog template<br/>
         <small>© Copyright XXX. by the AmazeUI Team.</small>
     </p>
-</footer>
+</footer> -->
 </body>
 
 </html>
