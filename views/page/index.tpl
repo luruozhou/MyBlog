@@ -14,20 +14,7 @@
         {% autoescape false %} {{ extras|json }} {% endautoescape %}
     </script>
     {%endif%}
-    <script type="text/javascript">
-        [
-            {"id":1,"name":"技术","tab":"technology",
-                "sons":[
-                    {"id":4,"name":"javascript","tab":"javascript"},
-                    {"id":5,"name":"nodeJS","tab":"nodeJS"},
-                    {"id":6,"name":"css","tab":"css"}
-                ]
-            },
-            {"id":2,"name":"文学","tab":"literature","sons":[]},
-            {"id":3,"name":"生活","tab":"life","sons":[]}
-        ]
 
-    </script>
 </head>
 
 <body>
