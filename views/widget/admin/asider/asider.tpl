@@ -22,3 +22,7 @@
         </li>
     </ul>
 </div>
+<script>
+    require('./asider')
+</script>
+<link rel="stylesheet" href="./asider.less">

@@ -1,8 +1,8 @@
-import "./addArticle.less";
-import "../../libs/js/sceditor/jquery.sceditor.min.js";
-import "../../libs/js/sceditor/square.min.less";
-import {getPageData} from "../../libs/js/util";
-
+window.jQuery = window.$ = require('../../libs/js/jquery');
+require('../../libs/js/sceditor/jquery.sceditor.min.js');
+// import "../../libs/js/sceditor/square.min.less";
+var getPageData = require('../../libs/js/util').getPageData;
+console.log('233333')
 $(function () {
     let sections = getPageData("sections");
 
@@ -39,20 +39,20 @@ $(function () {
         let title = $(".article_title").val();
         let sid = $("#category").find("option:selected").val();
         let sub_sid = $("#sub_category").find("option:selected").val();
-        let description ="test"
+        let description = "test"
         let data = {
-                    title,
-                    html_content,
-                    sid,
-                    sub_sid,
-                    description
-                };
-                console.log(data)
+            title,
+            html_content,
+            sid,
+            sub_sid,
+            description
+        };
+        console.log(data)
         $.ajax({
-            url :"/management/addArticle",
-            type :"post",
+            url: "/management/addArticle",
+            type: "post",
             dataType: 'json',
-            data:data
+            data: data
         })
             .done(function (res) {
                 console.log(res)

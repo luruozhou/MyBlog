@@ -4,5 +4,4 @@ node_modules/
 logs/
 sessions/
 npm-debug.log
-logs/
 dest/

@@ -14,6 +14,7 @@
             {% autoescape false %} {{ extras|json }} {% endautoescape %}
         </script>
     {%endif%}
+    <script src="../../static/mod.js"></script>
 </head>
 
 <body>
@@ -52,7 +53,12 @@
 
     </div>
 </div>
-
+<!--require('foo/static/admin/addArticle/addArticle.js')-->
+<!--{% include "../../static/admin/addArticle/addArticle.js" %}-->
+<script type="text/javascript">
+    require ('../../static/admin/addArticle/addArticle')
+</script>
+<link rel="stylesheet" href="../../static/admin/addArticle/addArticle.less">
 </body>
 
 </html>

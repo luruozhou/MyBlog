@@ -14,7 +14,7 @@
         {% autoescape false %} {{ extras|json }} {% endautoescape %}
     </script>
     {%endif%}
-
+    <script src="../static/mod.js"></script>
 </head>
 
 <body>
@@ -178,6 +178,9 @@
         <small>© Copyright XXX. by the AmazeUI Team.</small>
     </p>
 </footer> -->
+    <script type="text/javascript">
+        require ('../static/index/index')
+    </script>
 </body>
 
 </html>

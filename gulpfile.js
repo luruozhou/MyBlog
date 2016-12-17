@@ -53,7 +53,7 @@ gulp.task("webpack", function (callback) {
 
 
 gulp.task("clean", function () {
-    exec('rm -rf dest');
+    // exec('rm -rf dest');
 });
 
 
@@ -61,9 +61,9 @@ gulp.task('build', ["clean"], function (callback) {
 
     gulp.start('compile-server');
     gulp.start('compile-routes');
-    gulp.start('webpack');
+    // gulp.start('webpack');
     gulp.start('libs');
-    gulp.watch('views/**/*', ['webpack']);
+    // gulp.watch('views/**/*', ['webpack']);
     gulp.watch('views/static/libs/js/**/*', ['libs']);
     gulp.watch('server/**/*.js', ['compile-server']);
     gulp.watch('routes/**/*.js', ['compile-routes']);
