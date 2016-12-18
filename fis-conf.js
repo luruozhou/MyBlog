@@ -14,6 +14,8 @@ fis.match(/(.*\.tpl)$/i, {
     }
 })
 
+
+
 fis.match(/(.*\.js)$/i, {
     parser: fis.plugin('babel-5.x', {
         // preset: [

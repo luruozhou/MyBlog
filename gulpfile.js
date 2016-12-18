@@ -23,10 +23,10 @@ gulp.task("compile-server", function () {
         .pipe(gulp.dest("dest/server"));
 });
 
-gulp.task("libs", function () {
-    return gulp.src("views/static/libs/js/**/*")
-        .pipe(gulp.dest("dest/views/static/libs/js"));
-});
+// gulp.task("libs", function () {
+//     return gulp.src("views/static/libs/js/**/*")
+//         .pipe(gulp.dest("dest/views/static/libs/js"));
+// });
 
 gulp.task("compile-routes", function () {
     return gulp.src("routes/**/*.js")
@@ -56,15 +56,20 @@ gulp.task("clean", function () {
     // exec('rm -rf dest');
 });
 
+gulp.task("fis", function () {
+    exec('fis3 release -r ./views -d ./dest/views -wL');
+});
+
 
 gulp.task('build', ["clean"], function (callback) {
 
     gulp.start('compile-server');
     gulp.start('compile-routes');
+    gulp.start('fis');
     // gulp.start('webpack');
-    gulp.start('libs');
+    // gulp.start('libs');
     // gulp.watch('views/**/*', ['webpack']);
-    gulp.watch('views/static/libs/js/**/*', ['libs']);
+    // gulp.watch('views/static/libs/js/**/*', ['libs']);
     gulp.watch('server/**/*.js', ['compile-server']);
     gulp.watch('routes/**/*.js', ['compile-routes']);
 });

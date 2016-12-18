@@ -5,7 +5,7 @@ function init() {
     if($dataArea.text()) data = JSON.parse($dataArea.text())
 }
 
-export var getPageData = function (id) {
+exports.getPageData = function  (id) {
     if(!data){
         init();
     }

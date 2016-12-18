@@ -1,4 +1,6 @@
-import "./index.less";
-import "../libs/js/amazeui.min";
-import "../libs/css/amazeui.min.less";
-
+console.log('got it!')
+window.jQuery = window.$ = require('../libs/js/jquery');
+$(function () {
+    console.log($('body'))
+    console.log('雯雯宝宝')
+})

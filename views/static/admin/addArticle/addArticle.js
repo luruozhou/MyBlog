@@ -1,8 +1,7 @@
 window.jQuery = window.$ = require('../../libs/js/jquery');
 require('../../libs/js/sceditor/jquery.sceditor.min.js');
-// import "../../libs/js/sceditor/square.min.less";
 var getPageData = require('../../libs/js/util').getPageData;
-console.log('233333')
+console.log('333')
 $(function () {
     let sections = getPageData("sections");
 

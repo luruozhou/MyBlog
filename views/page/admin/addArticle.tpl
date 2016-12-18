@@ -19,8 +19,8 @@
 
 <body>
 <div id="wrapper">
-    {% include "../../widget/admin/header/header.tpl"%}
-    {% include "../../widget/admin/asider/asider.tpl"%}
+   {# {% include "../../widget/admin/header/header.tpl"%} #}
+  {#  {% include "../../widget/admin/asider/asider.tpl"%} #}
     <div class="main">
         <h1>文章发布</h1>
         <div class="box">
@@ -53,8 +53,6 @@
 
     </div>
 </div>
-<!--require('foo/static/admin/addArticle/addArticle.js')-->
-<!--{% include "../../static/admin/addArticle/addArticle.js" %}-->
 <script type="text/javascript">
     require ('../../static/admin/addArticle/addArticle')
 </script>
