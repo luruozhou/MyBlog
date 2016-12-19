@@ -10,13 +10,13 @@ var path = require("path");
 var glob = require('glob');
 var buffer = require('vinyl-buffer');
 var md5 = require('gulp-md5-plus');
-var rev = require('gulp-rev');//- 对文件名加MD5后缀
+var rev = require('gulp-rev'); //- 对文件名加MD5后缀
 var webpack = require("webpack");
 var webpackConfig = require("./webpack.config.js");
 var exec = require('child_process').exec;
 
 
-gulp.task("compile-server", function () {
+gulp.task("compile-server", function() {
     return gulp.src("server/**/*.js")
         .pipe(plumber())
         .pipe(babel())
@@ -28,7 +28,7 @@ gulp.task("compile-server", function () {
 //         .pipe(gulp.dest("dest/views/static/libs/js"));
 // });
 
-gulp.task("compile-routes", function () {
+gulp.task("compile-routes", function() {
     return gulp.src("routes/**/*.js")
         .pipe(plumber())
         .pipe(babel())
@@ -36,13 +36,13 @@ gulp.task("compile-routes", function () {
 });
 
 
-gulp.task("webpack", function (callback) {
+gulp.task("webpack", function(callback) {
     var myConfig = Object.create(webpackConfig);
     // run webpack
     webpack(
         // configuration
-        webpackConfig
-        , function (err, stats) {
+        webpackConfig,
+        function(err, stats) {
             // if(err) throw new gutil.PluginError("webpack", err);
             // gutil.log("[webpack]", stats.toString({
             //	 // output options
@@ -52,20 +52,20 @@ gulp.task("webpack", function (callback) {
 });
 
 
-gulp.task("clean", function () {
+gulp.task("clean", function() {
     // exec('rm -rf dest');
 });
 
-gulp.task("fis", function () {
+gulp.task("fis", function() {
     exec('fis3 release -r ./views -d ./dest/views -wL');
 });
 
 
-gulp.task('build', ["clean"], function (callback) {
+gulp.task('build', ["clean"], function(callback) {
 
     gulp.start('compile-server');
     gulp.start('compile-routes');
-    gulp.start('fis');
+    // gulp.start('fis');
     // gulp.start('webpack');
     // gulp.start('libs');
     // gulp.watch('views/**/*', ['webpack']);
