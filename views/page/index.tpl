@@ -19,22 +19,45 @@
 
 <body>
     <header  class="topbar">
-        <a href="#" title="">首页</a> >>
         <ul  class="topbar-nav">
+            <li><a href="#" title="">首页</a></li>
             {%for section in sections%}
-            <li>{{section.name}} </li>
+            <li><a href="">{{section.name}}</a>
                 {%if section.sons.length%}
                     <ul class="dropdown-content">
-                    {%for son in section.sons%}
-                        <li>{{son.name}}</li>
-                    {%endfor%}
-                </ul>
+                        {%for son in section.sons%}
+                            <li><a href="#">{{son.name}}</a></li>
+                        {%endfor%}
+                    </ul>
                 {%endif%}
+            
+            </li>
+                
             {%endfor%}
         </ul>
     </header>
-    <div class="main">
-        姐姐,带带我,我是中学生
+     <div class="bgi">
+        
+    </div>
+    <div class="toggle">
+        <div class="section">
+            管你是啥我是第一个部分
+        </div>
+        <div class="section">
+            管你是啥我是二个部分
+        </div>
+        <div class="section">
+            管你是啥我是三个部分
+        </div>
+        <div class="section">
+            管你是啥我是四个部分
+        </div>
+        <div class="section">
+            管你是啥我是五个部分  
+        </div>
+        <div class="section">
+            管你是啥我是六个部分  
+        </div>
     </div>
     <script type="text/javascript">
         require ('../static/index/index')
