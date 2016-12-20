@@ -1,7 +1,8 @@
 .DS_Store
 node_modules/
 .idea/
-logs/
+logss/debug-log.log
+logss/
 sessions/
 npm-debug.log
 dest/

@@ -4,7 +4,7 @@ log4js.configure({
         {type: 'console'}, //控制台输出
         {
             type: 'file', //文件输出
-            filename: 'logs/debug-log.log',
+            filename: 'logss/debug-log.log',
             maxLogSize: 1024*1024,
             backups: 3,
             category: 'normal'

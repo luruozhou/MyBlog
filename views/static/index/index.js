@@ -53,5 +53,7 @@ $(function () {
 			}
 		})
 	}
-	fullScreenToggle(doc, "0.5s");
+
+	fullScreenToggle(doc,"0.5s");
+
 })
