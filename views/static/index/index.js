@@ -5,14 +5,6 @@ $(function () {
 	var height = document.documentElement.clientHeight;
 	$(".section").css({ "height": height });
 	var doc = document.querySelector(".toggle");
-	// function setPrefix(doc, pro, val) {
-	// 	doc.css({ pro: val })
-	// 	doc.css({ "-ms-"+pro:val })
-	// 	doc.css({ "-moz-"+pro:val })
-	// 	doc.css({ "-webkit-"+pro:val })
-	// 	doc.css({ "-o-"+pro:val })
-	// 	console.log("dd");
-	// }
 	var EventUtil = {
 		addHandler: function (element, type, handler) {
 			if (element.addEventListener) {
@@ -40,6 +32,12 @@ $(function () {
 				if (now % 2 == 0) {
 					$(".bgi").css({ "background-image": "url(static/index/img/main_bg" + (now - 1) + ".jpg)" });
 				}
+				if(now==2){
+					$(".topbar .logo").css({"font-size":"2.5em"});
+				}
+				if(now<len+1){
+					$(".down").show();
+				}
 				now--;
 			}
 			if (event.wheelDelta < 0 && 0 < now && now < len) {//滚轮下，内容上，背景下
@@ -49,11 +47,36 @@ $(function () {
 
 					$(".bgi").css({ "background-image": "url(static/index/img/main_bg" + (now + 1) + ".jpg)" });
 				}
+				if(now==1){
+					$(".topbar .logo").css({"font-size":"2em"});
+				}
+				if(now==len-1){
+					$(".down").hide();
+				}
 				now++;
 			}
 		})
 	}
 
 	fullScreenToggle(doc,"0.5s");
+	var myWord = ['第一句话', '第二句话', '第十句话，因为是三进制', '第100句话 '];
+	var loopWord = myWord.slice(0);
+
+	function getWord() {
+		if(loopWord.length==0){
+			loopWord=myWord.slice(0);
+		}
+		var num =parseInt(Math.random()*loopWord.length);
+		//console.log(loopWord.length);
+		var word = loopWord.splice(num,1);
+		return word;
+	}
+	function changeWord(){
+		setTimeout(function() {
+			 changeWord();
+		}, 6000);
+		$(".logo p").text(getWord());
+	}
+	 changeWord();
 
 })

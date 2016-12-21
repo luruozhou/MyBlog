@@ -19,6 +19,9 @@
 
 <body>
     <header  class="topbar">
+        <div class="logo">白露为舟
+            <p></p>
+        </div>
         <ul  class="topbar-nav">
             <li><a href="#" title="">首页</a></li>
             {%for section in sections%}
@@ -36,28 +39,26 @@
             {%endfor%}
         </ul>
     </header>
-     <div class="bgi">
+    <div class="bgi">
         
     </div>
     <div class="toggle">
         <div class="section">
-            管你是啥我是第一个部分
+            
         </div>
         <div class="section">
-            管你是啥我是二个部分
+
         </div>
         <div class="section">
-            管你是啥我是三个部分
+            
         </div>
         <div class="section">
-            管你是啥我是四个部分
+           
         </div>
-        <div class="section">
-            管你是啥我是五个部分  
-        </div>
-        <div class="section">
-            管你是啥我是六个部分  
-        </div>
+        
+    </div>
+    <div class="down">
+        
     </div>
     <script type="text/javascript">
         require ('../static/index/index')
