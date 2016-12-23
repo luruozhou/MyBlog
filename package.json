@@ -4,7 +4,7 @@
     "description": "test ",
     "main": "app.js",
     "scripts": {
-        "build": "supervisor -e tpl -w dest/,app.js app.js",
+        "build": "supervisor -e tpl,js -w dest/,app.js app.js",
         "dev": "supervisor -w dest/routes,dest/servers,dev-server.js dev-server.js",
         "compile": "fis3 release -r ./views -d ./dest/views -wL"
     },

@@ -1,6 +1,7 @@
 import Promise from "bluebird";
 import {default as sequelize} from './core/sequelize';
 import  ArticleModel from "../modules/mysql-models/article-model";
+import  SectionModel from "../modules/mysql-models/section-model";
 
 /**
  *查询板块列表信息
@@ -28,14 +29,35 @@ export function querySections() {
  */
 export function addArticle(article) {
     return ArticleModel.create({
-        title:article.title,
-        html_content:article.html_content,
-        sid:article.sid,
-        sub_sid:article.sub_sid,
-        description:article.description
+        title: article.title,
+        html_content: article.html_content,
+        sid: article.sid,
+        sub_sid: article.sub_sid,
+        description: article.description
     })
         .then(function (data) {
-            console.log(data,'====000====')
             return data;
+        })
+}
+
+/**
+ * 查询热门文章列表 条数默认4
+ * num:条数
+ */
+export function queryHotArticles(num) {
+    num = num || 3;
+    return Promise.resolve(sequelize.query(`
+            select art.id,
+                   art.sid, 
+                   art.cover,
+                   art.title,
+                   art.description
+            from articles as art
+            where hot = 1
+            limit ${num}
+        `))
+        .then(function (records) {
+            console.log(records[0])
+            return records[0];
         })
 }

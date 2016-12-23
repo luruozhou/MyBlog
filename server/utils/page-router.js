@@ -46,6 +46,7 @@ exports.Router = function (app) {
                     return routeHandler(req, res)
                 })
                 .then(function (returnData) {
+                    returnData=returnData||{};
                     return Management.querySections()
                         .then(data =>{
                             returnData.sections=makeSectionTree(data);
