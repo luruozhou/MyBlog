@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    {{JSON.stringify(hotArticles)}}
+    <!--{{JSON.stringify(hotArticles)}}-->
     <header  class="topbar">
         <div class="logo">白鹭若舟
             <p></p>

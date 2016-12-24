@@ -17,7 +17,7 @@ $(function () {
 			}
 		}
 	}
-	
+	var isOverMove=true;
 	function fullScreenToggle(doc, times) {
 		//前景滑动时间
 		$(doc).css({ "-webkit-transition": "transform" + " " + times });
@@ -35,13 +35,14 @@ $(function () {
 		//首页展示的是第几个页面
 		var now = 1;
 		//是不是结束
-		var isOverMove=true;
 		EventUtil.addHandler(doc,"mousewheel",function(){
 			if(isOverMove){
-				//锁定状态
-				isOverMove=false;
 				//滚轮上，内容下，背景上
 				if (event.wheelDelta > 0 && 1 < now && now < len + 1) {
+					
+					//锁定状态
+					console.log("上滚开始："+isOverMove);
+					isOverMove=false;
 					//前景位移
 					$(this).css({ "transform": "translate(0px,-" + (now - 2) * height + "px)" });
 					//背景位移
@@ -58,15 +59,14 @@ $(function () {
 					if(now<len+1){
 						$(".down").show();
 					}
-					//解锁状态
-					EventUtil.addHandler(doc,"webkitTransitionEnd",function(){
-						this.isOverMove=true;			
-					})
-					now--;
+					
 				}
 				
 				//滚轮下，内容上，背景下
 				if (event.wheelDelta < 0 && 0 < now && now < len) {
+					//锁定状态
+					console.log("下滚开始："+isOverMove);
+					isOverMove=false;
 					//前景位移
 					$(this).css({ "transform": "translate(0px,-" + (now * height) + "px)" });
 					//背景位移
@@ -78,13 +78,12 @@ $(function () {
 					//header放大缩小
 					if(now==1){
 						$(".topbar .logo").animate({"font-size":"2em"},1000);
+						//console.log(isOverMove);
 					}
 					//向下箭头显示隐藏
 					if(now==len-1){
 						$(".down").hide();
 					}
-					
-					console.log(isOverMove);	
 					now++;
 				}
 				
@@ -95,13 +94,14 @@ $(function () {
 			
 		})
 		//解锁状态
-		EventUtil.addHandler(doc,"webkitTransitionEnd",function(){
-			console.log(this);
-			isOverMove=true;
-			//console.log(this.isOverMove);
-		})
-		console.log("最后"+isOverMove);
 	}
+	EventUtil.addHandler(doc,"webkitTransitionEnd",function(){
+		//console.log(this);
+		isOverMove=true;
+		//console.log(this.isOverMove);
+		console.log("每次动画结束后的isOverMove:"+isOverMove);
+	})
+	
 
 	fullScreenToggle(doc,"0.5s");
 	var myWord = ['第一句话', '第二句话', '第十句话，因为是三进制', '第100句话 '];
