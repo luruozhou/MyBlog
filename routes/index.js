@@ -2,13 +2,16 @@ import * as Management from "../server/modules/management";
 
 export var routeSettings = {
     default: {
-        route:/^\/?$/
+        route: /^\/?$/
     }
 };
 
 export default function (req, res) {
-    let sections = [];
-
-    return {}
+    return Management.queryHotArticles()
+        .then(hotArticles => {
+            return {
+                hotArticles:hotArticles
+            }
+        });
 }
 

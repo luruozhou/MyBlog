@@ -1,5 +1,4 @@
 // import BlueBird from "bluebird";
-// import  SectionTmodel from "../../server/modules/mysql-models/section-model";
 import * as Management from "../../server/modules/management";
 
 //路由的配置项
