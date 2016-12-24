@@ -5,10 +5,9 @@
 技术栈
 
 - Node.js 
-- TypeScript(还没上)
-- webpack/gulp
+- fis3/gulp
 - Promise 
-- MongoDB
+- MySql
 - es6
 
 快速运行
