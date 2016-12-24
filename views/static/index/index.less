@@ -10,10 +10,14 @@
     }
 }
 html,body{
-
+    
     margin: 0px;
     height:100%;
 
+}
+@keyframes hid{
+   0%{ opacity:1}
+   100%{  opacity:0;} 
 }
 @keyframes downkey{
    0%{ opacity:0.7;bottom:10px}
@@ -38,14 +42,12 @@ html,body{
 
 .bgi{
     background-image: url(img/main_bg1.jpg);
-    background-size: 100% 1200px;
-    background-attachment: fixed;
-
+    background-size: 100% 100%;
+    //background-attachment: fixed;
     position:fixed;
     z-index:0;
     width: 100%;
-    height:1200px;
-    transform:translate(0px,-900px);
+    transform:translate(0px,-500px);//位移的高度
     transition-timing-function:linear;
 }
 .a-base(@color){
@@ -80,10 +82,13 @@ a{
         font-size:2.5em;
         line-height: 2.3em;
         padding-left: 1em;
+        animation-fill-mode:forwards;
         p{
             display: inline-block;
             margin:0px;
             font-size: 0.45em;
+            animation-fill-mode:forwards;
+            opacity:0;
         }
     }
     .topbar-nav{
