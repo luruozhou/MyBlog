@@ -11,7 +11,6 @@ export var routeSettings = {
 
 export default function (req, res) {
     let sections = [];
-
     return Management.querySections()
         .then(data =>{
             sections=makeSectionTree(data);

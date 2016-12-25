@@ -1,6 +1,7 @@
 import Path from "path";
 import IO from "./io.js";
 import Promise from "bluebird";
+import {userProvider} from "../modules/core/userProvider";
 
 exports.Router = function (app) {
     this.app = app; //express 实例
@@ -31,10 +32,12 @@ exports.Router = function (app) {
         if (key != "default") {
             urlPath += "/" + key;
         }
-
         app[method](urlPath, function (req, res) {
-            Promise
-                .resolve()
+            return userProvider
+                .authenticate(req, res)
+                .then(user=> {
+                    req.user = user;
+                })
                 .then(function () {
                     if (!routeHandler) {
                         res.sendStatus(403);
@@ -53,7 +56,7 @@ exports.Router = function (app) {
 }
 
 function getJson(data) {
-    if (!data || data.length == 0) {
+    if (!data) {
         return {
             code: 0,
             data: null,

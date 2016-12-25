@@ -9,6 +9,7 @@ fis.match(/(.*\.less)$/i, {
 fis.match(/(.*\.tpl)$/i, {
     release:'$1',
     isMod: true,
+    isHtmlLike:true,
     extras:{
         isPage:true
     }
@@ -29,8 +30,9 @@ fis.match(/(.*\.js)$/i, {
 
 fis.match('::package', {
     postpackager: fis.plugin('loader', {
-        resourceType: 'commonJs',
-        useInlineMap: true // 资源映射表内嵌
+        resourceType: 'mod',
+        useInlineMap: true, // 资源映射表内嵌
+        // obtainScript:false
     })
 });
 

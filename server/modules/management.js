@@ -2,7 +2,6 @@ import Promise from "bluebird";
 import {default as sequelize} from './core/sequelize';
 import  ArticleModel from "../modules/mysql-models/article-model";
 import  SectionModel from "../modules/mysql-models/section-model";
-
 /**
  *查询板块列表信息
  * @returns Promise<section[]>

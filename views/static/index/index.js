@@ -59,7 +59,7 @@ $(function () {
 					if(now<len+1){
 						$(".down").show();
 					}
-					
+
 				}
 				
 				//滚轮下，内容上，背景下

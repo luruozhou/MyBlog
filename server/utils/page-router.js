@@ -1,7 +1,7 @@
 import Path from "path";
 import IO from "./io.js";
-import Promise from "bluebird";
 import * as Management from "../modules/management";
+import {userProvider} from "../modules/core/userProvider";
 
 exports.Router = function (app) {
     this.app = app; //express 实例
@@ -37,8 +37,11 @@ exports.Router = function (app) {
         }
 
         app.get(urlPath, function (req, res) {
-            Promise
-                .resolve()
+            return userProvider
+                .authenticate(req, res)
+                .then(user=> {
+                    req.user = user;
+                })
                 .then(function () {
                     if (!routeHandler) {
                         return res.redirect("404");
@@ -46,10 +49,10 @@ exports.Router = function (app) {
                     return routeHandler(req, res)
                 })
                 .then(function (returnData) {
-                    returnData=returnData||{};
+                    returnData = returnData || {};
                     return Management.querySections()
-                        .then(data =>{
-                            returnData.sections=makeSectionTree(data);
+                        .then(data => {
+                            returnData.sections = makeSectionTree(data);
                             return returnData;
                         })
                 })
@@ -62,38 +65,38 @@ exports.Router = function (app) {
 }
 
 function makeSectionTree(sections) {
-    var returnData =[];
+    var returnData = [];
     var dataMap = {};
-    if(!sections ||sections.length ==0){
+    if (!sections || sections.length == 0) {
         return returnData;
     }
 
     sections.forEach(function (item, i) {
-        if(!dataMap[item.id]){
-            dataMap[item.id]={
-                id:item.id,
-                name:item.name,
-                tab:item.tab,
-                sons:[]
+        if (!dataMap[item.id]) {
+            dataMap[item.id] = {
+                id: item.id,
+                name: item.name,
+                tab: item.tab,
+                sons: []
             }
-            if(item.son_id){
+            if (item.son_id) {
                 dataMap[item.id].sons.push({
-                    id:item.son_id,
-                    name:item.son_name,
-                    tab:item.son_tab,
+                    id: item.son_id,
+                    name: item.son_name,
+                    tab: item.son_tab,
                 })
             }
-        }else{
+        } else {
             dataMap[item.id].sons.push({
-                id:item.son_id,
-                name:item.son_name,
-                tab:item.son_tab,
+                id: item.son_id,
+                name: item.son_name,
+                tab: item.son_tab,
             })
         }
     })
 
 
-    for(let key in dataMap){
+    for (let key in dataMap) {
         returnData.push(dataMap[key])
     }
 
