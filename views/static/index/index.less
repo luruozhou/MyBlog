@@ -75,6 +75,7 @@ a{
     width:100%;
     position:absolute;
     background-color: rgba(255,255,255, 0.9);
+
     .logo{
         position: relative;
         display: inline-block;
@@ -159,12 +160,14 @@ a{
 }
 .section{
     height:100%;
+    overflow: hidden;
 }
-.section:nth-of-type(2n+1){
-    background-color:rgba(1,1,1,0.2);
+.section:nth-of-type(2){
+    background-image: url(img/main_bg2.jpg);
 }
-.section:nth-of-type(2n){ 
+.section:nth-of-type(4){ 
     background-color:rgba(200,200,200,1);
+    background-image: url(img/main_bg4.jpg);
 }
 
 .toggle{
@@ -172,4 +175,44 @@ a{
     width:100%; 
     position:fixed;
     z-index:1;
+}
+.HotArticles{
+    position: relative;
+    width: 90%;
+    height: 90%;
+    top: 5%;
+}
+.article{
+    width:65%;
+    height:70%;
+    border:1px solid;
+    margin:10% 5%;
+    background-color:#ffffff;
+   // -webkit-transform:rotate(7deg); 
+    -webkit-transform-origin:200% 50%; 
+    position:absolute;  
+    &:nth-of-type(1){
+        //-webkit-transform:rotate(-7deg); 
+
+    }
+    -webkit-transition: -webkit-transform 0.3s;
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+.articleList{
+    position:absolute;
+    right:0px;
+    list-style-position: inside;
+    padding:0px;
+    margin:0px;
+    li{
+        padding:0.5em 1em 0.5em 0em;   
+        border-left:1px solid;
+        text-indent:-3px;
+        color:#ffffff;
+        font-size:1.1em;
+        font-family: "Microsoft Yahei";
+    }
 }

@@ -53,13 +53,13 @@ $(function () {
 					}
 					//header放大缩小
 					if(now==2){
-						$(".topbar .logo").animate({"font-size":"2.5em"},1000);
+						$(".topbar ").animate({"opacity":"1"});
 					}
 					//向下箭头显示隐藏
 					if(now<len+1){
 						$(".down").show();
 					}
-
+					now--;
 				}
 				
 				//滚轮下，内容上，背景下
@@ -77,8 +77,7 @@ $(function () {
 					}
 					//header放大缩小
 					if(now==1){
-						$(".topbar .logo").animate({"font-size":"2em"},1000);
-						//console.log(isOverMove);
+						 $(".topbar ").animate({"opacity":"0"});
 					}
 					//向下箭头显示隐藏
 					if(now==len-1){
@@ -127,5 +126,94 @@ $(function () {
 		//$(".logo p").text(getWord());
 	}
 	 changeWord();
+
+
+
+
+	// 以下为文章内容
+	var EventUtil = {
+		addHandler: function (element, type, handler) {
+			if (element.addEventListener) {
+				element.addEventListener(type, handler, false);
+			} else if (element.attachEvent) {
+				element.attachEvent("on" + type, handler);
+			} else {
+				element["on" + type] = handler;
+			}
+		}
+	}
+	//设置所有文章的状态
+	function setArticle(articles){
+		for (var i = 0; i <articles.length; i++) {
+
+			// 设置当前角度
+			if(i<=center){
+				$(articles[i]).css({"z-index":i});
+				$(articles[i]).css({"-webkit-transform":"rotate("+(center-i)*3+"deg) translate("+10*(center-i)+"px,0px)" });
+			}else{
+				$(articles[i]).css({"z-index":center-(i-center)});
+				$(articles[i]).css({"-webkit-transform":"rotate("+(center-i)*3+"deg) translate("+10*(i-center)+"px,0px)" });
+			}
+		}
+	}
+	//所有文章向上
+	function upArticle(){
+		//文章数组变化
+		articles.push(articles.shift());
+		setArticle(articles);
+	}
+	//所有文章向下
+	function downArticle(){
+		articles.unshift(articles.pop());
+		setArticle(articles);
+	}
+	function changeArticle(now){
+		if(now>0){
+			setTimeout(function(){
+				changeArticle(now);
+			},300)
+			upArticle();
+			now--;
+		}
+		if(now<0){
+			setTimeout(function(){
+				changeArticle(now);
+			},300)
+			downArticle();
+			now++;
+		}
+
+		// console.log(articles[parseInt(articles.length/2)])
+	}
+	// 所有的文章
+	var art=$(".article");
+	var articles=[];
+	for (var i = 0; i < art.length; i++) {
+		articles.push(art[i]);
+	}
+	//中间的文章
+	var center=parseInt(articles.length/2);
+	//初始化
+	setArticle(articles);
+	// 点击文章切换到当前
+	$(".article").click(function(){
+		for (var i = 0; i < articles.length; i++) {
+			if ($(articles[i]).attr("class")==$(this).attr("class")) {
+				break;
+			}
+		}
+		console.log(i);
+		changeArticle(i-center);
+	})
+	// 轮播自动切换
+	function autoChangeArticle(time){
+		setTimeout(function(){
+			autoChangeArticle(time);
+		},time)
+		changeArticle(1);
+	}
+	// 自动切换，参数时间
+	autoChangeArticle(6000);
+
 
 })

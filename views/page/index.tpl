@@ -44,11 +44,21 @@
         
     </div>
     <div class="toggle">
+       
+
         <div class="section">
-            
+           
         </div>
         <div class="section">
-
+            <div class="HotArticles">
+                {%for article in hotArticles%}
+                    <div class="article article{{JSON.stringify(loop.key)}}">
+                        <img src="{{article.cover}}" alt="">
+                    </div>
+                    
+                {%endfor%}
+            </div>
+            
         </div>
         <div class="section">
             
