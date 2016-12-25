@@ -1,4 +1,3 @@
-console.log('got! iw ')
 window.jQuery = window.$ = require('../libs/js/jquery');
 $(function () {
 	//获取页面可用高度
@@ -120,7 +119,7 @@ $(function () {
 			 changeWord();
 		}, 6070);
 		$(".logo p").text(getWord());
-		$(".logo p").animate({opacity:"1"},1000);
+		$(".logo p").animate({opacity:"0"},1000);
 		$(".logo p").animate({opacity:"1"},4000);
 		$(".logo p").animate({opacity:'0'},1000);
 		//$(".logo p").text(getWord());
@@ -167,18 +166,20 @@ $(function () {
 		articles.unshift(articles.pop());
 		setArticle(articles);
 	}
+
+	var articleTimer;
 	function changeArticle(now){
 		if(now>0){
-			setTimeout(function(){
-				changeArticle(now);
-			},300)
+			// articleTimer=setTimeout(function(){
+			// 	changeArticle(now);
+			// },300)
 			upArticle();
 			now--;
 		}
 		if(now<0){
-			setTimeout(function(){
-				changeArticle(now);
-			},300)
+			// articleTimer=setTimeout(function(){
+			// 	changeArticle(now);
+			// },300)
 			downArticle();
 			now++;
 		}
@@ -203,14 +204,16 @@ $(function () {
 			}
 		}
 		console.log(i);
-		changeArticle(i-center);
+		clearTimeout(articleTimer);
+		autoChangeArticle(6000,i-center);
 	})
 	// 轮播自动切换
-	function autoChangeArticle(time){
-		setTimeout(function(){
+	function autoChangeArticle(time,index){
+		articleTimer=setTimeout(function(){
 			autoChangeArticle(time);
 		},time)
-		changeArticle(1);
+		var test=typeof index !='undefined'?index:1;
+		changeArticle(test);
 	}
 	// 自动切换，参数时间
 	autoChangeArticle(6000);
