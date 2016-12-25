@@ -48,11 +48,17 @@ export function queryHotArticles(num) {
     return Promise.resolve(sequelize.query(`
             select art.id,
                    art.sid, 
+                   art.sub_sid, 
                    art.cover,
                    art.title,
-                   art.description
+                   art.description,
+                   s.name as sName,
+                   s.tab as sTab,
+                   sub_s.name as subSName
             from articles as art
-            where hot = 1
+            left join sections as s on s.id = art.sid
+            left join sections as sub_s on sub_s.id = art.sub_sid
+            where art.hot = 1
             limit ${num}
         `))
         .then(function (records) {
