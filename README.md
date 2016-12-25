@@ -5,10 +5,9 @@
 技术栈
 
 - Node.js 
-- TypeScript(还没上)
-- webpack/gulp
+- fis3/gulp
 - Promise 
-- MongoDB
+- MySql
 - es6
 
 快速运行
@@ -21,9 +20,8 @@ $ npm config set disturl http://npm.taobao.org/mirrors/node
 $ git clone git@github.com:luruozhou/MyBlog.git
 $ cd MyBlog
 $ npm install
-$ gulp build 
-$ npm run build 
-$ 应该还是跑不起来，蛤蛤
+$ npm install supervisor fis3 fis-parser-babel-5.x fis-parser-less fis3-hook-commonjs fis3-postpackager-loader -g
+$ npm run compile 
 ```
 //todo
 哈哈哈哈哈哈

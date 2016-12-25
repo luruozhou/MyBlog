@@ -5,7 +5,7 @@ import  SectionModel from "../modules/mysql-models/section-model";
 
 /**
  *查询板块列表信息
- * @returns section[]
+ * @returns Promise<section[]>
  */
 export function querySections() {
     return Promise.resolve(sequelize.query(`
@@ -45,7 +45,7 @@ export function addArticle(article) {
  * num:条数
  */
 export function queryHotArticles(num) {
-    num = num || 3;
+    num = num || 4;
     return Promise.resolve(sequelize.query(`
             select art.id,
                    art.sid, 
@@ -57,7 +57,6 @@ export function queryHotArticles(num) {
             limit ${num}
         `))
         .then(function (records) {
-            console.log(records[0])
             return records[0];
         })
 }
