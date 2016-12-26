@@ -124,6 +124,30 @@
         
         <div class="section">
            <div class="sectionTitle">Dome</div>
+           <a href="#" class="demoBlock">
+               <p>一个小demo</p>
+               <img src="../static/index/img/main_bg1.jpg" />
+           </a>
+           <a href="#" class="demoBlock">
+               <p>一个小demo</p>
+               <img src="../static/index/img/main_bg1.jpg" />
+           </a>
+           <a href="#" class="demoBlock">
+               <p>一个小demo</p>
+               <img src="../static/index/img/main_bg1.jpg" />
+           </a>
+           <a href="#" class="demoBlock">
+               <p>一个小demo</p>
+               <img src="../static/index/img/main_bg1.jpg" />
+           </a>
+           <a href="#" class="demoBlock">
+               <p>一个小demo</p>
+               <img src="../static/index/img/main_bg1.jpg" />
+           </a>
+           <a href="#" class="demoBlock">
+               <p>一个小demo</p>
+               <img src="../static/index/img/main_bg1.jpg" />
+           </a>
         </div>
         
     </div>
