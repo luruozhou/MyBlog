@@ -13,7 +13,7 @@ html,body{
     
     margin: 0px;
     height:100%;
-
+    font-family: "Microsoft Yahei";
 }
 @keyframes hid{
    0%{ opacity:1}
@@ -98,7 +98,6 @@ a{
         margin: 0px;
         padding: 0px;
         position: relative;
-        border-left: 1px solid;
         float: right;
         li{
             margin: 0px;
@@ -178,15 +177,15 @@ a{
 }
 .HotArticles{
     position: relative;
-    width: 90%;
+    width: 97%;
     height: 90%;
     top: 5%;
 }
 .article{
-    width:65%;
+    width:60%;
     height:70%;
-    border:1px solid;
     margin:10% 5%;
+    border:1px solid #EDEEEE;
     background-color:#ffffff;
    // -webkit-transform:rotate(7deg); 
     -webkit-transform-origin:200% 50%; 
@@ -201,18 +200,130 @@ a{
         height: 100%;
     }
 }
-.articleList{
-    position:absolute;
-    right:0px;
-    list-style-position: inside;
-    padding:0px;
-    margin:0px;
-    li{
-        padding:0.5em 1em 0.5em 0em;   
-        border-left:1px solid;
-        text-indent:-3px;
-        color:#ffffff;
-        font-size:1.1em;
-        font-family: "Microsoft Yahei";
+.articleInfor{
+    position: absolute;
+    right: 0px;
+    width: 26%;
+    height: 100%;
+    color: #fbfbfb;
+    opacity: 0;
+    padding-top:10%; 
+    .articleTitle{
+        .a-base( #ffffff);
+        font-weight: normal;
+        font-size: 1.3em;
+    }
+    &>p:nth-of-type(1){
+        color: #ffffff;
+        a{
+            .a-base(#ffffff);
+            border:1px solid #c0c0c0;
+            border-radius: 10px;
+            padding:1px 4px;
+            margin:0 10px;
+        }
+    }
+}
+@keyframes perkey{
+    0%{opacity: 0;left:100%;}
+    50%{opacity: 0.3}
+    100%{opacity: 1;left: 0}
+}
+.person{
+    animation-fill-mode:forwards;
+    animation: perkey 2s;
+    -webkit-transform:opcity 1s; 
+    transtion:opcity 1s;
+    position: relative;
+    width: 44.5%;
+    height: 50%;
+    margin: 12% 0% 0% 10%;
+    display: inline-block;
+    float: left;
+
+    &:nth-of-type(2){
+        margin-left: 0%;
+    }
+    .personleft{
+        height: 100%;
+        width:35%;
+        float: left;
+        margin:0px;
+        overflow: hidden;
+    }
+    .personright{
+        float: left;
+        width:65%;
+        height: 100%;
+        margin:0px;
+    }
+    p{
+        color: #ffffff;
+        margin: 0px;
+        padding: 7% 0 0% 9%;  
+        &:nth-of-type(1){
+            padding-top:15%;
+            font-size: 1.5em;
+        }     
+    }
+    @img-width:35%;
+    img{
+        width: @img-width;
+        // height: @img-width;
+        border-radius: @img-width*3;
+        border: 1px solid;
+        margin: auto 0;
+        position: absolute;
+        top: 50%;
+        bottom: 50%;
+    }
+}
+.sectionTitle{
+    width: 100%;
+    height: 2em;
+    font-size: 2.5em;
+    display: inline-block;
+    position: static;
+    color: #ffffff;
+    padding: 0.7em 0em 0em 2em;
+    background-color: rgba(255,255,255,0.1);
+}
+.tecStack{
+    position: static;
+    width: 33.39%;
+    text-align: center;
+    color: #ffffff;
+    margin: 0px -0.1% -2px 0%;
+    background-color: rgba(23, 23, 23, 0.2);
+    font-size: 2em;
+    font-weight: lighter;
+    padding: 1.5em 0;
+    float: left;
+    cursor:pointer;
+}
+.tecDetails{
+    position: relative;
+    height: 100px;
+    color: #ffffff;
+    background-color: rgba(0,0,0,0.6);
+    width: 100%;
+    float:left;
+    .topIrc{
+        border-bottom: 10px solid rgba(0,0,0,0.6);
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        height: 0;
+        position: absolute;
+        width: 0;
+        top:-10px;
+    }
+    .bottomIrc{
+        border-top: 10px solid rgba(0,0,0,0.6);
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        height: 0;
+        position: absolute;
+        width: 0;
+        bottom: -10px;
     }
 }

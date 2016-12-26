@@ -11,3 +11,15 @@ exports.getPageData = function  (id) {
     }
    return data[id];
 }
+//添加事件监听
+exports.EventUtil = {
+    addHandler: function (element, type, handler) {
+        if (element.addEventListener) {
+            element.addEventListener(type, handler, false);
+        } else if (element.attachEvent) {
+            element.attachEvent("on" + type, handler);
+        } else {
+            element["on" + type] = handler;
+        }
+    }
+}
