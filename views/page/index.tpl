@@ -27,10 +27,13 @@
             <li><a href="#" title="">首页</a></li>
             {%for section in sections%}
             <li><a href="">{{section.name}}</a>
+                <div class="line"></div>
                 {%if section.sons.length%}
                     <ul class="dropdown-content">
                         {%for son in section.sons%}
-                            <li><a href="#">{{son.name}}</a></li>
+                            <li>
+                                <a href="#">{{son.name}}</a>
+                            </li>
                         {%endfor%}
                     </ul>
                 {%endif%}
@@ -45,7 +48,7 @@
     </div>
     <div class="toggle">
         <div class="section">
-            <div class="person">
+            <div class="person1">
                 <div class="personleft">
                     <img src="../static/index/img/lrz.jpg"/>
                 </div>
@@ -58,7 +61,7 @@
                 </div>
                 
             </div>
-            <div class="person">
+            <div class="person2">
                 <div class="personleft">
                     <img src="../static/index/img/ljw.jpg"/>
                 </div>
@@ -79,30 +82,21 @@
                         {{JSON.stringify(loop.key)}}
                     </div>
                     <div class="articleInfor articleInfor{{JSON.stringify(loop.key)}}">
+                        <p>
+                            <a href="#" class="articleType">{{article.sName}}</a>
+                            {%if article.subSName%}
+                               >  <a href="#" class="articleType"> {{article.subSName}}</a>
+                            {%endif%}
+                            
+                        </p>
+                        
                         <a class="articleTitle" href="#" title="{{article.title}}">
                             {{JSON.stringify(loop.key)}}
                             {{article.title}}
                         </a>
-                        <p>
-                            <span class="articleTime">2016.12.26</span>
-                            <a href="#" class="articleType">分类1</a>
-                        </p>
+                        <p><span class="articleTime">2016.12.26</span></p>
                         <p class="articleDetail">
-                            Flex布局是什么？
-                            Flex布局意为“弹性布局”，可以为盒模型提供最大灵活性。 
-                            任何元素可以通过以下指定为弹性布局：
-
-                            ( -webkit- )display: flex | inline-flex;
-                            1
-                            1
-                            被指定为弹性布局以后，float、clear、vertical-align属性都将失效。
-
-                            二、基本概念
-
-                            容器：采用Flex布局的元素；
-                            项目：所有子元素自动成为容器成员，这些元素组成一个Flex项目（item），简称“项目”；
-                            主轴：水平方向上的(main start->main end)；
-                            交叉轴：垂直方向上的(cross start->cross end)。
+                           {{article.description}}
                         </p>
                     </div>
                 {%endfor%}
@@ -116,13 +110,10 @@
             <div class="tecStack">数据库</div>
             <div class="tecDetails">
                 <div class="topIrc"></div>
-                构建工具:fis3 gulp   
-                后端语言框架：nodeJS、express 
-                数据库:MySql    
-                es6 语法
-                模板 swig
-                前端：原生js，css3
-                jQuery
+                <span>  
+                fis3 gulp   
+              
+                </span>
                  <div class="bottomIrc"></div>
             </div>
             <div class="tecStack">语法</div>
@@ -132,7 +123,7 @@
         
         
         <div class="section">
-           
+           <div class="sectionTitle">Dome</div>
         </div>
         
     </div>

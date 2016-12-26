@@ -45,7 +45,8 @@ $(function () {
 						$(".topbar ").animate({"opacity":"1"},function(){
 							$(this).css({"display":"block"})
 						 });
-						$(".section:nth-of-type(1) .person").animate({"right":"0%","opacity":1},800);
+						$(" .person1").animate({"margin-left": "5%","opacity":1},800);
+						$(" .person2").animate({"margin-right": "0%","opacity":1},800);
 					}
 					// 最后一屏向倒数第二屏滚动
 					if(now<len+1){
@@ -74,7 +75,8 @@ $(function () {
 						 $(".topbar").animate({"opacity":"0"},function(){
 							$(this).css({"display":"none"})
 						 });
-						 $(".section:nth-of-type(1) .person").animate({"right":"100%","opacity":0},800);
+						 $(" .person1").animate({"margin-left": "-100%","opacity":0},800);
+						$(" .person2").animate({"margin-right": "-100%","opacity":0},800);
 					}
 					//向下箭头显示隐藏
 					if(now==len-1){
@@ -229,10 +231,48 @@ $(function () {
 	// 自动切换，参数时间
 	autoChangeArticle(6000);
 	//以下是技术简介部分js
+
+	//
+	var tecs=["fi3、gulp","nodeJS、express","MySQL","ES6","swig","原生JavaScript","CSS3、jQuery"]
 	$(".tecStack").click(function(){
 		// $(".tecDetails").animate({"height":"100px"},1000);
 		// $(".tecDetails").slideToggle("slow");
+		var noStack=$(".tecStack").index(this);
+		switch(noStack){
+			case 0:
+				$(".bottomIrc").css({opacity:0});
+				$(".topIrc").css({opacity:1});
+				$(".topIrc").animate({"left":"16%"});
+				break;
+			case 1:
+				$(".bottomIrc").css({opacity:0});
+				$(".topIrc").css({opacity:1});
+				$(".topIrc").animate({"left":"49%"});
+				break;
+			case 2:
+				$(".bottomIrc").css({opacity:0});
+				$(".topIrc").css({opacity:1});
+				$(".topIrc").animate({"left":"83%"});
+				break;
+			case 3:
+				$(".topIrc").css({"opacity":0});
+				$(".bottomIrc").css({"opacity":1});
+				$(".bottomIrc").animate({"left":"16%"});
+				break;
+			case 4:
+				$(".topIrc").css({"opacity":0});
+				$(".bottomIrc").css({"opacity":1});
+				$(".bottomIrc").animate({"left":"49%"});
+				break;
+			case 5:
+				$(".topIrc").css({"opacity":0});
+				$(".bottomIrc").css({"opacity":1});
+				$(".bottomIrc").animate({"left":"83%"});
+				break;
+		}
+		$(".tecDetails span").text(tecs[noStack]);
 	})
-	
+	console.log($(".tecStack:nth-of-type(1)"));
+	$(".tecStack:nth-of-type(1)").trigger("click");
 
 })
