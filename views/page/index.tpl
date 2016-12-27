@@ -27,7 +27,7 @@
             <li><a href="#" title="">首页</a></li>
             {%for section in sections%}
             <li><a href="">{{section.name}}</a>
-                <div class="line"></div>
+                <!--<div class="line"></div>-->
                 {%if section.sons.length%}
                     <ul class="dropdown-content">
                         {%for son in section.sons%}
@@ -112,7 +112,6 @@
                 <div class="topIrc"></div>
                 <span>  
                 fis3 gulp   
-              
                 </span>
                  <div class="bottomIrc"></div>
             </div>
@@ -123,7 +122,7 @@
         
         
         <div class="section">
-           <div class="sectionTitle">Dome</div>
+           <div class="sectionTitle">Demo</div>
            <a href="#" class="demoBlock">
                <p>一个小demo</p>
                <img src="../static/index/img/main_bg1.jpg" />
