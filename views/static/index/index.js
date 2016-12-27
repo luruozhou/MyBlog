@@ -225,7 +225,7 @@ $(function () {
 		articleTimer=setTimeout(function(){
 			autoChangeArticle(time);
 		},time)
-		var test=typeof index !='undefined'?index:1;
+		var test=typeof index !='undefined'&&index!=0?index:1;
 		changeArticle(test);
 	}
 	// 自动切换，参数时间
