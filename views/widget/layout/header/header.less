@@ -1,10 +1,10 @@
-@import "../libs/css/_function.less";
+// @import "../libs/css/_function.less";
 .topbar{
     z-index:2;
     animation:showHeader 1s;
     animation-fill-mode:forwards;
     width:100%;
-    position:absolute;
+    position: fixed;
     background-color: rgba(255,255,255, 0.9);
 
     .logo{
@@ -46,7 +46,7 @@
                 position: relative;
                 display: inline-block;
                 text-decoration:none;
-                .a-base(#000000);
+                // .a-base(#000000);
                 &:after{
                     content: '';
                     position: absolute;
@@ -64,15 +64,19 @@
                         animation-fill-mode:forwards;
                     }
                 }
-                &:hover:after{
-                    -webkit-transform: scale(1);
-                    transform: scale(1);
+                &:hover{
+                    &:after{
+                        -webkit-transform: scale(1);
+                        transform: scale(1);
+                    }
                 }
             }
             letter-spacing: 0.2em;
-            // &:hover{
-                
-            // }
+            &:hover{
+                   .dropdown-content{
+                     display: block;
+                   }
+            }
         }
         &>li:after{
             content:"/";
@@ -85,25 +89,31 @@
         }
     } 
     .dropdown-content{
-        opacity: 0;
+        display: none;
         list-style: disc;
         position: absolute;
         list-style-position: inside;
-        margin: 6px 0;
         padding: 0.5em 1em 0 0;
         background-clip: content-box;
         margin-left: 2em;
-        border-left: 1px solid;
         background-color: rgba(255, 255, 255, 0.6);
 
         &:nth-child(1){
             background-color:red;
         }
         &>li{
+            border-left: 1px solid;
             letter-spacing: 0em;
             text-indent:-3px;
             height:1.8em;
             line-height:1.8em;
+            padding-right: 1em;
+            &:hover{
+                background-color: rgba(1, 1, 1, 0.2);
+                &>a{
+                    color:#ffffff;
+                }
+            }
             &:nth-of-type(1){
                 padding-top:0.4em;
             }

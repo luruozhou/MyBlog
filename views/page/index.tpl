@@ -18,30 +18,7 @@
 </head>
 
 <body>
-    <header  class="topbar">
-        <div class="logo">白鹭若舟
-            <p></p>
-        </div>
-        <ul  class="topbar-nav">
-            <li><a href="#" title="">首页</a></li>
-            {%for section in sections%}
-            <li><a href="">{{section.name}}</a>
-                <!--<div class="line"></div>-->
-                {%if section.sons.length%}
-                    <ul class="dropdown-content">
-                        {%for son in section.sons%}
-                            <li>
-                                <a href="#">{{son.name}}</a>
-                            </li>
-                        {%endfor%}
-                    </ul>
-                {%endif%}
-            
-            </li>
-                
-            {%endfor%}
-        </ul>
-    </header>
+    {% include "../widget/layout/header/header.tpl"%}
     <div class="bgi">
         
     </div>

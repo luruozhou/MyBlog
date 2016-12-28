@@ -69,6 +69,11 @@
             "entry": "views/widget/test/test",
             "template": "views/widget/test/test.tpl",
             "type": "widget"
+        },
+        {
+            "entry": "views/widget/layout/header/header",
+            "template": "views/widget/layout/header/header.tpl",
+            "type": "widget"
         }
     ]
 }
