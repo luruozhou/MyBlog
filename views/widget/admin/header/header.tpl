@@ -5,7 +5,7 @@
         <span class="user-name">路若洲</span>
     </div>
 </div>
-<!--<script src="./header.js"></script>-->
+<!--SCRIPT_PLACEHOLDER-->
 <script>
     require ('./header')
 </script>

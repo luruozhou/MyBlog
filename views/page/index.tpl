@@ -14,11 +14,12 @@
         {% autoescape false %} {{ extras|json }} {% endautoescape %}
     </script>
     {%endif%}
-    <script src="../static/mod.js"></script>
+    <script src="../static/mod.js"></script><!--ignore-->
 </head>
 
 <body>
     <!--{{JSON.stringify(hotArticles)}}-->
+    {% include "../widget/admin/header/header.tpl"%}
     <header  class="topbar">
         <div class="logo">白鹭若舟
             <p></p>
@@ -153,6 +154,7 @@
     <div class="down">
         
     </div>
+    <!--SCRIPT_PLACEHOLDER-->
     <script type="text/javascript">
         require ('../static/index/index')
     </script>

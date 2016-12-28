@@ -14,6 +14,7 @@
             {% autoescape false %} {{ extras|json }} {% endautoescape %}
         </script>
     {%endif%}
+    <script src="$relDir$../static/mod.js"></script><!--ignore-->
 </head>
 
 <body>

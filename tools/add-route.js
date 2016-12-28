@@ -37,6 +37,15 @@ var routePath = Path.join(__dirname, '..', 'routes', path) + '.js';
 createFile(routePath, routeTpl);
 var pageTplPath = Path.join(__dirname, '../views', 'page', path) + '.tpl';
 
+var pageTplData = {
+    relDir: Array((path.match(/\//g) || []).length + 1).join('../'),
+    routePathNameWithoutExt: path
+};
+
+pageTpl = pageTpl.replace(/\$(\w+)\$/g, function (m, variable) {
+    return pageTplData[variable];
+});
+
 
 var staticJsPath = Path.join(__dirname, '../views', 'static', path, fileName) + '.js';
 var staticCssPath = Path.join(__dirname, '../views', 'static', path, fileName) + '.less';
