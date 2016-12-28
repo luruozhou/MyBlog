@@ -9,7 +9,7 @@ var SessionFileStore = require('session-file-store')(session);
 var sessionStore = new SessionFileStore(fileStoreOptions);
 
 var defaultSessionOptions = {
-    name: 'connect.haha.sid',
+    name: 'connect.test.sid',
     secret: 'session-key',
     resave: false,
     saveUninitialized: true,

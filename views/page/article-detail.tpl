@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    {{a}}
+    {{JSON.stringify(articleRecord)}}
 <script type="text/javascript">
         require ('../static/article-detail/article-detail')
     </script>
