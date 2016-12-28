@@ -16,7 +16,7 @@ exports.Router = function (app) {
         }
     }
 
-    function attach(routeModule, key) {
+    function attach(routeModule, key) {// key='default'
         var routeSetting = ( routeModule.routeSettings && routeModule.routeSettings[key] ) || {};
         var routeHandler = routeModule[key];
         var urlPath, tplPath;

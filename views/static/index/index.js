@@ -229,7 +229,7 @@ $(function () {
 		changeArticle(test);
 	}
 	// 自动切换，参数时间
-	autoChangeArticle(6000);
+	// autoChangeArticle(6000);
 	//以下是技术简介部分js
 
 	//

@@ -29,6 +29,11 @@
             "entry": "views/static/article-list/article-list",
             "template": "views/page/article-list.tpl",
             "type": "page"
+        },
+        {
+            "entry": "views/static/article-detail/article-detail",
+            "template": "views/page/article-detail.tpl",
+            "type": "page"
         }
     ]
 }
