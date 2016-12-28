@@ -18,15 +18,14 @@
 </head>
 
 <body>
-
-
-
-{#下边不要写任何代码(注释也不要删)，否则会发生无法挽回的错误#}
-<!--SCRIPT_PLACEHOLDER-->
-<script type="text/javascript">
-    require('../static/article-detail/article-detail')
-</script>
-<link rel="stylesheet" href="../static/article-detail/article-detail.less">
+    {% include "../widget/layout/header/header.tpl"%}
+   {{JSON.stringify(articleRecord)}}
+    {#下边不要写任何代码(注释也不要删)，否则会发生无法挽回的错误#}
+    <!--SCRIPT_PLACEHOLDER-->
+    <script type="text/javascript">
+        require('../static/article-detail/article-detail')
+    </script>
+    <link rel="stylesheet" href="../static/article-detail/article-detail.less">
 </body>
 
 </html>
