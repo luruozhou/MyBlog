@@ -2,7 +2,7 @@ import * as Sequelize from 'sequelize';
 import sequelize from '../core/sequelize';
 
 var Model = sequelize.define(
-    'groups', {
+    'Groups', {
         name: {
             type: Sequelize.STRING,
             unique: true

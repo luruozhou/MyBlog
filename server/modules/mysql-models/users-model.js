@@ -2,7 +2,7 @@ import * as Sequelize from 'sequelize';
 import sequelize from '../core/sequelize';
 
 var Model = sequelize.define(
-    'users', {
+    'User', {
         email: Sequelize.STRING,
         user_name: {
             type: Sequelize.STRING,

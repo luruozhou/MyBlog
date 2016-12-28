@@ -1,7 +1,3 @@
-import * as FS from 'fs';
-import * as Path from 'path';
-
-// import * as Sequelize from 'sequelize';
 var Sequelize = require('sequelize');
 
 import {db as config, sequelizeConnectionPool} from '../../config';
@@ -82,4 +78,4 @@ export default sequelize;
 //     });
 // }
 
-// require('../db-models/model-relations');
+require('../mysql-models/model-relations');

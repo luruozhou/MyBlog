@@ -2,6 +2,7 @@ import Path from "path";
 import IO from "./io.js";
 import * as Management from "../modules/management";
 import {userProvider} from "../modules/core/userProvider";
+import {permissionProvider} from "../modules/core/permissionProvider";
 
 exports.Router = function (app) {
     this.app = app; //express 实例
@@ -40,6 +41,12 @@ exports.Router = function (app) {
             return userProvider
                 .authenticate(req, res)
                 .then(user=> {
+                    // 权限判断
+                    let isVerify = permissionProvider.verifyRouter(user && user.permission, routeSetting.permission);
+                    if(!isVerify){
+                        res.redirect('/');
+                        return;
+                    }
                     req.user = user;
                 })
                 .then(function () {
