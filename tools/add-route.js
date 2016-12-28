@@ -39,10 +39,12 @@ var pageTplPath = Path.join(__dirname, '../views', 'page', path) + '.tpl';
 
 var pageTplData = {
     relDir: Array((path.match(/\//g) || []).length + 1).join('../'),
-    routePathNameWithoutExt: path
+    path: path+'/'+fileName
 };
 
-pageTpl = pageTpl.replace(/\$(\w+)\$/g, function (m, variable) {
+pageTpl = pageTpl.replace(/\$(relDir)\$/g, function (m, variable) {
+    return pageTplData[variable];
+}).replace(/\$(path)\$/g, function (m, variable) {
     return pageTplData[variable];
 });
 

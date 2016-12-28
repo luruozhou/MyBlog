@@ -32,7 +32,7 @@ fis.match('::package', {
     postpackager: fis.plugin('loader', {
         resourceType: 'mod',
         useInlineMap: true, // 资源映射表内嵌
-        // obtainScript:false
+        obtainScript:false
     })
 });
 

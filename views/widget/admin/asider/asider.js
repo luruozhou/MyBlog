@@ -1,1 +1,1 @@
-import "./asider.less";
+console.log(222)

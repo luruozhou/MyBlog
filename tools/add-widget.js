@@ -31,13 +31,15 @@ var path = program.args[0].replace(/\\/g, '/');
 var nameArr = path.split("/");
 var fileName = nameArr[nameArr.length - 1];
 
+var pageTpl = FS.readFileSync(__dirname + '/templates/widget.page.tpl', 'utf-8');
+pageTpl = pageTpl.replace(/\$(fileName)\$/g, fileName);
 
 var staticJsPath = Path.join(__dirname, '../views', 'widget', path, fileName) + '.js';
 var staticCssPath = Path.join(__dirname, '../views', 'widget', path, fileName) + '.less';
 var widgeTPLPath = Path.join(__dirname, '../views', 'widget', path, fileName) + '.tpl';
 
 createFile(staticCssPath);
-var addedTsFile = createFile(widgeTPLPath) && createFile(staticJsPath);
+var addedTsFile = createFile(widgeTPLPath,pageTpl) && createFile(staticJsPath);
 
 
 if (addedTsFile) {

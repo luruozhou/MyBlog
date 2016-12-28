@@ -34,6 +34,41 @@
             "entry": "views/static/article-detail/article-detail",
             "template": "views/page/article-detail.tpl",
             "type": "page"
+        },
+        {
+            "entry": "views/static/test1/test1",
+            "template": "views/page/test1.tpl",
+            "type": "page"
+        },
+        {
+            "entry": "views/static/aa/test1/test1",
+            "template": "views/page/aa/test1.tpl",
+            "type": "page"
+        },
+        {
+            "entry": "views/static/aa/test1/test1",
+            "template": "views/page/aa/test1.tpl",
+            "type": "page"
+        },
+        {
+            "entry": "views/static/aa/aa",
+            "template": "views/page/aa.tpl",
+            "type": "page"
+        },
+        {
+            "entry": "views/static/aa/aa",
+            "template": "views/page/aa.tpl",
+            "type": "page"
+        },
+        {
+            "entry": "views/widget/test/test",
+            "template": "views/widget/test/test.tpl",
+            "type": "widget"
+        },
+        {
+            "entry": "views/widget/test/test",
+            "template": "views/widget/test/test.tpl",
+            "type": "widget"
         }
     ]
 }

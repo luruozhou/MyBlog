@@ -14,12 +14,10 @@
         {% autoescape false %} {{ extras|json }} {% endautoescape %}
     </script>
     {%endif%}
-    <script src="../static/mod.js"></script><!--ignore-->
+    <script src="../static/mod.js"></script><!--ignore-->{#这一行不要删掉，连注释都不要删，听话#}
 </head>
 
 <body>
-    <!--{{JSON.stringify(hotArticles)}}-->
-    {% include "../widget/admin/header/header.tpl"%}
     <header  class="topbar">
         <div class="logo">白鹭若舟
             <p></p>
@@ -154,6 +152,8 @@
     <div class="down">
         
     </div>
+
+    {#下边不要写任何代码(注释也不要删)，否则会发生无法挽回的错误#}
     <!--SCRIPT_PLACEHOLDER-->
     <script type="text/javascript">
         require ('../static/index/index')
