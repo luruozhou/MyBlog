@@ -15,6 +15,9 @@
     </script>
     {%endif%}
     <script src="../static/mod.js"></script><!--ignore--> {#这一行不要删掉，连注释都不要删，听话#}
+    <script>
+        
+    </script>
 </head>
 
 <body>
