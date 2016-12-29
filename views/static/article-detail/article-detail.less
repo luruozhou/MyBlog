@@ -1,18 +1,111 @@
 @import "../libs/css/_function.less";
+@base-color:#0f0f0f;
+@border-color:lighten(@base-color,80%);
 body{
-   margin: 0px;
+   margin: 100px 0 0 0 ;
    background-image: url(img/article_detail_bg.png);
-   color:#0f0f0f;
+   color:@base-color;
    font-family: "Microsoft Yahei";
+   height: 2000px;
+   position: static;
 }
 
 //重写头部
-.topbar{
+body .topbar{
     margin-bottom: 20px;
-    background-color: rgba(2, 2, 2, 0.1);
+    background-color: rgba(2, 2, 2,0.1);
     color: #000000;
-    position:static;
+    position: fixed;
+    top:0;
+    border-bottom: 1px solid @border-color;
     a{
-        .a-base(#0f0f0f);
+        .a-base(@base-color);
+    }
+}
+// 文章标题
+.article-title{
+    font-size: 1.8em;
+    text-align: center;
+    padding: 0.5em 0 0.7em 0;
+}
+// 文章时间
+.article-time{
+    text-align: center;
+    padding: 0em 0 1.5em 0;
+    color: lighten(@base-color,20%);
+}
+// 文章类型
+.article-type{
+    width: 80%;
+    margin: 0 auto;
+    min-width: 600px;
+    a{
+        .a-base(@base-color);
+        &:after{
+            content: ">";
+            padding: 0 10px  0 20px;
+        }
+        &:nth-last-of-type(1):after{
+            content: "";
+        }
+        &:hover{
+            color: lighten(@base-color,30%);
+            text-shadow: 1px 1px 1px lighten(@base-color,70%);
+        }
+    }
+}
+// 文章内容
+.article-main{
+    border:1px solid  @border-color;
+    height: 300px;
+    width: 80%;
+    margin: 0 auto;
+    min-width: 600px;
+    background-color:rgba(255,255,255,0.5);
+}
+.back-top{
+    position: fixed;
+    display: block;
+    width: 60px;
+    height: 35px;
+    bottom: 0;
+    right: 10px;
+    background: #f70;
+    box-shadow: 0 0 4px rgba(0,0,0,.5);
+    transition: 0.8s;
+    -moz-transition:  0.8s;	/* Firefox 4 */
+    -webkit-transition:  0.8s;	/* Safari 和 Chrome */
+    -o-transition:  0.8s;
+
+    transform: translate(0px,40px);
+    -ms-transform: translate(0px,40px);		/* IE 9 */
+    -webkit-transform: translate(0px,40px);	/* Safari and Chrome */
+    -o-transform: translate(0px,40px);		/* Opera */
+    -moz-transform: translate(0px,40px);	
+
+    &:before{
+        content: '';
+        display: block;
+        line-height: 41px;
+        text-indent: -12px;
+        color: lighten(@base-color,90%);
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: -10px;
+        border-style: solid;
+        border-width: 0 30px 10px;
+        border-color: transparent transparent #f70;
+    }
+    &:hover{
+        cursor: pointer;
+        transform: translate(0px,0px);
+        -ms-transform: translate(0px,0px);		/* IE 9 */
+        -webkit-transform: translate(0px,0px);	/* Safari and Chrome */
+        -o-transform: translate(0px,0px);		/* Opera */
+        -moz-transform: translate(0px,0px);
+        &:before{
+            content: 'top';
+        }
     }
 }
