@@ -12,6 +12,5 @@ export var routeSettings = {
  */
 export function addArticle(req, res) {
     var article = req.body;
-    console.log(article)
     return Management.addArticle(article);
 }

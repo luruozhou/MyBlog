@@ -1,7 +1,35 @@
 import  UserModel from "../mysql-models/users-model";
 import * as Lodash from 'lodash';
-import Promise from "bluebird";
+// import Promise from "bluebird";
+import {Promise} from "../../libs/Promise";
 import * as Bcrypt from 'bcrypt-nodejs';
+import * as User from '../user';
+import {Permission} from './permissionProvider';
+
+function buildRequestUser(userRecord, basePermission) {
+    var userPermission;
+
+    userRecord.last_login = new Date();
+
+    return Promise
+        .resolve(userRecord.save())
+        .then(() => {
+            var userPermissionPromise = User.getUserPermission(userRecord);
+            if (basePermission) {
+                return userPermissionPromise.then(permission => basePermission.plus(permission));
+            } else {
+                return userPermissionPromise;
+            }
+        })
+        .then(permission => {
+            userPermission = permission;
+            return {
+                uid: userRecord.id,
+                userRecord,
+                permission: userPermission
+            };
+        })
+}
 
 /**
  * 登陆时验证
@@ -20,6 +48,8 @@ export var userProvider = {
         }
 
         var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+        userName = 'abc';
+        password = '12345678';
         var where = {};
         if (userName || uid) {
             if (userName) {
@@ -60,9 +90,7 @@ export var userProvider = {
                     userName = userRecord.userName;
 
                     // return buildRequestUser(userRecord, basePermission);
-                    return {
-                        userRecord
-                    }
+                    return buildRequestUser(userRecord, basePermission);
                 })
                 .then(user => {
                     req.session['uid'] = uid;
@@ -71,10 +99,11 @@ export var userProvider = {
                 });
         } else {
             return Promise.resolve({
-                userRecord: undefined
+                uid: undefined,
+                userRecord: undefined,
+                permission: Permission.none
             })
         }
-
 
     }
 

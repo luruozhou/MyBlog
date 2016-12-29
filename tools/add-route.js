@@ -16,8 +16,6 @@ program.on('--help', function () {
     console.log('');
     console.log('  Examples:');
     console.log('');
-    console.log('    $ node tools/add-route.js desktop zmlearn');
-    console.log('    $ node tools/add-route.js desktop zmlearn -s');
     console.log('');
 });
 

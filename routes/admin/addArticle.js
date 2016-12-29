@@ -1,11 +1,13 @@
 // import BlueBird from "bluebird";
 import * as Management from "../../server/modules/management";
+import {Permission} from '../../server/modules/core/permissionProvider';
 
 //路由的配置项
 export var routeSettings = {
     default: {
         // route:"",       //访问路径
         // template:"",    //用到的模板
+        permission:Permission.addArticle,    //用户权限
     }
 };
 
