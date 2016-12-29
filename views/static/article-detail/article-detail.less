@@ -21,6 +21,10 @@ body .topbar{
     a{
         .a-base(@base-color);
     }
+    transition: 0.8s;
+    -moz-transition:  0.8s;	/* Firefox 4 */
+    -webkit-transition:  0.8s;	/* Safari 和 Chrome */
+    -o-transition:  0.8s;
 }
 // 文章标题
 .article-title{
@@ -57,11 +61,12 @@ body .topbar{
 // 文章内容
 .article-main{
     border:1px solid  @border-color;
-    height: 300px;
     width: 80%;
-    margin: 0 auto;
+    margin: 0 auto 20px auto;
     min-width: 600px;
     background-color:rgba(255,255,255,0.5);
+    overflow: hidden;
+    padding: 4em;
 }
 .back-top{
     position: fixed;

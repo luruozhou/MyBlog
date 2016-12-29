@@ -22,23 +22,30 @@
 
 <body>
     {% include "../widget/layout/header/header.tpl"%}
-   <!--{{JSON.stringify(articleRecord)}}-->
-    {#下边不要写任何代码(注释也不要删)，否则会发生无法挽回的错误#}
-    <!--SCRIPT_PLACEHOLDER-->
-    <div class="article-type">
-        <a href="#">技术</a>
-        <a href="#">nodeJS</a>
+    <div class="back-top"></div>
+     <div class="article-type">
+        <a href="#"> {{articleRecord.sid}}</a>
+        {%if articleRecord.sub_sid%}
+              <a href="#"> {{articleRecord.sub_sid}}</a>
+        {%endif%}
     </div>
     <div class="article-title">
-        剿灭 jQuery 的第一步（IE8+）
+        {{articleRecord.title}}
     </div>
     <div class="article-time">
-        2016.12.28
+        {{ articleRecord.created_at.toString()}}
     </div>
     <div class="article-main">
+        {% autoescape  %}
+            <!--{{ articleRecord.html_content }}-->
+        {% autoescape%}
         
     </div>
-    <div class="back-top"></div>
+    
+
+    {#下边不要写任何代码(注释也不要删)，否则会发生无法挽回的错误#}
+    <!--SCRIPT_PLACEHOLDER-->
+   
     <script type="text/javascript">
         require('../static/article-detail/article-detail')
     </script>
