@@ -62,10 +62,9 @@
                             {%if article.subSName%}
                                >  <a href="#" class="articleType"> {{article.subSName}}</a>
                             {%endif%}
-                            
                         </p>
                         
-                        <a class="articleTitle" href="#" title="{{article.title}}">
+                        <a class="articleTitle" href="/article/{{article.id}}" title="{{article.title}}">
                             {{JSON.stringify(loop.key)}}
                             {{article.title}}
                         </a>
