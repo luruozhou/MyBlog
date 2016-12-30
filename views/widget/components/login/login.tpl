@@ -1,11 +1,11 @@
 <div class="cover">
 	<div class="login">
-		<form>
+	
 			<input type="text" name="name" placeholder="用户名" id="">
 			<input type="text" name="pwd" placeholder="密码" id="">
 			<input type="submit" name="" value="登陆">
 						
-		</form>
+	
 	</div>
 </div>
 
