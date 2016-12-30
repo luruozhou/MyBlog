@@ -43,7 +43,7 @@ exports.Router = function (app) {
                 .then(user=> {
                     // 权限判断
                     let isVerify = permissionProvider.verifyRouter(user && user.permission, routeSetting.permission);
-                    if(!isVerify){
+                    if (!isVerify) {
                         res.redirect('/');
                         return;
                     }

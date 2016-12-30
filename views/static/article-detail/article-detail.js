@@ -34,7 +34,7 @@ $(function () {
 
     $(".toLogin").click(function(){
         $(".cover").animation({"":""},function(){
-            $(this).css({"display":"block"};
+            $(this).css({"display":"block"});
         });
     })
 
