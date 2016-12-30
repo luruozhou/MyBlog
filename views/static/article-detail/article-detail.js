@@ -33,7 +33,7 @@ $(function () {
     })
 
     $(".toLogin").click(function(){
-        $(".cover").animation({"":""},function(){
+        $(".cover").animate({"":""},function(){
             $(this).css({"display":"block"});
         });
     })

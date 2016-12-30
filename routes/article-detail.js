@@ -10,19 +10,25 @@ export var routeSettings = {
 
 export default function (req, res) {
     let articleId = req.params[0];
+    console.log(req.user.userRecord, '我是用户信息');
+    let userInfo = req.user.userRecord||{};
+    let nickName = userInfo.nick_name;
+    let avatar = userInfo.avatar;
     return Article.find({
         where: {
             id: articleId
         }
     })
         .then(articleRecord => {
-            console.log(Object.prototype.toString.call(articleRecord.created_at),'===');
-            let date =Moment(articleRecord.created_at).format("YYYY-MM-DD");
-            var test =new Date();
+            let date = Moment(articleRecord.created_at).format("YYYY-MM-DD");
+            var test = new Date();
             console.log(test)
             console.log(date)
             return {
-                articleRecord
+                articleRecord,
+                nickName,
+                avatar,
+                isLogin:!!req.user.userRecord
             }
         })
 }

@@ -4,23 +4,24 @@ import {userProvider} from "../modules/core/userProvider";
 export var routeSettings = {
     login: {
         method: "post",
-        notAuthentication:true
+        notAuthentication: true
     }
 };
 
 /**
  * 用户登录接口
+ * userName:string
+ * password:string
  */
 export function login(req, res) {
     return userProvider
         .authenticate(req, res, true)
         .then(data=> {
-            console.log(4)
             if (data && data.userRecord) {
-                return 1;
+                return 'ok';
             } else {
                 return {
-                    msg: '暂无用户信息.'
+                    msg: '暂无用户信息.',
                 };
             }
         })

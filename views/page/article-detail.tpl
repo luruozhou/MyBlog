@@ -36,12 +36,16 @@
         {{ articleRecord.created_at.toString()}}
     </div>
     <div class="article-main">
-
         <!--{% autoescape false%}
         {{ articleRecord.html_content }}
         {% endautoescape %}-->
         <div class="toLogin">登录</div>
     </div>
+    {%if isLogin%}
+        <img src="{{avatar}}">  <span>{{nickName}}</span>
+    {%else%}
+        <span>登录</span>
+    {%endif%}
     <div class="article-reply">
         <div class="reply-block">
             <p>小可爱：</p>

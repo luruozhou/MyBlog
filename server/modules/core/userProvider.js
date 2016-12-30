@@ -67,7 +67,6 @@ export var userProvider = {
                         req.session['uid'] = null;
                         throw "UserNotExists";
                     }
-
                     if (password) {
                         // Validator.validatePassword(password, 'password');
                         return passwordUtil

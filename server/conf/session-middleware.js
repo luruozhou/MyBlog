@@ -1,6 +1,6 @@
 var session = require('express-session');
 
-var maxAge = 2*60* 1000;
+var maxAge = 4 * 60 * 60 * 1000;
 var ttl = maxAge / 1000;
 var fileStoreOptions = {ttl: ttl};
 
@@ -13,7 +13,7 @@ var defaultSessionOptions = {
     secret: 'session-key',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }
+    cookie: {secure: false}
 };
 
 
