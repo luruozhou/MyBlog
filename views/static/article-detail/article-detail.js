@@ -32,6 +32,10 @@ $(function () {
         document.body.scrollTop=0;
     })
 
-    
+    $(".toLogin").click(function(){
+        $(".cover").animation({"":""},function(){
+            $(this).css({"display":"block"};
+        });
+    })
 
 })

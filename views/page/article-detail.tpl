@@ -22,7 +22,7 @@
 
 <body>
     {% include "../widget/layout/header/header.tpl"%}
-
+    {% include "../widget/components/login/login.tpl"%}
 
     <div class="article-type">
         <a href="#">技术</a>
@@ -37,9 +37,26 @@
     </div>
     <div class="article-main">
 
-        {% autoescape false%}
+        <!--{% autoescape false%}
         {{ articleRecord.html_content }}
-        {% endautoescape %}
+        {% endautoescape %}-->
+        <div class="toLogin">登录</div>
+    </div>
+    <div class="article-reply">
+        <div class="reply-block">
+            <p>小可爱：</p>
+            <p>回复的内容</p>
+            <p>时间</p>
+        </div>
+        <div class="reply-block">
+            <p>小可爱：</p>
+            <p>回复的内容</p>
+            <p>时间</p>
+        </div>
+        <div class="reply-user">
+            <button>登录</button>
+            <button>注册</button>
+        </div>
     </div>
     <div class="back-top"></div>
     {#下边不要写任何代码(注释也不要删)，否则会发生无法挽回的错误#}

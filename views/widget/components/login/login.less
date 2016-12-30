@@ -1,0 +1,46 @@
+body{
+	font-family: "Microsoft YaHei" ;
+}
+@base-color:#202020;
+.cover{
+	position:fixed;
+	width:100%;
+	height:100%;
+	background-color: rgba(1, 1, 1, 0.5);
+	top:0px;
+	z-index: 10;
+	display: none;
+}
+.login{
+	color: @base-color;
+	form{
+		width:400px;
+		height:200px;
+		margin: auto;  
+		position: absolute;  
+		top: 0; left: 0; bottom: 0; right: 0;  
+		background-color:rgba(255, 255, 255, 0.93);
+		box-shadow:3px 3px 4px  lighten(@base-color,10%);
+		label{
+			width:20%;
+			display:inline-block; 
+			font-size: 1em;
+			color:@base-color;
+			height:2em;
+			line-height: 2em;
+			text-align: right;
+			margin:1.5em 0 0 1em;
+		}
+		input[type="text"],input[type="password"]{
+			width:60%;
+			display:inline-block; 
+			height:1.5em;
+			font-size:1.1em;
+		}
+		input[type="submit"]{
+			width:50%;
+			display:block;
+			margin: 0 auto;
+		}
+	}
+}
