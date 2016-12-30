@@ -7,7 +7,7 @@
     "build": "supervisor -e tpl,js -w dest/,app.js app.js",
     "gulp": "gulp build",
     "fis": "fis3 release -r ./views -d ./dest/views -wL",
-    "compile": "parallelshell \"npm run gulp\" \"npm run fis\" \"supervisor -e tpl,js -w dest/,app.js app.js\"",
+    "dev": "parallelshell \"npm run gulp\" \"npm run fis\" \"supervisor -e tpl,js -w dest/,app.js app.js\"",
     "test": "parallelshell \"npm run gulp\" \"npm run fis\""
   },
   "author": "luruozhou",
@@ -24,6 +24,7 @@
     "fs-extra": "^0.30.0",
     "lodash": "^4.17.3",
     "log4js": "^0.6.38",
+    "moment": "^2.17.1",
     "mongoose": "^4.6.3",
     "multer": "^0.1.8",
     "mysql": "^2.11.1",

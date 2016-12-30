@@ -18,9 +18,7 @@
 
 <body>
     {% include "../widget/layout/header/header.tpl"%}
-    <div class="bgi">
-        
-    </div>
+    <div class="bgi"></div>
     <div class="toggle">
         <div class="section">
             <div class="person1">
@@ -49,7 +47,7 @@
                 
             </div>
         </div>
-       <div class="section">
+        <div class="section">
             <div class="HotArticles">
                 {%for article in hotArticles%}
                     <div class="article article{{JSON.stringify(loop.key)}}">
@@ -62,10 +60,9 @@
                             {%if article.subSName%}
                                >  <a href="#" class="articleType"> {{article.subSName}}</a>
                             {%endif%}
-                            
                         </p>
                         
-                        <a class="articleTitle" href="#" title="{{article.title}}">
+                        <a class="articleTitle" href="/article/{{article.id}}" title="{{article.title}}">
                             {{JSON.stringify(loop.key)}}
                             {{article.title}}
                         </a>
@@ -76,7 +73,6 @@
                     </div>
                 {%endfor%}
             </div>
-            
         </div>
         <div class="section" style="position: static">
             <div class="sectionTitle">关于本站</div>
@@ -94,8 +90,6 @@
             <div class="tecStack">模板</div>
             <div class="tecStack">前端相关</div>
         </div>
-        
-        
         <div class="section">
            <div class="sectionTitle">Demo</div>
            <a href="#" class="demoBlock">

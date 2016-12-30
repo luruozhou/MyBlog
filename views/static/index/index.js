@@ -6,6 +6,7 @@ $(function () {
 	$(".section").css({ "height": height });
 	var doc = document.querySelector(".toggle");
 	var isOverMove=true;
+	//整屏切换函数
 	function fullScreenToggle(doc, times) {
 		//前景滑动时间
 		$(doc).css({ "-webkit-transition": "transform" + " " + times });
@@ -93,6 +94,7 @@ $(function () {
 		})
 		//解锁状态
 	}
+	//解锁状态函数
 	EventUtil.addHandler(doc,"webkitTransitionEnd",function(){
 		//console.log(this);
 		isOverMove=true;
@@ -100,8 +102,10 @@ $(function () {
 		console.log("每次动画结束后的isOverMove:"+isOverMove);
 	})
 	
-
+	//初始化整平切换
 	fullScreenToggle(doc,"0.5s");
+
+	//以下为header随机切换word
 	var myWord = ['第一句话', '第二句话', '第十句话，因为是三进制', '第100句话 '];
 	var loopWord = myWord.slice(0);
 
@@ -129,7 +133,7 @@ $(function () {
 
 
 
-	// 以下为文章内容
+	// 以下为文章切换内容
 	//设置所有文章的状态
 	function setArticle(articles,articlesInfor){
 		for (var i = 0; i <articles.length; i++) {
@@ -229,10 +233,8 @@ $(function () {
 		changeArticle(test);
 	}
 	// 自动切换，参数时间
-	// autoChangeArticle(6000);
+	autoChangeArticle(6000);
 	//以下是技术简介部分js
-
-	//
 	var tecs=["fi3、gulp","nodeJS、express","MySQL","ES6","swig","原生JavaScript","CSS3、jQuery"]
 	$(".tecStack").click(function(){
 		// $(".tecDetails").animate({"height":"100px"},1000);

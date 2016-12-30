@@ -22,12 +22,12 @@
 
 <body>
     {% include "../widget/layout/header/header.tpl"%}
-    <div class="back-top"></div>
-     <div class="article-type">
-        <a href="#"> {{articleRecord.sid}}</a>
-        {%if articleRecord.sub_sid%}
-              <a href="#"> {{articleRecord.sub_sid}}</a>
-        {%endif%}
+
+
+    <div class="article-type">
+        <a href="#">技术</a>
+        <a href="#">nodeJS</a>
+
     </div>
     <div class="article-title">
         {{articleRecord.title}}
@@ -36,16 +36,14 @@
         {{ articleRecord.created_at.toString()}}
     </div>
     <div class="article-main">
-        {% autoescape  %}
-            <!--{{ articleRecord.html_content }}-->
-        {% autoescape%}
-        
-    </div>
-    
 
+        {% autoescape false%}
+        {{ articleRecord.html_content }}
+        {% endautoescape %}
+    </div>
+    <div class="back-top"></div>
     {#下边不要写任何代码(注释也不要删)，否则会发生无法挽回的错误#}
     <!--SCRIPT_PLACEHOLDER-->
-   
     <script type="text/javascript">
         require('../static/article-detail/article-detail')
     </script>

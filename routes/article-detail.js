@@ -1,5 +1,5 @@
 import Article from '../server/modules/mysql-models/article-model';
-
+import Moment from 'moment';
 //路由的配置项
 export var routeSettings = {
     default: {
@@ -16,7 +16,11 @@ export default function (req, res) {
         }
     })
         .then(articleRecord => {
-            console.log(articleRecord.title);
+            console.log(Object.prototype.toString.call(articleRecord.created_at),'===');
+            let date =Moment(articleRecord.created_at).format("YYYY-MM-DD");
+            var test =new Date();
+            console.log(test)
+            console.log(date)
             return {
                 articleRecord
             }
