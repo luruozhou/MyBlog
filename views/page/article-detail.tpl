@@ -56,7 +56,11 @@
         <div class="reply-user">
             <button>登录</button>
             <button>注册</button>
+            <textarea name="a">
+                这里写内容
+            </textarea>
         </div>
+        
     </div>
     <div class="back-top"></div>
     {#下边不要写任何代码(注释也不要删)，否则会发生无法挽回的错误#}

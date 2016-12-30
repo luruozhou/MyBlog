@@ -1,11 +1,9 @@
 <div class="cover">
 	<div class="login">
 		<form>
-			<label>用户名：</label>
-				<input type="text" name="name" id="">
-			<label>密码：</label>
-				<input type="text" name="pwd" id="">
-				<input type="submit" name="" value="登陆">
+			<input type="text" name="name" placeholder="用户名" id="">
+			<input type="text" name="pwd" placeholder="密码" id="">
+			<input type="submit" name="" value="登陆">
 						
 		</form>
 	</div>
