@@ -2,8 +2,9 @@ import BlueBird from "bluebird";
 import {userProvider} from "../modules/core/userProvider";
 
 export var routeSettings = {
-    login:{
-        method:"post"
+    login: {
+        method: "post",
+        notAuthentication:true
     }
 };
 
@@ -12,12 +13,22 @@ export var routeSettings = {
  */
 export function login(req, res) {
     return userProvider
-        .authenticate(req, res)
-        .then(data=>{
-            if(data&&data.userRecord){
+        .authenticate(req, res, true)
+        .then(data=> {
+            console.log(4)
+            if (data && data.userRecord) {
                 return 1;
-            }else{
-                return null;
+            } else {
+                return {
+                    msg: '暂无用户信息.'
+                };
+            }
+        })
+        .catch(err=> {
+            console.log("error:", err);
+            req.session['uid'] = null;
+            return {
+                msg: '无效的用户名或密码.'
             }
         })
 }

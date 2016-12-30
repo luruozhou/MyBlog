@@ -1,7 +1,7 @@
 import Path from "path";
 import IO from "./io.js";
-import Promise from "bluebird";
 import {userProvider} from "../modules/core/userProvider";
+import {permissionProvider} from "../modules/core/permissionProvider";
 
 exports.Router = function (app) {
     this.app = app; //express 实例
@@ -33,9 +33,20 @@ exports.Router = function (app) {
             urlPath += "/" + key;
         }
         app[method](urlPath, function (req, res) {
-            return userProvider
-                .authenticate(req, res)
+            let authPromise;
+            if (routeSetting.notAuthentication) {
+                authPromise = userProvider.get(req, res)
+            } else {
+                authPromise = userProvider.authenticate(req, res)
+            }
+            return authPromise
                 .then(user=> {
+                    // 权限判断
+                    let isVerify = permissionProvider.verifyRouter(user && user.permission, routeSetting.permission);
+                    if (!isVerify) {
+                        res.redirect('/');
+                        return;
+                    }
                     req.user = user;
                 })
                 .then(function () {
@@ -56,11 +67,11 @@ exports.Router = function (app) {
 }
 
 function getJson(data) {
-    if (!data) {
+    if (!data || data.msg) {
         return {
             code: 0,
             data: null,
-            msg: "error"
+            msg: data.msg || "error"
         }
     } else {
         return {

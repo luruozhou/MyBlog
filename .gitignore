@@ -6,3 +6,5 @@ logss/
 sessions/
 npm-debug.log
 dest/
+.vscode/
+

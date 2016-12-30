@@ -48,8 +48,7 @@ export var userProvider = {
         }
 
         var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-        userName = 'abc';
-        password = '12345678';
+
         var where = {};
         if (userName || uid) {
             if (userName) {
@@ -65,6 +64,7 @@ export var userProvider = {
                 .resolve(UserModel.find({where}))
                 .then(userRecord => {
                     if (!userRecord) {
+                        req.session['uid'] = null;
                         throw "UserNotExists";
                     }
 
@@ -76,6 +76,7 @@ export var userProvider = {
                                 return passwordUtil.verify(password, userRecord.password)
                             })
                             .then(() => {
+                                console.log(2, '===');
                                 return [userRecord, null];
                             });
                     } else {
@@ -105,6 +106,51 @@ export var userProvider = {
             })
         }
 
+    },
+    get: (req, res) => {
+        var uid = req.session['uid'];
+        var {
+            mobile,
+            password
+        } = req.body;
+        if (mobile && password) {
+            return userProvider
+                .authenticate(req, res)
+                .fail(() => {
+                    // 可能 req.session['uid'] 不为空
+                    // 导致虽然通过验证用户 mobile 和 password 失败
+                    // 但 uid 依旧有效
+                    // 所以我们认为只要 mobile 和 password 不正确
+                    // 那么就需要把 session 中的也清除掉
+                    uid = undefined;
+                    return getUser();
+                });
+        } else {
+            return getUser();
+        }
+
+        function getUser() {
+
+            return Promise
+                .resolve(uid && UserModel.find({where: {id: uid}}))
+                .then(userRecord => {
+                    if (userRecord) {
+                        return buildRequestUser(userRecord, undefined);
+                    } else {
+                        return {
+                            uid: undefined,
+                            userRecord: undefined,
+                            studentRecord: undefined,
+                            teacherRecord: undefined,
+                            sellerRecord: undefined,
+                            permission: Permission.none
+                        };
+                    }
+                })
+                .then(user => {
+                    return user;
+                });
+        }
     }
 
 };
@@ -116,6 +162,7 @@ export var passwordUtil = {
             .resolve(Bcrypt.compareSync(pwd, hashed))
             .then(result => {
                 if (!result) {
+                    console.log(3)
                     throw "PasswordMismatch";
                 }
             });
