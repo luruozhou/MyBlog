@@ -35,8 +35,9 @@
     <div class="article-time">
         {{ articleRecord.created_at.toString()}}
     </div>
-    <div class="article-main">
+    <div class="article-main" data-articleid="{{articleRecord.id}}">
         <!--{% autoescape false%}
+       
             {{ articleRecord.html_content }}
         {% endautoescape %}-->
         
@@ -44,27 +45,34 @@
     
     <div class="article-reply">
         <div class="reply-block">
-            <p>小可爱：</p>
-            <p>回复的内容</p>
-            <p>时间</p>
+            <div class="authorInfor">
+                <img src="http://www.ld12.com/upimg358/allimg/c150703/14359134Z05360-1G024.jpg" alt=""
+                 class="authorAvatar" />
+                <span class="authorName">小可爱</span>
+            </div>
+            <p class="authorContent">回复的内容</p>
+            <p class="replyer-block">
+                @somebody：被回复的内容被回复的内容
+            </p>
+            <p class="reply-bottom">
+                2017.1.1
+                <span class="to-authorContent">回复</span>
+            </p>
         </div>
         <div class="reply-block">
-            <p>小可爱：</p>
-            <p>回复的内容</p>
-            <p>时间</p>
+            <div class="authorInfor">
+                <img src="http://www.ld12.com/upimg358/allimg/c150703/14359134Z05360-1G024.jpg" alt=""
+                 class="authorAvatar" />
+                <span class="authorName">小可爱</span>
+            </div>
+            <p class="authorContent">回复的内容</p>
+            <!--<p class="replyer-block">被回复的内容</p>-->
+            <p class="reply-bottom">
+                2017.1.1
+                <span>回复</span>
+            </p>
         </div>
-        <div class="reply-user">
-            {%if isLogin%}
-                <img src="{{avatar}}" class="userImg">
-                <span class="userName">{{nickName}}</span>                
-            {%else%}
-                <button class="toLogin">登录</button>
-                <button>注册</button>
-            {%endif%}
-            <textarea name="a">
-                这里写内容
-            </textarea>
-        </div>
+        
         
     </div>
     <div class="back-top"></div>

@@ -33,9 +33,40 @@ $(function () {
     })
 
     $(".toLogin").click(function(){
-        $(".cover").animate({"":""},function(){
-            $(this).css({"display":"block"});
-        });
+        $(".cover").addClass("cover--active");
     })
-
+    var articleid=$(".article-main").attr("data-articleid");
+    console.log(articleid);
+    $.ajax({
+        url: '/management/queryArticleReplies',
+        type: 'post',
+        data: {
+            id : articleid
+        },
+        success: function (res) {
+            console.log(res);
+            // res.data[i].id;
+            // console.log(res);
+            // switch(res.code){
+            //     case 1:{
+            //         location.href = location.href;
+            //         break;
+            //     }
+            //     case 0:{
+            //         $(".error").text(res.msg);
+            //         break;
+            //     }
+            // }
+            // $("#J-submit").attr("disabled",false);
+            // $("#J-submit").attr("value","登陆");
+        },
+        error: function (err) {
+            console.log(err);
+            //  $("#J-submit").attr("disabled",false);
+            //  $("#J-submit").attr("value","登陆");
+        }
+    })
+    $(".to-authorContent").click(function(){
+        $(".authorContent").focus();
+    })
 })

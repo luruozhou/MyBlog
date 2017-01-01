@@ -14,6 +14,7 @@ $(function () {
                 password: $loginBox.find('[name=pwd]').val(),
             },
             success: function (res) {
+                // res.data[i].id;
                 console.log(res);
                 switch(res.code){
                     case 1:{
@@ -40,10 +41,10 @@ $(function () {
         var idName=event.target.id;
         console.log(idName);
         if(idName=="J-close"||idName=="login-box"){
-            $(".cover").css({"display":"none"})
+            $(".cover").removeClass("cover--active");
         }
         // .close
     })
-    console.log($("login"));
+    // console.log($("login"));
 
 })

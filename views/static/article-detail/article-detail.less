@@ -105,11 +105,11 @@ body .topbar{
         border-top: none;
         background-color:rgba(255,255,255,1);
         color: darken(@base-color,20%);
-        // &:nth-of-type(1){
-        //     border-top:1px solid  @border-color;
-        //     border-top-left-radius:8px;
-        //     border-top-right-radius:8px; 
-        // }
+        &:nth-of-type(1){
+            border-top:1px solid  @border-color;
+            // border-top-left-radius:8px;
+            // border-top-right-radius:8px; 
+        }
         // &:nth-last-of-type(1){
         //     border-bottom-left-radius:8px;
         //     border-bottom-right-radius:8px;  
@@ -117,6 +117,38 @@ body .topbar{
         p{
             display: block;
             margin: 0;
+        }
+        .authorInfor{
+            .authorAvatar{
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                display: inline-block;
+                border-radius: 50px;
+                box-shadow: 0px 0px 6px 1px #c1bfbf;
+                vertical-align: middle;
+            }
+            .authorName{
+
+            }
+        }
+        .authorContent{
+            padding: 1em 0;
+        }
+        .replyer-block{
+            background-color: rgba(100,100,100,0.1);
+            color: lighten(@base-color,20%);
+            padding:1em;
+        }
+        .reply-bottom{
+            position: relative;
+            color:lighten(@base-color,40%);
+            padding: 1em 0;
+            span{
+                position: absolute;
+                right: 2em;
+                cursor: pointer;
+            }
         }
     }
     .reply-user{
@@ -142,9 +174,20 @@ body .topbar{
                 border:none;
             }
         }
-        textarea {
-            width: 100%;
+        textarea{
+            width: 96%;
             display: block;
+            height: 76px;
+            resize: none;
+            padding: 1em;
+            margin: 1em 0em 1.5em 0em;
+            border:1px solid  lighten(@base-color,80%);
+            color:lighten(@base-color,20%);
+            &:focus{
+				outline: none;
+				border:1px solid  lighten(@base-color,60%);
+                box-shadow: 1px 1px 1px 1px lighten(@base-color,80%);
+			}
         }
         .userImg{
             width: 50px;
@@ -153,11 +196,22 @@ body .topbar{
             display: inline-block;
             border-radius: 50px;
             box-shadow: 0px 0px 6px 1px #c1bfbf;
+            vertical-align: middle;
         }
         .userName{
             height: 50px;
             line-height: 50px;
             display: inline-block;
+        }
+        .publish{
+            width: 32px;
+            right: 0px;
+            display: inline-block;
+            background-color: #FF9900;
+            padding: 0.5em 1.2em;
+            text-align: center;
+            color: #ffffff;
+            border-radius: 3px;
         }
     }
 }
