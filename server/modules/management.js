@@ -74,10 +74,14 @@ export function queryArticleReplies(artId) {
     return Promise.resolve(sequelize.query(`
             select artRep.*,
                    author.nick_name as authorName,
-                   replyer.nick_name as replyerName
+                   author.avatar as authorAvatar,
+                   replyer.nick_name as replyerName,
+                   son.content as subContent,
+                   son.in_time as subTime
             from article_reply as artRep
             left join users as author on artRep.author_id = author.id
             left join users as replyer on artRep.rid = replyer.id
+            left join article_reply as son on artRep.re_tid = son.id
             where artRep.art_id = ${artId}
             order by artRep.in_time asc
         `))
@@ -94,6 +98,7 @@ export function articleReply(Reply) {
         art_id: Reply.artId,
         author_id: Reply.authorId,
         rid: Reply.replyId,
+        re_tid: Reply.reTid,
         content: Reply.content,
         in_time: Reply.inTime,
     })

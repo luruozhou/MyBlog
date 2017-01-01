@@ -15,6 +15,10 @@ var Model = sequelize.define(
             type: Sequelize.INTEGER,
             allowNull: true,
         },
+        re_tid: {
+            type: Sequelize.INTEGER,
+            allowNull: true,
+        },
         content: {
             type: Sequelize.TEXT,
             allowNull: false
