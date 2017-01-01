@@ -32,12 +32,12 @@ var routeTpl = FS.readFileSync(__dirname + '/templates/route.js.tpl', 'utf-8');
 var pageTpl = FS.readFileSync(__dirname + '/templates/route.page.tpl', 'utf-8');
 var routePath = Path.join(__dirname, '..', 'routes', path) + '.js';
 
-createFile(routePath, routeTpl);
+
 var pageTplPath = Path.join(__dirname, '../views', 'page', path) + '.tpl';
 
 var pageTplData = {
     relDir: Array((path.match(/\//g) || []).length + 1).join('../'),
-    path: path+'/'+fileName
+    path: path + '/' + fileName
 };
 
 pageTpl = pageTpl.replace(/\$(relDir)\$/g, function (m, variable) {
@@ -46,7 +46,11 @@ pageTpl = pageTpl.replace(/\$(relDir)\$/g, function (m, variable) {
     return pageTplData[variable];
 });
 
+routeTpl = routeTpl.replace(/\$(relDir)\$/g, function (m, variable) {
+    return pageTplData[variable];
+})
 
+createFile(routePath, routeTpl);
 var staticJsPath = Path.join(__dirname, '../views', 'static', path, fileName) + '.js';
 var staticCssPath = Path.join(__dirname, '../views', 'static', path, fileName) + '.less';
 
