@@ -1,4 +1,5 @@
 // @import "../libs/css/_function.less";
+@base-color:#202020;
 .topbar{
     z-index:2;
     animation:showHeader 1s;
@@ -90,32 +91,35 @@
     } 
     .dropdown-content{
         display: none;
-        list-style: disc;
+        list-style: none;
         position: absolute;
         list-style-position: inside;
-        padding: 0.5em 1em 0 0;
+        padding: 0.5em 0 0 0;
         background-clip: content-box;
-        margin-left: 2em;
-        background-color: rgba(255, 255, 255, 0.6);
+        background-color: rgba(255, 255, 255, 0.98);
 
         &:nth-child(1){
             background-color:red;
         }
         &>li{
-            border-left: 1px solid;
             letter-spacing: 0em;
-            text-indent:-3px;
             height:1.8em;
             line-height:1.8em;
             padding-right: 1em;
+            box-shadow: 2px 0px 0px 0px  lighten(@base-color,80%);
             &:hover{
-                background-color: rgba(1, 1, 1, 0.2);
+                background-color: lighten(@base-color,50%);
                 &>a{
                     color:#ffffff;
                 }
             }
             &:nth-of-type(1){
                 padding-top:0.4em;
+            }
+             &:nth-last-of-type(1){
+                box-shadow: 2px 0px 0px 0px  lighten(@base-color,80%),
+                            2px 2px 0px 0px  lighten(@base-color,80%);
+               
             }
         }
         
