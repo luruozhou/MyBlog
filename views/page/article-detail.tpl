@@ -72,7 +72,17 @@
                 <span>回复</span>
             </p>
         </div>
-        
+        <div class="reply-user">
+            {%if isLogin%}
+                <img src="{{avatar}}" class="userImg">
+                <span class="userName">{{nickName}}</span>                
+            {%else%}
+                <button class="toLogin">登录</button>
+                <button>注册</button>
+            {%endif%}
+            <textarea class="authorContent">@somebody：</textarea>
+            <div class="publish">发布</div>
+        </div>
         
     </div>
     <div class="back-top"></div>
