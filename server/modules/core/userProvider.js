@@ -147,6 +147,12 @@ export var userProvider = {
                     return user;
                 });
         }
+    },
+    /**
+     * 清除用户登录状态
+     */
+    clearSessionState: (req)=> {
+        req.session['uid'] = null;
     }
 
 };
@@ -163,3 +169,4 @@ export var passwordUtil = {
             });
     }
 };
+

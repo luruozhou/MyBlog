@@ -5,7 +5,11 @@ export var routeSettings = {
     login: {
         method: "post",
         notAuthentication: true
-    }
+    },
+    logout: {
+        method: "post",
+        notAuthentication: true
+    },
 };
 
 /**
@@ -32,4 +36,13 @@ export function login(req, res) {
                 msg: '无效的用户名或密码.'
             }
         })
+}
+
+/**
+ * 用户登出接口
+ */
+export function logout(req, res) {
+    userProvider.clearSessionState(req);
+    res.clearCookie('sessionid');
+    return 1
 }
