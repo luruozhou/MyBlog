@@ -39,13 +39,9 @@
         <!--{% autoescape false%}
         {{ articleRecord.html_content }}
         {% endautoescape %}-->
-        <div class="toLogin">登录</div>
+        
     </div>
-    {%if isLogin%}
-        <img src="{{avatar}}">  <span>{{nickName}}</span>
-    {%else%}
-        <span>登录</span>
-    {%endif%}
+    
     <div class="article-reply">
         <div class="reply-block">
             <p>小可爱：</p>
@@ -58,8 +54,13 @@
             <p>时间</p>
         </div>
         <div class="reply-user">
-            <button>登录</button>
-            <button>注册</button>
+            {%if isLogin%}
+                <img src="{{avatar}}" class="userImg">
+                <span class="userName">{{nickName}}</span>
+            {%else%}
+                <button class="toLogin">登录</button>
+                <button>注册</button>
+            {%endif%}
             <textarea name="a">
                 这里写内容
             </textarea>
