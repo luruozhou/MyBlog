@@ -2,7 +2,7 @@ import Promise from "bluebird";
 import {default as sequelize} from './core/sequelize';
 import  ArticleModel from "../modules/mysql-models/article-model";
 // import  SectionModel from "../modules/mysql-models/section-model";
-// import  ArticleReplyModel from "../modules/mysql-models/article-reply-model";
+import  ArticleReplyModel from "../modules/mysql-models/article-reply-model";
 /**
  *查询板块列表信息
  * @returns Promise<section[]>
@@ -83,5 +83,21 @@ export function queryArticleReplies(artId) {
         `))
         .then(function (records) {
             return records[0];
+        })
+}
+
+/**
+ * 文章添加评论
+ */
+export function articleReply(Reply) {
+    return ArticleReplyModel.create({
+        art_id: Reply.artId,
+        author_id: Reply.authorId,
+        rid: Reply.replyId,
+        content: Reply.content,
+        in_time: Reply.inTime,
+    })
+        .then(function (data) {
+            return data;
         })
 }

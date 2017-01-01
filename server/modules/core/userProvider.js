@@ -40,7 +40,6 @@ export var userProvider = {
             userName,
             password
         }= req.body;
-        console.log(Bcrypt.hashSync('123456'),'====')
         var args = Lodash.clone(req.body);
         if (args.password) {
             args.password = args.password.slice(0, 2) + '******' + args.password.slice(-2);

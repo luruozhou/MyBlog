@@ -1,10 +1,14 @@
 import * as Management from "../modules/management"
+import Moment from 'moment';
 
 export var routeSettings = {
     addArticle: {
         method: "post"
     },
     queryArticleReplies: {
+        method: "post"
+    },
+    articleReply: {
         method: "post"
     },
 };
@@ -23,4 +27,15 @@ export function addArticle(req, res) {
 export function queryArticleReplies(req, res) {
     var args = req.body;
     return Management.queryArticleReplies(args.id);
+}
+
+/**
+ * 查询文章评论接口
+ */
+export function articleReply(req, res) {
+    var Reply = req.body;
+
+    Reply.inTime = Moment(+new Date());
+    console.log(Reply.inTime.format('YYYY-MM-DD HH:mm:ss'),'===')
+    return Management.articleReply(Reply);
 }

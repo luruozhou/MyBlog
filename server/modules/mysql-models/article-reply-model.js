@@ -7,11 +7,11 @@ var Model = sequelize.define(
             type: Sequelize.INTEGER,
             allowNull: false,
         },
-        rid: {
+        author_id: {
             type: Sequelize.INTEGER,
             allowNull: true,
         },
-        author_id: {
+        rid: {
             type: Sequelize.INTEGER,
             allowNull: true,
         },
