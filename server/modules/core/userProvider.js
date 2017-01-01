@@ -10,7 +10,6 @@ function buildRequestUser(userRecord, basePermission) {
     var userPermission;
 
     userRecord.last_login = new Date();
-
     return Promise
         .resolve(userRecord.save())
         .then(() => {
@@ -36,12 +35,12 @@ function buildRequestUser(userRecord, basePermission) {
  */
 export var userProvider = {
     authenticate: (req, res) => {
-        var now = Date.now();
         var uid = req.session['uid'];
         var {
             userName,
             password
         }= req.body;
+        console.log(Bcrypt.hashSync('123456'),'====')
         var args = Lodash.clone(req.body);
         if (args.password) {
             args.password = args.password.slice(0, 2) + '******' + args.password.slice(-2);
@@ -75,7 +74,6 @@ export var userProvider = {
                                 return passwordUtil.verify(password, userRecord.password)
                             })
                             .then(() => {
-                                console.log(2, '===');
                                 return [userRecord, null];
                             });
                     } else {
@@ -161,7 +159,6 @@ export var passwordUtil = {
             .resolve(Bcrypt.compareSync(pwd, hashed))
             .then(result => {
                 if (!result) {
-                    console.log(3)
                     throw "PasswordMismatch";
                 }
             });

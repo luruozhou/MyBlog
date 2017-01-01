@@ -19,5 +19,4 @@ $(function () {
             }
         })
     })
-    console.log($("login"));
 })
