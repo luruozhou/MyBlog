@@ -3,8 +3,9 @@ window.jQuery = window.$ = require('../../../static/libs/js/jquery');
 $(function () {
     var $loginBox = $("#login-box");
     $("#J-submit").click(function (e) {
-        $("#J-submit").attr("disabled",false);
-        // $("#J-submit").attr("disabled","disabled");
+        $("#J-submit").attr("disabled",true);
+        $("#J-submit").attr("value","登陆中...");
+        console.log($("#J-submit").text());
         $.ajax({
             url: '/user/login',
             type: 'post',
@@ -24,11 +25,13 @@ $(function () {
                         break;
                     }
                 }
-                $("#J-submit").attr("disabled",true);
+                $("#J-submit").attr("disabled",false);
+                $("#J-submit").attr("value","登陆");
             },
             error: function (err) {
                 console.log(err);
-                 $("#J-submit").attr("disabled",true);
+                 $("#J-submit").attr("disabled",false);
+                 $("#J-submit").attr("value","登陆");
             }
         })
     })

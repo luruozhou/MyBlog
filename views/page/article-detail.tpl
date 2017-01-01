@@ -37,7 +37,7 @@
     </div>
     <div class="article-main">
         <!--{% autoescape false%}
-        {{ articleRecord.html_content }}
+            {{ articleRecord.html_content }}
         {% endautoescape %}-->
         
     </div>
@@ -56,7 +56,7 @@
         <div class="reply-user">
             {%if isLogin%}
                 <img src="{{avatar}}" class="userImg">
-                <span class="userName">{{nickName}}</span>
+                <span class="userName">{{nickName}}</span>                
             {%else%}
                 <button class="toLogin">登录</button>
                 <button>注册</button>
