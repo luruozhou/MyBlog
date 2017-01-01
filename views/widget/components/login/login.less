@@ -30,7 +30,7 @@ body{
 		width:240px;
 		height:380px;
 		margin: auto;  
-		background-image: url(logo.png);
+		background-image: url(img/logo.png);
 		background-repeat: no-repeat;
 		background-position: center 50px ;
 		padding: 0 30px;
@@ -77,5 +77,33 @@ body{
 				background-color: #F63F3A;
 			}
 		
+	}
+	.close{
+		width: 15px;
+		height: 15px;
+		background-image: url(img/close.png);
+		background-repeat: no-repeat;
+		background-size: 100%;
+		position: absolute;
+		right: 20px;
+		top: 20px;
+		transition: 0.4s;
+		-moz-transition:  0.4s;	/* Firefox 4 */
+		-webkit-transition:  0.4s;	/* Safari 和 Chrome */
+		-o-transition:  0.4s;
+		&:hover{
+			transform: scale(1.5,1.5);
+			-ms-transform: scale(1.5,1.5);	/* IE 9 */
+			-webkit-transform: scale(1.5,1.5);	/* Safari 和 Chrome */
+			-o-transform: scale(1.5,1.5);	/* Opera */
+			-moz-transform: scale(1.5,1.5);
+			cursor: pointer;
+			
+		}
+	}
+	.error{
+		padding: 0 0 0.5em 2em;
+		font-size: 0.8em;
+		color: #FE5B56;
 	}
 }

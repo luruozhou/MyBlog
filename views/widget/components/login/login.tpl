@@ -1,9 +1,12 @@
 <div class="cover" id="login-box">
-	<div class="login">
+	<div class="login" id="J-login">
 	
 			<input type="text" name="userName" placeholder="用户名" id="">
 			<input type="password" name="pwd" placeholder="密码" id="">
-			<input type="submit" name="" value="登陆" id="J-submit">
+			<div class="error"></div>
+			<input type="submit" name="" value="登陆" id="J-submit" >
+
+			<div class="close" id="J-close"></div>
 	</div>
 </div>
 

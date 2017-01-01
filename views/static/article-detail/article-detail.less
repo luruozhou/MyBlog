@@ -6,14 +6,14 @@ body{
    background-image: url(img/article_detail_bg.png);
    color:@base-color;
    font-family: "Microsoft Yahei";
-   height: 2000px;
+//    height: 2000px;
    position: static;
 }
 
 //重写头部
 body .topbar{
     margin-bottom: 20px;
-    background-color: rgba(2, 2, 2,0.1);
+    background-color: rgba(255,255,255,0.95);
     color: #000000;
     position: fixed;
     top:0;
@@ -145,6 +145,19 @@ body .topbar{
         textarea {
             width: 100%;
             display: block;
+        }
+        .userImg{
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            display: inline-block;
+            border-radius: 50px;
+            box-shadow: 0px 0px 6px 1px #c1bfbf;
+        }
+        .userName{
+            height: 50px;
+            line-height: 50px;
+            display: inline-block;
         }
     }
 }
