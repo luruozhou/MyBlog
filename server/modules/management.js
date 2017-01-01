@@ -72,12 +72,18 @@ export function queryHotArticles(num) {
  */
 export function queryArticleReplies(artId) {
     return Promise.resolve(sequelize.query(`
-            select artRep.*,
+            select artRep.id,
+                   artRep.art_id as artId,
+                   artRep.rid as replyerId,
+                   artRep.content as authorContent,
+                   artRep.author_id as authorId,
+                   artRep.in_time as inTime,
+                   artRep.re_tid as replyId,
                    author.nick_name as authorName,
                    author.avatar as authorAvatar,
                    replyer.nick_name as replyerName,
-                   son.content as subContent,
-                   son.in_time as subTime
+                   son.content as replyContent,
+                   son.in_time as replyTime
             from article_reply as artRep
             left join users as author on artRep.author_id = author.id
             left join users as replyer on artRep.rid = replyer.id
@@ -97,9 +103,9 @@ export function articleReply(Reply) {
     return ArticleReplyModel.create({
         art_id: Reply.artId,
         author_id: Reply.authorId,
-        rid: Reply.replyId,
-        re_tid: Reply.reTid,
-        content: Reply.content,
+        rid: Reply.replyerId,
+        re_tid: Reply.replyId,
+        content: Reply.authorContent,
         in_time: Reply.inTime,
     })
         .then(function (data) {

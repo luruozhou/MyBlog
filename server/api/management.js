@@ -36,6 +36,5 @@ export function articleReply(req, res) {
     var Reply = req.body;
 
     Reply.inTime = Moment(+new Date());
-    console.log(Reply.inTime.format('YYYY-MM-DD HH:mm:ss'),'===')
     return Management.articleReply(Reply);
 }
