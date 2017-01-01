@@ -1,7 +1,8 @@
 import Promise from "bluebird";
 import {default as sequelize} from './core/sequelize';
 import  ArticleModel from "../modules/mysql-models/article-model";
-import  SectionModel from "../modules/mysql-models/section-model";
+// import  SectionModel from "../modules/mysql-models/section-model";
+// import  ArticleReplyModel from "../modules/mysql-models/article-reply-model";
 /**
  *查询板块列表信息
  * @returns Promise<section[]>
@@ -60,6 +61,25 @@ export function queryHotArticles(num) {
             left join sections as sub_s on sub_s.id = art.sub_sid
             where art.hot = 1
             limit ${num}
+        `))
+        .then(function (records) {
+            return records[0];
+        })
+}
+
+/**
+ * 查询文章所有评论
+ */
+export function queryArticleReplies(artId) {
+    return Promise.resolve(sequelize.query(`
+            select artRep.*,
+                   author.nick_name as authorName,
+                   replyer.nick_name as replyerName
+            from article_reply as artRep
+            left join users as author on artRep.author_id = author.id
+            left join users as replyer on artRep.rid = replyer.id
+            where artRep.art_id = ${artId}
+            order by artRep.in_time asc
         `))
         .then(function (records) {
             return records[0];

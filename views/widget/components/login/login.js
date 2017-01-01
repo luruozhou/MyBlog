@@ -32,6 +32,7 @@ $(function () {
             }
         })
     })
+
     $(".cover").click(function(event){
         var idName=event.target.id;
         console.log(idName);
@@ -41,4 +42,5 @@ $(function () {
         // .close
     })
     console.log($("login"));
+
 })

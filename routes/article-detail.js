@@ -10,10 +10,10 @@ export var routeSettings = {
 
 export default function (req, res) {
     let articleId = req.params[0];
-    console.log(req.user.userRecord, '我是用户信息');
     let userInfo = req.user.userRecord||{};
     let nickName = userInfo.nick_name;
     let avatar = userInfo.avatar;
+
     return Article.find({
         where: {
             id: articleId
