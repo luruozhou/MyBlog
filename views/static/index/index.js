@@ -142,9 +142,13 @@ $(function () {
 				$(articles[i]).css({"z-index":i});
 				$(articles[i]).css({"-webkit-transform":"rotate("+(center-i)*3+"deg) translate("+10*(center-i)+"px,0px)" });
 				if(i==center){
-					$(articlesInfor[i]).animate({"opacity":"1"});
+					$(articlesInfor[i]).animate({"opacity":"1"},function () {
+						$(this).css({display:'block'})
+					});
 				}else{
-					$(articlesInfor[i]).animate({"opacity":"0"});
+					$(articlesInfor[i]).animate({"opacity":"0"},function () {
+						$(this).css({display:'none'})
+					});
 				}
 				
 			}else{
