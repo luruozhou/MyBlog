@@ -5,7 +5,7 @@ $(function () {
     var height = document.documentElement.clientHeight;
 
     var isLogin = getPageData('isLogin');
-
+    var uid = getPageData('uid');
     console.log(isLogin, '===');
 
 
@@ -102,7 +102,42 @@ $(function () {
             //  $("#J-submit").attr("value","登陆");
         }
     })
+    $(".publish").click(function () {
+        var authorContent = $(this).parents(".reply-user").find(".authorContent").val();
+        var artId = $(".article-main").attr("data-articleid");
+        if (authorContent != "" && authorContent.length <= 500) {
+            $.ajax({
+                url: '/management/articleReply',
+                type: 'post',
+                data: {
+                    artId: artId,
+                    authorId: uid,
+                    replyId: null,
+                    authorContent: authorContent,
+                    replyerId: null
+                },
+                success:function(res){
+                    if(res.code==1){
+                        console.log("发布成功");
+                        var thisTpl = replyTpl.replace(/\{\{(\w+?)\}\}/g, function (a, varible, f) {
+                            return res.data[varible];
+                        });
+                        var $thisTpl = $(thisTpl);
+                        $thisTpl.find('.replyer-block').remove();
+                        $('.reply-list').append($thisTpl);
+                    }
+                    else{
+                        console.log(res.msg);
+                    }
+                    
+                },
+                error:function(e){
+                    console.log(e);
+                }
+            })
+        }
 
+    })
     $(".reply-list").on('click', '.to-authorContent', function (event) {
 
         if (isLogin) {
