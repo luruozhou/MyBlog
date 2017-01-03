@@ -67,6 +67,10 @@ exports.Router = function (app) {
 
                     res.render(tplPath, returnData);
                 })
+                .catch(error=>{
+                    res.send(`Error: ${error}`);
+                    throw error;
+                })
         })
     }
 }

@@ -62,6 +62,9 @@ exports.Router = function (app) {
                 .then(function (data) {
                     res.send(data);
                 })
+                .catch(error=>{
+                    res.send(getJson({msg:error}));
+                })
         })
     }
 }

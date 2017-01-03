@@ -1,15 +1,19 @@
 import * as Management from "../modules/management"
 import Moment from 'moment';
+import {Permission} from '../../server/modules/core/permissionProvider';
 
 export var routeSettings = {
     addArticle: {
-        method: "post"
+        method: "post",
+        permission:Permission.user
     },
     queryArticleReplies: {
-        method: "post"
+        method: "post",
     },
     articleReply: {
-        method: "post"
+        method: "post",
+        permission:Permission.user
+
     },
 };
 
