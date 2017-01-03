@@ -10,10 +10,9 @@ export var routeSettings = {
 
 export default function (req, res) {
     let articleId = req.params[0];
-    let userInfo = req.user.userRecord||{};
+    let userInfo = req.user.userRecord || {};
     let nickName = userInfo.nick_name;
     let avatar = userInfo.avatar;
-
     return Article.find({
         where: {
             id: articleId
@@ -21,14 +20,16 @@ export default function (req, res) {
     })
         .then(articleRecord => {
             let date = Moment(articleRecord.created_at).format("YYYY-MM-DD");
-            var test = new Date();
-            console.log(test)
             console.log(date)
             return {
                 articleRecord,
                 nickName,
                 avatar,
-                isLogin:!!req.user.userRecord
+                isLogin: !!req.user.userRecord,
+                jsData: {
+                    isLogin: !!req.user.userRecord,
+                    uid:userInfo.id
+                }
             }
         })
 }

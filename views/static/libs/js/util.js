@@ -1,15 +1,17 @@
-
 var data = null;
 function init() {
-    var $dataArea =$('script[data-id="data.extras"]');
-    if($dataArea.text()) data = JSON.parse($dataArea.text())
+    var $dataArea = $('script[data-id="data.jsData"]');
+    if ($dataArea.text()) data = JSON.parse($dataArea.text())
 }
 
-exports.getPageData = function  (id) {
-    if(!data){
+exports.getPageData = function (id) {
+    if (!data) {
         init();
     }
-   return data[id];
+    if (!id) {
+        return data;
+    }
+    return data[id];
 }
 //添加事件监听
 exports.EventUtil = {
