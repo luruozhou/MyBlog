@@ -28,6 +28,7 @@
     "mongoose": "^4.6.3",
     "multer": "^0.1.8",
     "mysql": "^2.11.1",
+    "qiniu": "^6.1.13",
     "request": "^2.75.0",
     "sequelize": "^3.24.5",
     "session-file-store": "^0.2.2",

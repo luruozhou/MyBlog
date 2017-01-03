@@ -1,4 +1,6 @@
-import * as Bluebird from "bluebird";
+import * as aa from "bluebird";
+var Bluebird =require('bluebird');
+
 Bluebird.map = (items, handler)=> {
     var mapped = [];
 

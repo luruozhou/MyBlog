@@ -36,11 +36,9 @@
         {{ articleRecord.created_at.toString()}}
     </div>
     <div class="article-main" data-articleid="{{articleRecord.id}}">
-        <!--{% autoescape false%}
-       
+        {% autoescape false%}
             {{ articleRecord.html_content }}
-        {% endautoescape %}-->
-        
+        {% endautoescape %}
     </div>
     
     <div class="article-reply">
@@ -51,7 +49,7 @@
             {%if isLogin%}
             <img src="{{avatar}}" class="userImg">
             <span class="userName">{{nickName}}</span>
-            <textarea class="authorContent">@somebody：</textarea>
+            <textarea class="authorContent"></textarea>
             <div class="publish">发布</div>
             {%else%}
             <button class="toLogin">登录</button>

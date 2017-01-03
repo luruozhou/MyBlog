@@ -1,11 +1,11 @@
 window.jQuery = window.$ = require('../libs/js/jquery');
-var getPageData= require('../libs/js/util').getPageData;
+var getPageData = require('../libs/js/util').getPageData;
 $(function () {
     //获取页面可用高度
     var height = document.documentElement.clientHeight;
 
     var isLogin = getPageData('isLogin');
-    console.log(isLogin,'===');
+    console.log(isLogin, '===');
 
     // 获取body
     var body = document.querySelector("body");
@@ -61,7 +61,11 @@ $(function () {
     })
 
     $(".toLogin").click(function () {
-        $(".cover").addClass("cover--active");
+        $(".cover").show();
+
+        setTimeout(function () {
+            $(".cover").addClass("cover--active");
+        })
     })
     var articleid = $(".article-main").attr("data-articleid");
     console.log(articleid);
@@ -89,28 +93,10 @@ $(function () {
                         return item[varible];
                     });
                     var $thisTpl = $(thisTpl);
-                    // if( !item.replyId ){
-                    //     $thisTpl.remove('.replyer-block');
-                    // }
                     !item.replyId && $thisTpl.find('.replyer-block').remove();
                     $('.reply-list').append($thisTpl);
                 })
-                // $('.reply-list').html(replyHtml);
             }
-            // res.data[i].id;
-            // console.log(res);
-            // switch(res.code){
-            //     case 1:{
-            //         location.href = location.href;
-            //         break;
-            //     }
-            //     case 0:{
-            //         $(".error").text(res.msg);
-            //         break;
-            //     }
-            // }
-            // $("#J-submit").attr("disabled",false);
-            // $("#J-submit").attr("value","登陆");
         },
         error: function (err) {
             console.log(err);
@@ -121,7 +107,7 @@ $(function () {
 
     $(".reply-list").on('click', '.to-authorContent', function () {
 
-        if(isLogin){
+        if (isLogin) {
             alert(111)
         }
     })

@@ -8,7 +8,6 @@ export var routeSettings = {
     },
     logout: {
         method: "post",
-        notAuthentication: true
     },
 };
 
