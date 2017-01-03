@@ -3,6 +3,7 @@ import IO from "./io.js";
 import * as Management from "../modules/management";
 import {userProvider} from "../modules/core/userProvider";
 import {permissionProvider} from "../modules/core/permissionProvider";
+import RouterError from '../modules/route-error';
 
 exports.Router = function (app) {
     this.app = app; //express 实例
@@ -66,6 +67,13 @@ exports.Router = function (app) {
                 .then(function (returnData) {
 
                     res.render(tplPath, returnData);
+                })
+                .catch(reason => {
+                    if (RouterError.errorHandler) {
+                        RouterError.errorHandler(reason, routeSetting, req, res);
+                    } else {
+                        throw reason;
+                    }
                 })
                 .catch(error=>{
                     res.send(`Error: ${error}`);
