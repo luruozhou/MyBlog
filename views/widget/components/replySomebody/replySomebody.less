@@ -1,18 +1,4 @@
 @base-color:#0f0f0f;
-.reply-cover--active{
-  display: block;
-  .reply-user{
-    animation:dialog-anim-show 0.6s;
-    opacity: 1;
-    //opacity: 1;
-    //transform: translate(0px, 0%);
-    //-ms-transform: translate(0px, 0%);
-    //-webkit-transform: translate(0px, 0%);
-    //-o-transform: translate(0px, 0%);
-    //-moz-transform: translate(0px, 0%);
-  }
-
-}
 .reply-cover{
 	position:fixed;
 	width:100%;
@@ -23,10 +9,25 @@
     display: none;
 	//初始值隐藏到上方
 	// transform: translate(0px,-100%);
+    &.reply-cover--active{
+      display: block;
+      .reply-user{
+        animation:dialog-anim-show 0.6s;
+        opacity: 1;
+        //opacity: 1;
+        //transform: translate(0px, 0%);
+        //-ms-transform: translate(0px, 0%);
+        //-webkit-transform: translate(0px, 0%);
+        //-o-transform: translate(0px, 0%);
+        //-moz-transform: translate(0px, 0%);
+      }
+
+    }
     .replyer-name{
         color: lighten(@base-color,40%)
     }
     .reply-user{
+        opacity: 0;
         font-size: 0.9em;
         width: 41%;
         padding: 1em 3em;
@@ -108,7 +109,7 @@
         border-radius: 3px;
         cursor: pointer;
     }
-    
+
 }
     .close {
         width: 15px;

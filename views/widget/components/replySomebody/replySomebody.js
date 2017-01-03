@@ -6,8 +6,6 @@ $(function () {
         console.log(className=="reply-cover reply-cover--active");
         if(className=="reply-cover reply-cover--active"||className=="close"){
             $(".reply-cover").removeClass("reply-cover--active");
-            $(".reply-cover").hide();
-            
         }
         // .close
     })

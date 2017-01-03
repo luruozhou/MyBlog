@@ -87,7 +87,7 @@ $(function () {
             if (res.code == 1) {
                 var replies = res.data;
                 $.each(replies, function (i, item) {
-                    var thisTpl = replyTpl.replace(/\{\{(\w+?)\}\}/g, function (a, varible, f) {
+                    var thisTpl = replyTpl.replace(/\{\{(\w+?)\}\}/g, function (a, varible) {
                         return item[varible];
                     });
                     var $thisTpl = $(thisTpl);
@@ -106,16 +106,12 @@ $(function () {
     $(".reply-list").on('click', '.to-authorContent', function (event) {
 
         if (isLogin) {
-            var replyer=$(this).parents(".reply-block").find(".authorName").text();
-            $(".reply-cover").show();
-            
-            setTimeout(function () {
-                $(".reply-cover").addClass("reply-cover--active");
-            },0)
+            var replyer = $(this).parents(".reply-block").find(".authorName").text();
+            $(".reply-cover").addClass("reply-cover--active");
             $(".reply-cover .replyer-name span").text(replyer);
             $(".reply-cover .authorContent").val("");
         }
-            
+
     })
-    
+
 })
