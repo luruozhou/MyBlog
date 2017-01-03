@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="./header.less">
 <div class="top-bar">
     <div class="title">嫌疑人X的后台</div>
     <div class="user">
@@ -11,4 +12,3 @@
 <script>
     require ('./header')
 </script>
-<link rel="stylesheet" href="./header.less">
