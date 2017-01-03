@@ -34,6 +34,7 @@ $(function () {
 
     $(".toLogin").click(function(){
         $(".cover").addClass("cover--active");
+        $(".login").addClass("login--active");
     })
     var articleid=$(".article-main").attr("data-articleid");
     console.log(articleid);

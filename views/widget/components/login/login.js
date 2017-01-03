@@ -42,6 +42,7 @@ $(function () {
         console.log(idName);
         if(idName=="J-close"||idName=="login-box"){
             $(".cover").removeClass("cover--active");
+            $(".login--out").addClass(".login--out")
         }
         // .close
     })
