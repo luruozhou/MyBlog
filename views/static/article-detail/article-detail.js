@@ -62,10 +62,9 @@ $(function () {
 
     $(".toLogin").click(function () {
         $(".cover").show();
-
         setTimeout(function () {
             $(".cover").addClass("cover--active");
-        })
+        },0)
     })
     var articleid = $(".article-main").attr("data-articleid");
     console.log(articleid);
