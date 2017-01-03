@@ -94,6 +94,11 @@
             "entry": "views/static/test/add/cdd/cdd",
             "template": "views/page/test/add/cdd.tpl",
             "type": "page"
+        },
+        {
+            "entry": "views/widget/components/replySomebody/replySomebody",
+            "template": "views/widget/components/replySomebody/replySomebody.tpl",
+            "type": "widget"
         }
     ]
 }

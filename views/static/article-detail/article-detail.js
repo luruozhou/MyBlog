@@ -5,7 +5,9 @@ $(function () {
     var height = document.documentElement.clientHeight;
 
     var isLogin = getPageData('isLogin');
+
     console.log(isLogin, '===');
+
 
     // 获取body
     var body = document.querySelector("body");
@@ -65,9 +67,10 @@ $(function () {
         setTimeout(function () {
             $(".cover").addClass("cover--active");
         },0)
+
     })
     var articleid = $(".article-main").attr("data-articleid");
-    console.log(articleid);
+    // console.log(articleid);
     var replyTpl = ' <div class="reply-block" data-authorId="{{authorId}}" data-id="{{id}}">' +
         '<div class="authorInfor">' +
         '<img src="{{authorAvatar}}" alt="" class="authorAvatar" />' +
@@ -84,7 +87,7 @@ $(function () {
             id: articleid
         },
         success: function (res) {
-            console.log(res);
+            // console.log(res);
             if (res.code == 1) {
                 var replies = res.data;
                 $.each(replies, function (i, item) {
@@ -104,10 +107,19 @@ $(function () {
         }
     })
 
-    $(".reply-list").on('click', '.to-authorContent', function () {
+    $(".reply-list").on('click', '.to-authorContent', function (event) {
 
         if (isLogin) {
-            alert(111)
+            var replyer=$(this).parents(".reply-block").find(".authorName").text();
+            $(".reply-cover").show();
+            
+            setTimeout(function () {
+                $(".reply-cover").addClass("reply-cover--active");
+            },0)
+            $(".reply-cover .replyer-name span").text(replyer);
+            $(".reply-cover .authorContent").val("");
         }
+            
     })
+    
 })

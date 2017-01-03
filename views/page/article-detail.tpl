@@ -23,7 +23,7 @@
 <body>
     {% include "../widget/layout/header/header.tpl"%}
     {% include "../widget/components/login/login.tpl"%}
-
+    {% include "../widget/components/replySomebody/replySomebody.tpl"%}
     <div class="article-type">
         <a href="#">技术</a>
         <a href="#">nodeJS</a>
