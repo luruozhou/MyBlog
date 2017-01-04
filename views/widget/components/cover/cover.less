@@ -1,0 +1,124 @@
+//    transform: translate(0px, -50%);
+    // -ms-transform: translate(0px, -50%);
+    // -webkit-transform: translate(0px, -50%);
+    // -o-transform: translate(0px, -50%);
+    // -moz-transform: translate(0px, -50%);
+.transform(@val){
+    transform: @val;
+    -ms-transform: @val;
+    -webkit-transform: @val;
+    -o-transform: @val;
+    -moz-transform: @val;
+}
+.keyframes(@name){
+    @-webkit-keyframes @name {
+        .keyFramesContent();
+    }
+    @-moz-keyframes @name {
+        .keyFramesContent(); 
+    }
+    @-o-keyframes @name {
+        .keyFramesContent();
+    }
+    @-ms-keyframes @name {
+        .keyFramesContent();
+    }
+    @keyframes @name {
+        .keyFramesContent();
+    }
+}
+.animation(@name,@time){
+    animation:@name @time;
+    -moz-animation:@name @time;
+    -webkit-animation:@name @time;
+    -o-animation:@name @time;
+}
+// cover部分公共样式
+.cover{
+    width: 100%;
+    position: fixed;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 20;
+    top: 0;
+    display: none;
+    .coverContent{
+        font-family: " Microsoft YaHei";
+        // color: @base-color;
+        width: 240px;
+        height: 310px;
+        margin: auto;
+        // background-image: url(img/logo.png);
+        background-repeat: no-repeat;
+        background-position: center 50px;
+        padding: 0 30px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px -5px rgba(0, 0, 0, .8);
+        position: absolute;
+        top: 0;
+        left: 0; 
+        bottom: 0;
+        right: 0;
+        // 关闭按钮样式
+        .close {
+            width: 15px;
+            height: 15px;
+            background-image: url(img/close.png);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            transition: 0.4s;
+            -moz-transition: 0.4s; /* Firefox 4 */
+            -webkit-transition: 0.4s; /* Safari 和 Chrome */
+            -o-transition: 0.4s;
+            &:hover {
+            transform: scale(1.5, 1.5);
+            -ms-transform: scale(1.5, 1.5); /* IE 9 */
+            -webkit-transform: scale(1.5, 1.5); /* Safari 和 Chrome */
+            -o-transform: scale(1.5, 1.5); /* Opera */
+            -moz-transform: scale(1.5, 1.5);
+            cursor: pointer;
+
+            }
+        }
+    }
+    .coverContent--active{
+        //写动画效果
+        .keyFramesContent(){
+            from {
+                .transform(translate(0px, -10%));
+                opacity: 0;
+            }
+            to{
+                .transform(translate(0px, 0%));
+                opacity: 1;
+            }
+        }
+        //生成动画
+        .keyframes(coverContentShow); 
+        //引用动画
+        .animation(coverContentShow,1s);
+    }
+    .coverContent--close{
+        //写动画效果
+        .keyFramesContent(){
+            from {
+                .transform(translate(0px, 0%));
+                opacity: 1;
+            }
+            to{
+                
+                .transform(translate(0px, -10%));
+                opacity: 0;
+            }
+        }
+        //生成动画
+        .keyframes(coverContentClose); 
+        //引用动画
+        .animation(coverContentClose,1s);
+    }
+    
+}

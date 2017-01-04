@@ -21,9 +21,11 @@
 </head>
 
 <body>
+    {% include "../widget/components/register/register.tpl"%}
     {% include "../widget/layout/header/header.tpl"%}
     {% include "../widget/components/login/login.tpl"%}
     {% include "../widget/components/replySomebody/replySomebody.tpl"%}
+    
     <div class="article-type">
         <a href="#">技术</a>
         <a href="#">nodeJS</a>
@@ -36,9 +38,9 @@
         {{ articleRecord.created_at.toString()}}
     </div>
     <div class="article-main" data-articleid="{{articleRecord.id}}">
-        {% autoescape false%}
+        <!--{% autoescape false%}
             {{ articleRecord.html_content }}
-        {% endautoescape %}
+        {% endautoescape %}-->
     </div>
     
     <div class="article-reply">
@@ -52,8 +54,8 @@
             <textarea class="authorContent"></textarea>
             <div class="publish">发布</div>
             {%else%}
-            <button class="toLogin">登录</button>
-            <button>注册</button>
+            <button class="openCover" data-open="login">登录</button>
+            <button class="openCover" data-open="register">注册</button>
             {%endif%}
 
         </div>

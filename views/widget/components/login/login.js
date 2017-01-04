@@ -1,7 +1,7 @@
 window.jQuery = window.$ = require('../../../static/libs/js/jquery');
 
 $(function () {
-    var $loginBox = $("#login-box");
+    var $loginBox = $("[data-coverName=login]");
     $("#J-submit").click(function (e) {
         $("#J-submit").attr("disabled",true);
         $("#J-submit").attr("value","登陆中...");
@@ -35,14 +35,6 @@ $(function () {
                  $("#J-submit").attr("value","登陆");
             }
         })
-    })
-
-    $(".cover").click(function(event){
-        var idName=event.target.id;
-        console.log(idName);
-        if(idName=="J-close"||idName=="login-box"){
-            $(".cover").removeClass("cover--active");
-        }
     })
     // console.log($("login"));
 

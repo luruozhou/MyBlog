@@ -1,4 +1,5 @@
 window.jQuery = window.$ = require('../libs/js/jquery');
+window.cover = require('../../widget/components/cover/cover');
 var getPageData = require('../libs/js/util').getPageData;
 $(function () {
     //获取页面可用高度
@@ -61,10 +62,13 @@ $(function () {
     $(".back-top").click(function () {
         document.body.scrollTop = 0;
     })
-
-    $(".toLogin").click(function () {
-        $(".cover").addClass("cover--active");
+    //点击打开cover
+    $(".openCover").click(function(){
+        var open=$(this).attr("data-open");
+        cover.openCover(open);
+        console.log(open);
     })
+
     var articleid = $(".article-main").attr("data-articleid");
     // console.log(articleid);
     var replyTpl = ' <div class="reply-block" data-authorId="{{authorId}}" data-id="{{id}}">' +
@@ -74,7 +78,7 @@ $(function () {
         '</div>' +
         '<p class="authorContent">{{authorContent}}</p>' +
         '<p class="replyer-block">@{{replyerName}}：{{replyContent}}</p>' +
-        '<p class="reply-bottom">{{inTime}}<span class="to-authorContent">回复</span></p>' +
+        '<p class="reply-bottom">{{inTime}}<span  class="to-authorContent">回复</span></p>' +
         '</div>'
     $.ajax({
         url: '/management/queryArticleReplies',

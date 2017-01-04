@@ -99,6 +99,21 @@
             "entry": "views/widget/components/replySomebody/replySomebody",
             "template": "views/widget/components/replySomebody/replySomebody.tpl",
             "type": "widget"
+        },
+        {
+            "entry": "views/widget/components/cover/cover",
+            "template": "views/widget/components/cover/cover.tpl",
+            "type": "widget"
+        },
+        {
+            "entry": "views/widget/components/cover-test/cover-test",
+            "template": "views/widget/components/cover-test/cover-test.tpl",
+            "type": "widget"
+        },
+        {
+            "entry": "views/widget/components/register/register",
+            "template": "views/widget/components/register/register.tpl",
+            "type": "widget"
         }
     ]
 }
