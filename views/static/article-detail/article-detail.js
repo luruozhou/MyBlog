@@ -91,7 +91,7 @@ $(function () {
             if (res.code == 1) {
                 var replies = res.data;
                 $.each(replies, function (i, item) {
-                    var thisTpl = replyTpl.replace(/\{\{(\w+?)\}\}/g, function (a, varible, f) {
+                    var thisTpl = replyTpl.replace(/\{\{(\w+?)\}\}/g, function (a, varible) {
                         return item[varible];
                     });
                     var $thisTpl = $(thisTpl);
@@ -106,7 +106,7 @@ $(function () {
             //  $("#J-submit").attr("value","登陆");
         }
     })
-    $(".publish").click(function () {
+    $(".article-reply .publish").click(function () {
         var authorContent = $(this).parents(".reply-user").find(".authorContent").val();
         var artId = $(".article-main").attr("data-articleid");
         if (authorContent != "" && authorContent.length <= 500) {
@@ -122,9 +122,19 @@ $(function () {
                 },
                 success:function(res){
                     if(res.code==1){
+                        var data=res.data;
+                        var $arthorEle =$('.article-reply .reply-user');
+                        var item={
+                            id:data.id,
+                            authorId:uid,
+                            authorAvatar:$arthorEle.find('img').attr('src'),
+                            authorName:$arthorEle.find('.userName').html(),
+                            authorContent:authorContent,
+                            inTime:data.created_at
+                        }
                         console.log("发布成功");
-                        var thisTpl = replyTpl.replace(/\{\{(\w+?)\}\}/g, function (a, varible, f) {
-                            return res.data[varible];
+                        var thisTpl = replyTpl.replace(/\{\{(\w+?)\}\}/g, function (a, varible) {
+                            return item[varible];
                         });
                         var $thisTpl = $(thisTpl);
                         $thisTpl.find('.replyer-block').remove();
@@ -140,17 +150,17 @@ $(function () {
                 }
             })
         }
-
     })
     $(".reply-list").on('click', '.to-authorContent', function (event) {
-
+        var $parent=$(this).parents(".reply-block");
         if (isLogin) {
-            var replyer = $(this).parents(".reply-block").find(".authorName").text();
-            $(".reply-cover").show();
-
-            setTimeout(function () {
-                $(".reply-cover").addClass("reply-cover--active");
-            }, 0)
+            var replyer = $parent.find(".authorName").text();
+            $(".reply-cover").addClass("reply-cover--active");
+            $(".reply-cover").attr("data-authorId",uid);
+            $(".reply-cover").attr("data-replyerId",$parent.attr('data-authorId'));
+            $(".reply-cover").attr("data-replyId",$parent.attr('data-id'));
+            $(".reply-cover").attr("data-replyerName",$parent.find('.authorName').html());
+            $(".reply-cover").attr("data-replyContent",$parent.find('.authorContent').html());
             $(".reply-cover .replyer-name span").text(replyer);
             $(".reply-cover .authorContent").val("");
         }
