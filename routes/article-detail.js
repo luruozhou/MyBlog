@@ -19,8 +19,9 @@ export default function (req, res) {
         }
     })
         .then(articleRecord => {
-            let date = Moment(articleRecord.created_at).format("YYYY-MM-DD");
+            let date = Moment(articleRecord.created_at).format("YYYY-MM-DD HH:mm:SS");
             console.log(date)
+            articleRecord.date=date;
             return {
                 articleRecord,
                 nickName,

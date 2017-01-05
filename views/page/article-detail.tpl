@@ -35,7 +35,7 @@
         {{articleRecord.title}}
     </div>
     <div class="article-time">
-        {{ articleRecord.created_at.toString()}}
+        {{ articleRecord.date}}
     </div>
     <div class="article-main" data-articleid="{{articleRecord.id}}">
         <!--{% autoescape false%}

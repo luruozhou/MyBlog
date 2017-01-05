@@ -9,6 +9,7 @@ $(function () {
 
     var isLogin = getPageData('isLogin');
     var uid = getPageData('uid');
+    // var time=getPageData('time');
     // console.log(isLogin, '===');
 
 
