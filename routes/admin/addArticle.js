@@ -18,7 +18,7 @@ export default function (req, res) {
 
             return {
                 sections,
-                extras:{
+                jsData:{
                     sections
                 }
             }
