@@ -1,4 +1,5 @@
 var Sequelize = require('sequelize');
+import {Promise} from '../../libs/Promise';
 
 import {db as config, sequelizeConnectionPool} from '../../config';
 var mysqlConfig = config.mysql;
@@ -30,52 +31,35 @@ var sequelize = new Sequelize(mysqlConfig.name, mysqlConfig.user, mysqlConfig.pa
 
 export default sequelize;
 
-// export function ensureTransaction<T>(
-//     callback: (transaction: Sequelize.Transaction) => ThenFail.Thenable<T>|T,
-//     transaction: Sequelize.Transaction
-// ): ThenFail<T> {
-//     var stack: string;
-//     ///{debug log
-//         try {
-//             throw new Error;
-//         } catch(e){
-//             stack = ThenFail.Utils.filterStackString(e.stack).match(/at[^\r\n]+zm-www\/server\/(?:modules\/[^\/]+\.(?:ts|js)|api)[^\r\n]+|$/)[0];
-//         }
-//     ///}
-//     return ThenFail.then(() => {
-//         if (transaction) {
-//             ///{debug log
-//                 Debug.log(transaction, 'across transaction', stack);
-//             ///}
-//             return callback(transaction);
-//         } else {
-//             var result: ThenFail.Thenable<T>|T;
-//             return sequelize
-//                 .transaction(transaction => {
-//                     var debugTransaction:any = transaction;
-//                     ///{debug log
-//                         debugTransaction._commit = transaction.commit;
-//                         debugTransaction.commit = function() {
-//                             Debug.log(transaction, 'commit');
-//                             return debugTransaction._commit.apply(transaction, Array.prototype.slice.call(arguments));
-//                         };
-//
-//                         debugTransaction._rollback = transaction.rollback;
-//                         debugTransaction.rollback = function() {
-//                             Debug.error(transaction, 'rollback');
-//                             return debugTransaction._rollback.apply(transaction, Array.prototype.slice.call(arguments));
-//                         };
-//
-//                         Debug.log(transaction, 'new transaction', stack);
-//                     ///}
-//
-//                     result = callback(transaction);
-//                     // 为什么要用 ThenFail.resolved? -- vilic
-//                     return ThenFail.resolved(result);
-//                 })
-//                 .then(() => result);
-//         }
-//     });
-// }
+export function ensureTransaction(
+    callback,
+    transaction
+){
+    return Promise.resolve().then(() => {
+        if (transaction) {
+            return callback(transaction);
+        } else {
+            var result;
+            return sequelize
+                .transaction(transaction => {
+                    var debugTransaction = transaction;
+                        debugTransaction._commit = transaction.commit;
+                        debugTransaction.commit = function() {
+                            return debugTransaction._commit.apply(transaction, Array.prototype.slice.call(arguments));
+                        };
+
+                        debugTransaction._rollback = transaction.rollback;
+                        debugTransaction.rollback = function() {
+                            return debugTransaction._rollback.apply(transaction, Array.prototype.slice.call(arguments));
+                        };
+
+                    result = callback(transaction);
+
+                    return Promise.resolve(result);
+                })
+                .then(() => result);
+        }
+    });
+}
 
 require('../mysql-models/model-relations');
