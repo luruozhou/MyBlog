@@ -20,8 +20,9 @@ $(function () {
         // .close
     })
 
-    $(".reply-cover .publish").click(function () {
-        var $parent=$(this).parents(".reply-cover");
+    $("[data-coverName='replySomebody'] .publish").click(function () {
+        console.log("click  publish")
+        var $parent=$(this).parents(".cover");
         var authorContent = $parent.find(".authorContent").val();
         var artId = $(".article-main").attr("data-articleid");
         var authorId =$parent.attr('data-authorId');
@@ -60,7 +61,7 @@ $(function () {
                         });
                         var $thisTpl = $(thisTpl);
                         $('.reply-list').append($thisTpl);
-                        $(".reply-cover").removeClass("reply-cover--active");
+                        $parent.hide();
                     }
                     else{
                         console.log(res.msg);

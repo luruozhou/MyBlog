@@ -33,6 +33,11 @@
     -webkit-animation:@name @time;
     -o-animation:@name @time;
 }
+.animation-fill-mode(@val){
+    animation-fill-mode:@val;
+    -webkit-animation-fill-mode:@val; 
+    -o-animation-fill-mode: @val;
+}
 // cover部分公共样式
 .cover{
     width: 100%;
@@ -101,6 +106,7 @@
         .keyframes(coverContentShow); 
         //引用动画
         .animation(coverContentShow,1s);
+        .animation-fill-mode(forwards); 
     }
     .coverContent--close{
         //写动画效果

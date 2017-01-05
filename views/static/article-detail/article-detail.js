@@ -1,13 +1,15 @@
 window.jQuery = window.$ = require('../libs/js/jquery');
 window.cover = require('../../widget/components/cover/cover');
+window.sweetAlert=require('../../widget/sweetAlert/sweetalert.min')
 var getPageData = require('../libs/js/util').getPageData;
 $(function () {
+//    swal("请登录后回复");
     //获取页面可用高度
     var height = document.documentElement.clientHeight;
 
     var isLogin = getPageData('isLogin');
     var uid = getPageData('uid');
-    console.log(isLogin, '===');
+    // console.log(isLogin, '===');
 
 
     // 获取body
@@ -62,14 +64,18 @@ $(function () {
     $(".back-top").click(function () {
         document.body.scrollTop = 0;
     })
-    //点击打开cover
-    $(".openCover").click(function(){
-        var open=$(this).attr("data-open");
-        cover.openCover(open);
-        console.log(open);
-    })
+    
 
     var articleid = $(".article-main").attr("data-articleid");
+    // var replyTpl = ' <div class="reply-block" data-authorId="{{authorId}}" data-id="{{id}}">' +
+    //     '<div class="authorInfor">' +
+    //     '<img src="{{authorAvatar}}" alt="" class="authorAvatar" />' +
+    //     '<span class="authorName">{{authorName}}</span>' +
+    //     '</div>' +
+    //     '<p class="authorContent">{{authorContent}}</p>' +
+    //     '<p class="replyer-block">@{{replyerName}}：{{replyContent}}</p>' +
+    //     '<p class="reply-bottom">{{inTime}}<span  class="to-authorContent">回复</span></p>' +
+    //     '</div>'
     // console.log(articleid);
     var replyTpl = ' <div class="reply-block" data-authorId="{{authorId}}" data-id="{{id}}">' +
         '<div class="authorInfor">' +
@@ -78,8 +84,9 @@ $(function () {
         '</div>' +
         '<p class="authorContent">{{authorContent}}</p>' +
         '<p class="replyer-block">@{{replyerName}}：{{replyContent}}</p>' +
-        '<p class="reply-bottom">{{inTime}}<span  class="to-authorContent">回复</span></p>' +
+        '<p class="reply-bottom">{{inTime}}<span  class="openCover" data-open="replySomebody">回复</span></p>' +
         '</div>'
+
     $.ajax({
         url: '/management/queryArticleReplies',
         type: 'post',
@@ -151,18 +158,29 @@ $(function () {
             })
         }
     })
-    $(".reply-list").on('click', '.to-authorContent', function (event) {
+    //点击打开cover
+    $(".openCover").click(function(){
+        var open=$(this).attr("data-open");
+        cover.openCover(open);
+        console.log(open);
+    })
+    $(".reply-list").on('click', '.openCover', function (event) {
         var $parent=$(this).parents(".reply-block");
         if (isLogin) {
+            var open=$(event.target).attr("data-open");
+            cover.openCover(open);
+            console.log(open);
             var replyer = $parent.find(".authorName").text();
-            $(".reply-cover").addClass("reply-cover--active");
-            $(".reply-cover").attr("data-authorId",uid);
-            $(".reply-cover").attr("data-replyerId",$parent.attr('data-authorId'));
-            $(".reply-cover").attr("data-replyId",$parent.attr('data-id'));
-            $(".reply-cover").attr("data-replyerName",$parent.find('.authorName').html());
-            $(".reply-cover").attr("data-replyContent",$parent.find('.authorContent').html());
-            $(".reply-cover .replyer-name span").text(replyer);
-            $(".reply-cover .authorContent").val("");
+            $("[data-coverName='replySomebody']").addClass("reply-cover--active");
+            $("[data-coverName='replySomebody']").attr("data-authorId",uid);
+            $("[data-coverName='replySomebody']").attr("data-replyerId",$parent.attr('data-authorId'));
+            $("[data-coverName='replySomebody']").attr("data-replyId",$parent.attr('data-id'));
+            $("[data-coverName='replySomebody']").attr("data-replyerName",$parent.find('.authorName').html());
+            $("[data-coverName='replySomebody']").attr("data-replyContent",$parent.find('.authorContent').html());
+            $("[data-coverName='replySomebody'] .replyer-name span").text(replyer);
+            $("[data-coverName='replySomebody'] .authorContent").val("");
+        }else{
+            swal("请登录后回复");
         }
 
     })
