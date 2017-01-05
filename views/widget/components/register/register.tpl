@@ -1,9 +1,14 @@
 {% include "../cover/cover.tpl"%}
 <div class="cover" data-coverName="register">
     <div class="coverContent">
-           注册
-
-			<div class="close" id="J-close"></div>
+        <div class="login-logo">注册</div>
+        <input type="text" name="userName" placeholder="用户名" id="">
+        <input type="text" name="nickName" placeholder="昵称" id="">
+        <input type="password" name="password" placeholder="密码" id="">
+        <input type="password" name="repassword" placeholder="重复输入密码" id="">
+        <div class="error"></div>
+        <input type="submit" name="" value="注册" id="J-register" >
+        <div class="close" id="J-close"></div>
     </div>
 </div>
 

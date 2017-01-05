@@ -8,9 +8,8 @@ $(function () {
         '</div>' +
         '<p class="authorContent">{{authorContent}}</p>' +
         '<p class="replyer-block">@{{replyerName}}：{{replyContent}}</p>' +
-        '<p class="reply-bottom">{{inTime}}<span class="to-authorContent">回复</span></p>' +
+        '<p class="reply-bottom">{{inTime}}<span class="openCover" data-open="replySomebody">回复</span></p>' +
         '</div>'
-
     $(".reply-cover").click(function (event) {
         var className = event.target.className;
         console.log(className == "reply-cover reply-cover--active");
@@ -20,8 +19,9 @@ $(function () {
         // .close
     })
 
-    $(".reply-cover .publish").click(function () {
-        var $parent=$(this).parents(".reply-cover");
+    $("[data-coverName='replySomebody'] .publish").click(function () {
+        console.log("click  publish")
+        var $parent=$(this).parents(".cover");
         var authorContent = $parent.find(".authorContent").val();
         var artId = $(".article-main").attr("data-articleid");
         var authorId =$parent.attr('data-authorId');
@@ -60,7 +60,7 @@ $(function () {
                         });
                         var $thisTpl = $(thisTpl);
                         $('.reply-list').append($thisTpl);
-                        $(".reply-cover").removeClass("reply-cover--active");
+                        $parent.hide();
                     }
                     else{
                         console.log(res.msg);

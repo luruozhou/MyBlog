@@ -14,7 +14,7 @@ export function openCover(CoverName){
         //     $(".cover").removeClass("cover--active");
         // }
         var className=event.target.className;
-        console.log(className);
+        // console.log(className);
         if(className=="cover"||className=="close"){
             //此处有个bug待解决
             // $cover.find(".coverContent").removeClass("coverContent--active").addClass("coverContent--close");
