@@ -1,8 +1,6 @@
 import {userProvider} from "../modules/core/userProvider";
 import  UserModel from "../modules/mysql-models/users-model";
-import * as Bcrypt from 'bcrypt-nodejs';
-import {defaultAvatar} from '../config-core/index';
-import {ensureTransaction} from '../modules/core/sequelize';
+import  * as User from "../modules/user";
 
 export var routeSettings = {
     login: {
@@ -30,9 +28,7 @@ export function login(req, res) {
             if (data && data.userRecord) {
                 return 'ok';
             } else {
-                return {
-                    msg: '暂无用户信息.',
-                };
+                throw '暂无用户信息.';
             }
         })
         .catch(err=> {
@@ -47,51 +43,27 @@ export function login(req, res) {
 /**
  * 用户注册接口
  * userName:string
+ * nickName:string
  * password:string
  */
 export function register(req, res) {
     let args = req.body;
-    return UserModel
-        .find({where: {user_name: args.userName}})
-        .then(userRecord=> {
-            if (userRecord) {
-                return {
-                    msg: '该用户已经注册.',
-                };
+    return User.register(args)
+        .then(uid=> {
+            if (uid) {
+                req.session.uid = uid;
+                return '注册成功.';
             } else {
-                let passwordBcrypt = Bcrypt.hashSync(args.password);
-                console.log(passwordBcrypt, args.password);
-                let avatar = args.avatar || defaultAvatar;
-                // return ensureTransaction(transaction => {
-                return UserModel.create({
-                    user_name: args.userName,
-                    password: passwordBcrypt,
-                    nick_name: args.nickName,
-                    created_at: new Date(),
-                    last_login: new Date(),
-                    avatar
-                })
-                    .then(userRecord=> {
-                        console.log(userRecord.id,'<====uid');
-                        return req.session.uid=userRecord.id;
-                    })
-                    .then(uid=> {
-                        if (uid) {
-                            return '注册成功.';
-                        } else {
-                            return {
-                                msg: '注册异常.',
-                            };
-                        }
-                    })
-                // })
+                return {
+                    msg: '注册异常.',
+                };
             }
         })
         .catch(err=> {
             console.log("error:", err);
             req.session['uid'] = null;
             return {
-                msg: '无效的用户名或密码.'
+                msg: err
             }
         })
 }
