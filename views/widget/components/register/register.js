@@ -12,9 +12,37 @@ $(function () {
         var password=$register.find("[name='password']").val();
         var repassword=$register.find("[name='repassword']").val();
         if(password==repassword){
-            console.log("相等")
+            console.log(userName,nickName,password)
+            $.ajax({
+                url:'/user/register',
+                type:'post',
+                data:{
+                    password:password,
+                    // avatar:
+                    nick_name:nickName,
+                    userName:userName
+                },
+                success:function(res){
+                    console.log(res);
+                    switch(res.code){
+                        case 1:{
+                            // location.href=location.href;
+                            console.log("成功"+res.msg)
+                            break;
+                        }
+                        case 0:{
+                            console.log("失败"+res.msg)
+                            $(".error").text(res.msg)
+                            break;
+                        }
+                    }
+                },
+                error:function(){
+                    console.log(err);
+                }
+            })
         }else{
-            console.warn("不等")
+            $(".error").text("两次输入密码不同")
         }
     })
 })
