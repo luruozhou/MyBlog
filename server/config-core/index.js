@@ -13,6 +13,8 @@ export var qiNiuConfig = {
     BUCKET: 'myblog'
 }
 
+export var defaultAvatar = 'http://oj5qfmemk.bkt.clouddn.com/8_150608141913_6.jpg';
+
 /** 文件上传临时目录 */
 export var uploadTmpDir = Path.join(__dirname, '../../tmp');
 

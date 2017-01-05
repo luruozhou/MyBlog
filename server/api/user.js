@@ -1,6 +1,7 @@
 import {userProvider} from "../modules/core/userProvider";
 import  UserModel from "../modules/mysql-models/users-model";
 import * as Bcrypt from 'bcrypt-nodejs';
+import {defaultAvatar} from '../config-core/index';
 import {ensureTransaction} from '../modules/core/sequelize';
 
 export var routeSettings = {
@@ -60,13 +61,15 @@ export function register(req, res) {
             } else {
                 let passwordBcrypt = Bcrypt.hashSync(args.password);
                 console.log(passwordBcrypt, args.password);
+                let avatar = args.avatar || defaultAvatar;
                 // return ensureTransaction(transaction => {
                 return UserModel.create({
                     user_name: args.userName,
                     password: passwordBcrypt,
                     nick_name: args.nickName,
                     created_at: new Date(),
-                    last_login: new Date()
+                    last_login: new Date(),
+                    avatar
                 })
                     .then(userRecord=> {
                         console.log(userRecord.id,'<====uid');
