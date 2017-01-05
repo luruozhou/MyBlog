@@ -51,6 +51,7 @@
             {%if isLogin%}
             <img src="{{avatar}}" class="userImg">
             <span class="userName">{{nickName}}</span>
+            <span class="logout">退出</span>
             <textarea class="authorContent"></textarea>
             <div class="publish">发布</div>
             {%else%}

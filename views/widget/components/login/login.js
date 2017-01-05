@@ -18,11 +18,12 @@ $(function () {
                 console.log(res);
                 switch(res.code){
                     case 1:{
+
                         location.href = location.href;
                         break;
                     }
                     case 0:{
-                        $(".error").text(res.msg);
+                       $loginBox.find(".error").text(res.msg);
                         break;
                     }
                 }

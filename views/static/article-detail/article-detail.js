@@ -68,16 +68,6 @@ $(function () {
     
 
     var articleid = $(".article-main").attr("data-articleid");
-    // var replyTpl = ' <div class="reply-block" data-authorId="{{authorId}}" data-id="{{id}}">' +
-    //     '<div class="authorInfor">' +
-    //     '<img src="{{authorAvatar}}" alt="" class="authorAvatar" />' +
-    //     '<span class="authorName">{{authorName}}</span>' +
-    //     '</div>' +
-    //     '<p class="authorContent">{{authorContent}}</p>' +
-    //     '<p class="replyer-block">@{{replyerName}}：{{replyContent}}</p>' +
-    //     '<p class="reply-bottom">{{inTime}}<span  class="to-authorContent">回复</span></p>' +
-    //     '</div>'
-    // console.log(articleid);
     var replyTpl = ' <div class="reply-block" data-authorId="{{authorId}}" data-id="{{id}}">' +
         '<div class="authorInfor">' +
         '<img src="{{authorAvatar}}" alt="" class="authorAvatar" />' +
@@ -184,6 +174,23 @@ $(function () {
             swal("请登录后回复");
         }
 
+    })
+    $(".logout").click(function(){
+        
+        $.ajax({
+            url:'/user/logout',
+            type:'post',
+            data:{
+
+            },
+            success:function(res){
+                console.log(res.msg);
+                location.href=location.href;
+            },
+            error:function(error){
+                console.log(res.msg)
+            }
+        })
     })
 
 })

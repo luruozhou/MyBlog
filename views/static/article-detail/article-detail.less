@@ -130,8 +130,9 @@ body .topbar{
                 vertical-align: middle;
             }
             .authorName{
-
+                padding-left: 1em
             }
+            
         }
         .authorContent{
             padding: 1em 0;
@@ -207,6 +208,7 @@ body .topbar{
             line-height: 50px;
             display: inline-block;
             position: relative;
+            padding:0 0.5em;
              &:after{
                 content: '';
                 display: block;
@@ -221,6 +223,12 @@ body .topbar{
                 border-width: 0 30px 10px;
                 border-color: transparent transparent lighten(@base-color,80%);
             }
+        }
+        .logout{
+            border-left: 1px solid;
+            cursor: pointer;
+            padding: 0 1em;
+            color: #8e8e8e;
         }
         .publish{
             width: 32px;

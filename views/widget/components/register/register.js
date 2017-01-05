@@ -19,14 +19,14 @@ $(function () {
                 data:{
                     password:password,
                     // avatar:
-                    nick_name:nickName,
+                    nickName:nickName,
                     userName:userName
                 },
                 success:function(res){
                     console.log(res);
                     switch(res.code){
                         case 1:{
-                            // location.href=location.href;
+                            location.href=location.href;
                             console.log("成功"+res.msg)
                             break;
                         }
@@ -42,7 +42,7 @@ $(function () {
                 }
             })
         }else{
-            $(".error").text("两次输入密码不同")
+           $register.find(".error").text("两次输入密码不同");
         }
     })
 })
