@@ -8,9 +8,8 @@ $(function () {
         '</div>' +
         '<p class="authorContent">{{authorContent}}</p>' +
         '<p class="replyer-block">@{{replyerName}}：{{replyContent}}</p>' +
-        '<p class="reply-bottom">{{inTime}}<span class="to-authorContent">回复</span></p>' +
+        '<p class="reply-bottom">{{inTime}}<span class="openCover" data-open="replySomebody">回复</span></p>' +
         '</div>'
-
     $(".reply-cover").click(function (event) {
         var className = event.target.className;
         console.log(className == "reply-cover reply-cover--active");
