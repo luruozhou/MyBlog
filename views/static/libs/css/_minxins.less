@@ -1,0 +1,61 @@
+/*全局通用的minxins混合*/
+//a标签默认颜色，去除下划线
+.a-base(@color){
+    text-decoration:none;
+    &:link    {color:@color;}
+    &:visited {color:@color;}
+    &:hover   {color:@color;}
+    &:active  {color:@color;}
+}
+//2D旋转前缀
+.transform(@val){
+    transform: @val;
+    -ms-transform: @val;
+    -webkit-transform: @val;
+    -o-transform: @val;
+    -moz-transform: @val;
+}
+//声明动画，使用前需要提前声明为.keyFramesContent的Minxins
+.keyframes(@name){
+    @-webkit-keyframes @name {
+        .keyFramesContent();
+    }
+    @-moz-keyframes @name {
+        .keyFramesContent(); 
+    }
+    @-o-keyframes @name {
+        .keyFramesContent();
+    }
+    @-ms-keyframes @name {
+        .keyFramesContent();
+    }
+    @keyframes @name {
+        .keyFramesContent();
+    }
+}
+//绑定动画
+.animation(@name,@time){
+    animation:@name @time;
+    -moz-animation:@name @time;
+    -webkit-animation:@name @time;
+    -o-animation:@name @time;
+}
+//动画完成后的状态，默认值为forwards
+.animation-fill-mode(@val:forwards){
+    animation-fill-mode:@val;
+    -webkit-animation-fill-mode:@val; 
+    -o-animation-fill-mode: @val;
+}
+//过渡
+.transtion(@val){
+    transition: @val;
+    -moz-transition: @val; /* Firefox 4 */
+    -webkit-transition: @val; /* Safari 和 Chrome */
+    -o-transition: @val;
+}
+//圆角
+.border-radius(@val){
+    border:1px solid;
+    border-radius: @val;
+    -moz-border-radius:@val;
+}

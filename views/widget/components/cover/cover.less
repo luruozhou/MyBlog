@@ -1,49 +1,12 @@
-//    transform: translate(0px, -50%);
-    // -ms-transform: translate(0px, -50%);
-    // -webkit-transform: translate(0px, -50%);
-    // -o-transform: translate(0px, -50%);
-    // -moz-transform: translate(0px, -50%);
-.transform(@val){
-    transform: @val;
-    -ms-transform: @val;
-    -webkit-transform: @val;
-    -o-transform: @val;
-    -moz-transform: @val;
-}
-.keyframes(@name){
-    @-webkit-keyframes @name {
-        .keyFramesContent();
-    }
-    @-moz-keyframes @name {
-        .keyFramesContent(); 
-    }
-    @-o-keyframes @name {
-        .keyFramesContent();
-    }
-    @-ms-keyframes @name {
-        .keyFramesContent();
-    }
-    @keyframes @name {
-        .keyFramesContent();
-    }
-}
-.animation(@name,@time){
-    animation:@name @time;
-    -moz-animation:@name @time;
-    -webkit-animation:@name @time;
-    -o-animation:@name @time;
-}
-.animation-fill-mode(@val){
-    animation-fill-mode:@val;
-    -webkit-animation-fill-mode:@val; 
-    -o-animation-fill-mode: @val;
-}
+
+@import "../../../static/libs/css/_minxins.less";
+
 // cover部分公共样式
 .cover{
     width: 100%;
     position: fixed;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.5); 
     z-index: 20;
     top: 0;
     display: none;
@@ -58,7 +21,7 @@
         background-position: center 50px;
         padding: 0 30px;
         background-color: #fff;
-        border-radius: 8px;
+        .border-radius( 8px);
         box-shadow: 0 2px 10px -5px rgba(0, 0, 0, .8);
         position: absolute;
         top: 0;
@@ -75,18 +38,10 @@
             position: absolute;
             right: 20px;
             top: 20px;
-            transition: 0.4s;
-            -moz-transition: 0.4s; /* Firefox 4 */
-            -webkit-transition: 0.4s; /* Safari 和 Chrome */
-            -o-transition: 0.4s;
+            .transtion(0.4s); 
             &:hover {
-            transform: scale(1.5, 1.5);
-            -ms-transform: scale(1.5, 1.5); /* IE 9 */
-            -webkit-transform: scale(1.5, 1.5); /* Safari 和 Chrome */
-            -o-transform: scale(1.5, 1.5); /* Opera */
-            -moz-transform: scale(1.5, 1.5);
-            cursor: pointer;
-
+                .transform(scale(1.5, 1.5));
+                cursor: pointer;
             }
         }
     }

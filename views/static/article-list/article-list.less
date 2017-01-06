@@ -1,52 +1,21 @@
-@media only screen and (min-width: 1200px) {
-  .blog-g-fixed {
-    max-width: 1200px;
-  }
+@import "../libs/css/_minxins.less";
+@base-color:#0f0f0f;
+body{
+  margin: 0;
+  background-image: url(../article-detail/img/article_detail_bg.png);
 }
-
-@media only screen and (min-width: 641px) {
-  .blog-sidebar {
-    font-size: 1.4rem;
-  }
-}
-
-.blog-main {
-  padding: 20px 0;
-}
-
-.blog-title {
-  margin: 10px 0 20px 0;
-}
-
-.blog-meta {
-  font-size: 14px;
-  margin: 10px 0 20px 0;
-  color: #222;
-}
-
-.blog-meta a {
-  color: #27ae60;
-}
-
-.blog-pagination a {
-  font-size: 1.4rem;
-}
-
-.blog-team li {
-  padding: 4px;
-}
-
-.blog-team img {
-  margin-bottom: 0;
-}
-
-.blog-content img,
-.blog-team img {
-  max-width: 100%;
-  height: auto;
-}
-
-.blog-footer {
-  padding: 10px 0;
-  text-align: center;
+body .topbar{
+    margin-bottom: 20px;
+    background-color: rgba(255,255,255,0.95);
+    color: @base-color;
+    position: fixed;
+    top:0;
+    border-bottom: 1px solid lighten(@base-color,84%);
+    a{
+        .a-base(@base-color);
+    }
+    transition: 0.8s;
+    -moz-transition:  0.8s;	/* Firefox 4 */
+    -webkit-transition:  0.8s;	/* Safari 和 Chrome */
+    -o-transition:  0.8s;
 }
