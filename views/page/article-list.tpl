@@ -5,7 +5,6 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8"/>
-    <meta charset="utf-8">
     <title>{{title}}</title>
     <meta name="keywords" content="{{keywords}}">
     <meta name="description" content="{{description}}" name="description">
@@ -19,7 +18,42 @@
 
 <body>
     {% include "../widget/layout/header/header.tpl"%}
-
+    
+	<div class="masonry" data-optiones="">
+            {%for article in hotArticles%}
+                <a class="masonry-block"  href="/article/{{article.id}}">
+                    <img class="article-header" src="{{article.cover}}" alt="">
+                    <div class="article-title"  title="{{article.title}}">
+                        {{article.title}}
+                    </div>
+                    <p class="article-content">
+                        {{article.description}}
+                    </p>
+                </a>
+            {%endfor%} 
+            {%for article in hotArticles%}
+                <a class="masonry-block"  href="/article/{{article.id}}">
+                    <img class="article-header" src="{{article.cover}}" alt="">
+                    <div class="article-title"  title="{{article.title}}">
+                        {{article.title}}
+                    </div>
+                    <p class="article-content">
+                        {{article.description}}
+                    </p>
+                </a>
+            {%endfor%} 
+            {%for article in hotArticles%}
+                <a class="masonry-block"  href="/article/{{article.id}}">
+                    <img class="article-header" src="{{article.cover}}" alt="">
+                    <div class="article-title"  title="{{article.title}}">
+                        {{article.title}}
+                    </div>
+                    <p class="article-content">
+                        {{article.description}}
+                    </p>
+                </a>
+            {%endfor%} 
+	</div>
 {#下边不要写任何代码(注释也不要删)，否则会发生无法挽回的错误#}
 <!--SCRIPT_PLACEHOLDER-->
 <script type="text/javascript">

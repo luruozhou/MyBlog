@@ -1,3 +1,4 @@
+import * as Management from "../server/modules/management";
 //路由的配置项
 export var routeSettings = {
     default: {
@@ -7,7 +8,10 @@ export var routeSettings = {
 };
 
 export default function (req, res) {
-    return {
-
-    }
+   return Management.queryHotArticles()
+        .then(hotArticles => {
+            return {
+                hotArticles
+            }
+        });
 }
