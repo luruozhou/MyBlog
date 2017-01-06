@@ -33,11 +33,7 @@
                         {%endfor%}
                     </select>
                 </div>
-                <div class="form-control">
-                    <select name="sub_category" id="sub_category">
-                        <option value="">请选择</option>
-                    </select>
-                </div>
+              
                 <div class="form-control">
                     <input type="text" class="article_title" name="title">
                 </div>

@@ -10,7 +10,8 @@ export var  defaultTDK ={
 export var qiNiuConfig = {
     ACCESS_KEY: '6sTCnWjh7HqYiK602DoETIBNXO9fHi0fQT-w6J_7',
     SECRET_KEY: 'syrnX8V67v8YxIe3XxVQcYaK8N1enjhqg-6CdYEh',
-    BUCKET: 'myblog'
+    BUCKET: 'myblog',
+    prefixUrl:'http://oj5qfmemk.bkt.clouddn.com/'
 }
 
 export var defaultAvatar = 'http://oj5qfmemk.bkt.clouddn.com/8_150608141913_6.jpg';

@@ -44,7 +44,8 @@ export function uploadImg(req, res) {
             //     throw new APIError(APIErrorCode.InvalidArguments, '一次只允许处理一个头像文件上传操作');
             // }
 
-            return QiNiu.qiNiuClient({key: fileSource.name, filePath: fileSource.path}).then(() => {
+            return QiNiu.qiNiuClient({key: fileSource.name, filePath: fileSource.path}).then((res) => {
+                console.log(res)
                 return fileSource.name;
             })
         })
