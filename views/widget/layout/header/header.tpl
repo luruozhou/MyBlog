@@ -3,9 +3,9 @@
             <p></p>
         </div>
         <ul  class="topbar-nav">
-            <li><a href="#" title="">首页</a></li>
+            <li><a href="/" title="">首页</a></li>
             {%for section in sections%}
-            <li><a href="">{{section.name}}</a>
+            <li><a href="/{{section.tab}}">{{section.name}}</a>
                 <!--<div class="line"></div>-->
                 {%if section.sons.length%}
                     <ul class="dropdown-content">
