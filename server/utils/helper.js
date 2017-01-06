@@ -1,4 +1,3 @@
-
 var OP = Object.prototype;
 var AP = Array.prototype;
 var hasOwn = OP.hasOwnProperty;
@@ -57,3 +56,33 @@ export function isPlainObject(obj) {
     }
     return true;
 }
+
+export function StringHash(keys) {
+    this.map = {};
+    for (let key of keys) {
+        this.map[key] = null;
+    }
+}
+StringHash.prototype = {
+    constructor: StringHash,
+    getKeys: function () {
+        return Object.keys(this.map);
+    },
+    exists: function (key) {
+        return hasOwn.call(this.map, key);
+    },
+    setKey: function (key) {
+        this.map[key] = null;
+    },
+    unset: function (key) {
+        delete this.map[key];
+    },
+    clear: function () {
+        this.map = {};
+    }
+}
+
+
+
+
+
