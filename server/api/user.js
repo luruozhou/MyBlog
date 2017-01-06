@@ -1,6 +1,6 @@
 import {userProvider} from "../modules/core/userProvider";
-import  UserModel from "../modules/mysql-models/users-model";
 import  * as User from "../modules/user";
+import * as Validator from '../utils/Validator';
 
 export var routeSettings = {
     login: {
@@ -22,20 +22,25 @@ export var routeSettings = {
  * password:string
  */
 export function login(req, res) {
+    Validator.validate(req.body, ['userName', 'password'],{
+        userName:/^.+$/,
+        password:/^.{6,}$/
+    });
+
     return userProvider
         .authenticate(req, res)
         .then(data=> {
             if (data && data.userRecord) {
                 return 'ok';
             } else {
-                throw '暂无用户信息.';
+                throw '无效的用户名或密码.';
             }
         })
         .catch(err=> {
             console.log("error:", err);
             req.session['uid'] = null;
             return {
-                msg: '无效的用户名或密码.'
+                msg: err
             }
         })
 }
@@ -48,6 +53,12 @@ export function login(req, res) {
  */
 export function register(req, res) {
     let args = req.body;
+    Validator.validate(args, ['userName', 'password','nickName'],{
+        userName:/^.+$/,
+        password:/^.{6,}$/,
+        nickName:/^.+$/,
+    });
+
     return User.register(args)
         .then(uid=> {
             if (uid) {
