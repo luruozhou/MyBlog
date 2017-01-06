@@ -32,7 +32,7 @@ $(function () {
                         }
                         case 0:{
                             console.log("失败"+res.msg)
-                            $(".error").text(res.msg)
+                            $register.find(".error").text(res.msg)
                             break;
                         }
                     }
