@@ -52,7 +52,6 @@ export var userProvider = {
         if (userName || uid) {
             if (userName) {
                 // Validator.validateMobile(mobile, 'mobile');
-                console.log(userName,'==')
                 where.user_name = userName;
             } else if (uid) {
                 where.id = uid;
@@ -72,7 +71,6 @@ export var userProvider = {
                         return passwordUtil
                             .verify(password, "$2a$10$60L5Y.a0mKP5JYmJbM19heyBajoqwydC58kYxrm9hhM3FDwsRh5Q.")
                             .catch(() => {
-                                console.log(333)
                                 return passwordUtil.verify(password, userRecord.password)
                             })
                             .then(() => {
@@ -129,7 +127,6 @@ export var userProvider = {
         }
 
         function getUser() {
-            console.log(1111)
             return Promise
                 .resolve(uid && UserModel.find({where: {id: uid}}))
                 .then(userRecord => {

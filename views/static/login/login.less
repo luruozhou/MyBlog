@@ -1,0 +1,87 @@
+@import "../../widget/components/cover/cover";
+body {
+  font-family: "Microsoft YaHei";
+}
+
+@base-color: #202020;
+
+.login-logo{
+  /* border: 1px solid; */
+  width: 100%;
+  position: absolute;
+  margin: 0 0 0 -10%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  padding: 1em 0;
+  font-size: 1.5em;
+  text-align: center;
+}
+.cover[data-coverName="login"] .coverContent {
+  font-family: " Microsoft YaHei";
+  color: @base-color;
+  width: 240px;
+  height: 310px;
+  margin: auto;
+  // background-image: url(img/logo.png);
+  background-repeat: no-repeat;
+  background-position: center 50px;
+  padding: 0 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px -5px rgba(0, 0, 0, .8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  input {
+    width: 70%;
+    margin: 0 auto 10px auto;
+    display: block;
+    height: 1.5em;
+    font-size: 0.9em;
+    border-radius: 3px;
+    padding: 0.65em;
+    border: none;
+    &:nth-of-type(1) {
+      margin-top: 80px;
+
+    }
+  }
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+  }
+  input[type="text"], input[type="password"] {
+    &:focus {
+      outline: none;
+      border: 1px solid #AAAAAA;
+    }
+    border: 1px solid #DBDBDB;
+
+  }
+  input[type="submit"] {
+    display: block;
+    background: none;
+    color: #ffffff;
+    width: 80%;
+    background-color: #FE5B56;
+    text-align: center;
+    height: 2.8em;
+    line-height: 2.8em;
+    padding: 0;
+    &:hover {
+      background-color: #F63F3A;
+    }
+
+  }
+  .error {
+    padding: 0 0 0.5em 2em;
+    font-size: 0.8em;
+    color: #FE5B56;
+  }
+}
+
+
+
+
+

@@ -4,7 +4,7 @@ export var routeSettings = {
     default: {
     // route:"",       //访问路径
     // template:"",    //用到的模板
-    // template:"",    //用到的模板
+    // method:"",   //请求方式
     // permission:Permission.none,    //用户权限
     }
 };

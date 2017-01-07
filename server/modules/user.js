@@ -25,7 +25,7 @@ export function register(userInfo) {
     let uid;
     return UserModel
         .find({where: {user_name: userInfo.userName}})
-        .then(userRecord=> {
+        .then(userRecord => {
             if (userRecord) {
                 throw '该用户已经注册.';
             } else {
@@ -39,7 +39,7 @@ export function register(userInfo) {
                     last_login: new Date(),
                     avatar
                 })
-                    .then(userRecord=> {
+                    .then(userRecord => {
                         //记住登录状态
                         uid = userRecord.id;
                         return UserGroupModel.create({
@@ -47,9 +47,18 @@ export function register(userInfo) {
                             group_id: 1  // 分配user权限
                         })
                     })
-                    .then(()=> {
+                    .then(() => {
                         return uid;
                     })
             }
         })
+}
+
+export function getLoginRedirectUrl(req, user) {
+    var isAdmin = user.permission.has(Permission.admin);
+    if (isAdmin) {
+        return Promise.resolve('/admin/addArticle');
+    } else {
+        return Promise.resolve('/');
+    }
 }

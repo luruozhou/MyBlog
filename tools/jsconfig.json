@@ -114,6 +114,11 @@
             "entry": "views/widget/components/register/register",
             "template": "views/widget/components/register/register.tpl",
             "type": "widget"
+        },
+        {
+            "entry": "views/static/login/login",
+            "template": "views/page/login.tpl",
+            "type": "page"
         }
     ]
 }

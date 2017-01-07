@@ -38,9 +38,9 @@
         {{ articleRecord.date}}
     </div>
     <div class="article-main" data-articleid="{{articleRecord.id}}">
-        <!--{% autoescape false%}
+        {% autoescape false%}
             {{ articleRecord.html_content }}
-        {% endautoescape %}-->
+        {% endautoescape %}
     </div>
     
     <div class="article-reply">

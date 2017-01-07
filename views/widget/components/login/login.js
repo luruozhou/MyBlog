@@ -18,7 +18,6 @@ $(function () {
                 console.log(res);
                 switch(res.code){
                     case 1:{
-
                         location.href = location.href;
                         break;
                     }

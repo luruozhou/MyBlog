@@ -21,6 +21,7 @@ exports.Router = function (app) {
     function attach(routeModule, key) {// key='default'
         var routeSetting = ( routeModule.routeSettings && routeModule.routeSettings[key] ) || {};
         var routeHandler = routeModule[key];
+        var method = routeSetting.method || "get";
         var urlPath, tplPath;
         if (routeSetting.route) {
             urlPath = routeSetting.route;
@@ -38,35 +39,36 @@ exports.Router = function (app) {
                 .replace(/^\/+/i, "");
         }
 
-        app.get(urlPath, function (req, res) {
+        app[method](urlPath, function (req, res) {
             return userProvider
                 .authenticate(req, res)
-                .then(user=> {
+                .then(user => {
                     // 权限判断
                     let isVerify = permissionProvider.verifyRouter(user && user.permission, routeSetting.permission);
                     if (!isVerify) {
-                        res.redirect('/');
+                        res.redirect('/login?error=doNotHavePermission');
+                        // res.render('login',{error:'该用户没有权限'})
                         return;
                     }
                     req.user = user;
-                })
-                .then(function () {
                     if (!routeHandler) {
                         return res.redirect("404");
+                        return;
                     }
-                    return routeHandler(req, res)
-                })
-                .then(function (returnData) {
-                    returnData = returnData || {};
-                    return Management.querySections()
-                        .then(data => {
-                            returnData.sections = makeSectionTree(data);
-                            return returnData;
+                    return Promise.resolve(routeHandler(req, res))
+                        .then(function (returnData) {
+                            returnData = returnData || {};
+                            return Management.querySections()
+                                .then(data => {
+                                    returnData.sections = makeSectionTree(data);
+                                    return returnData;
+                                })
                         })
-                })
-                .then(function (returnData) {
-
-                    res.render(tplPath, returnData);
+                        .then(function (returnData) {
+                            if (!returnData.tplNotNeedRender) {
+                                res.render(tplPath, returnData);
+                            }
+                        })
                 })
                 .catch(reason => {
                     if (RouterError.errorHandler) {
@@ -75,7 +77,7 @@ exports.Router = function (app) {
                         throw reason;
                     }
                 })
-                .catch(error=>{
+                .catch(error => {
                     res.send(`Error: ${error}`);
                     throw error;
                 })
