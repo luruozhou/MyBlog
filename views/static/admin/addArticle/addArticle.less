@@ -1,5 +1,6 @@
 @import "../../../static/libs/css/common";
 @import "../../libs/js/sceditor/square.min.less";
+
 .main {
   margin-left: 200px;
   padding: 10px;
@@ -22,7 +23,13 @@
         font-size: 14px;
       }
       input {
-        width: 688px;
+        &.article_title {
+          width: 688px;
+
+        }
+        &.cover {
+          width: 180px;
+        }
         height: 40px;
         font-size: 14px;
         display: inline-block;

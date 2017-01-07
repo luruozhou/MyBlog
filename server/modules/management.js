@@ -32,8 +32,8 @@ export function addArticle(article) {
         title: article.title,
         html_content: article.html_content,
         sid: article.sid,
-        sub_sid: article.sub_sid,
-        description: article.description
+        description: article.description,
+        cover: article.cover,
     })
         .then(function (data) {
             return data;
@@ -49,16 +49,13 @@ export function queryHotArticles(num) {
     return Promise.resolve(sequelize.query(`
             select art.id,
                    art.sid, 
-                   art.sub_sid, 
                    art.cover,
                    art.title,
                    art.description,
                    s.name as sName,
                    s.tab as sTab,
-                   sub_s.name as subSName
             from articles as art
             left join sections as s on s.id = art.sid
-            left join sections as sub_s on sub_s.id = art.sub_sid
             where art.hot = 1
             limit ${num}
         `))

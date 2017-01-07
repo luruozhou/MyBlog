@@ -1,6 +1,7 @@
 import * as Management from "../modules/management"
 import Moment from 'moment';
 import {Permission} from '../../server/modules/core/permissionProvider';
+import * as Validator from '../utils/Validator';
 
 export var routeSettings = {
     addArticle: {
@@ -22,6 +23,7 @@ export var routeSettings = {
  */
 export function addArticle(req, res) {
     var article = req.body;
+    Validator.validate(article, ['title', 'html_content','sid','cover','description']);
     return Management.addArticle(article);
 }
 

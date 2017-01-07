@@ -37,6 +37,10 @@
                 <div class="form-control">
                     <input type="text" class="article_title" name="title">
                 </div>
+
+                <div class="form-control">
+                    <input type="file" class="cover" name="cover">
+                </div>
             </div>
             <div class="box-body">
                 <textarea name="" id="" cols="30" rows="10"></textarea>

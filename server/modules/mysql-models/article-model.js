@@ -22,10 +22,10 @@ var Model = sequelize.define(
             allowNull: false,
             defaultValue: 1
         },
-        sub_sid: {
-            type: Sequelize.INTEGER,
+        cover: {
+            type: Sequelize.STRING,
             allowNull: false,
-            defaultValue: 1
+            defaultValue: ''
         }
     }, {
         tableName: 'articles',

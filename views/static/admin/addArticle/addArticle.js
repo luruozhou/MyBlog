@@ -5,6 +5,7 @@ var getPageData = require('../../libs/js/util').getPageData;
 $(function () {
     let sections = getPageData("sections");
     let qiniuPrefixUrl = getPageData("qiniuPrefixUrl");
+    let coverUrl;
 
     $("#category").change(function () {
         let $this = $(this);
@@ -25,20 +26,26 @@ $(function () {
 
     $(".submit").click(function () {
         let instance = $('textarea').sceditor('instance');
-        console.log(instance,instance.getBody().text())
 
-        return;
         let html_content = $.trim(instance.val());
+        let text_content = instance.getBody().text();
+        let description = text_content.slice(0, 30 + parseInt(Math.random() * 50));
         let title = $(".article_title").val();
         let sid = $("#category").find("option:selected").val();
-        let description = "test"
         let data = {
             title,
             html_content,
             sid,
-            description
+            description,
+            cover: coverUrl
         };
-        console.log(data)
+        let hasNoNull = Object.keys(data).every(function (key, i) {
+            return !!data[key];
+        })
+        if(!hasNoNull){
+            alert('拜托，有的项没填')
+            return;
+        }
         $.ajax({
             url: "/management/addArticle",
             type: "post",
@@ -50,6 +57,26 @@ $(function () {
             })
     })
     window.initUpload = function ($input, $image) {
+        uploadImage($input, function (res) {
+            if (res.code == 1) {
+                var imgUrl = qiniuPrefixUrl + res.data;
+                $image.val(imgUrl);
+            } else {
+                alert(res.msg)
+            }
+        })
+    };
+
+    uploadImage($('.box-header .cover'), function (res) {
+        console.log(res)
+        if (res.code == 1) {
+            coverUrl = qiniuPrefixUrl + res.data;
+        } else {
+            alert(res.msg)
+        }
+    })
+
+    function uploadImage($input, callback) {
         $input.on('change', function (e) {
             var e = event || window.event;
             var files = e.target.files;
@@ -64,16 +91,11 @@ $(function () {
                 contentType: false
             })
                 .done(function (res) {
-                    if (res.code == 1) {
-                        var imgUrl = qiniuPrefixUrl + res.data;
-                        $image.val(imgUrl);
-                    } else {
-                        alert(res.msg)
-                    }
+                    callback && callback(res);
                 })
                 .fail(function () {
                     console.log("error");
                 })
         })
-    };
+    }
 })
