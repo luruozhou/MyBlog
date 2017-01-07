@@ -22,6 +22,7 @@ $(function () {
         plugins: 'bbcode',
         style: location.origin + "/static/libs/js/sceditor/jquery.sceditor.default.min.css",
         emoticonsRoot: location.origin + "/static/libs/js/sceditor/emoticons/",
+        uploadImage:uploadImage
     });
 
     $(".submit").click(function () {
@@ -42,7 +43,8 @@ $(function () {
         let hasNoNull = Object.keys(data).every(function (key, i) {
             return !!data[key];
         })
-        if(!hasNoNull){
+        return;
+        if (!hasNoNull) {
             alert('拜托，有的项没填')
             return;
         }
@@ -56,24 +58,16 @@ $(function () {
                 console.log(res)
             })
     })
-    window.initUpload = function ($input, $image) {
-        uploadImage($input, function (res) {
-            if (res.code == 1) {
-                var imgUrl = qiniuPrefixUrl + res.data;
-                $image.val(imgUrl);
-            } else {
-                alert(res.msg)
-            }
+    function initUpload($input, $image) {
+        uploadImage($input, function (data) {
+            var imgUrl = qiniuPrefixUrl + data;
+            $image.val(imgUrl);
+
         })
     };
 
-    uploadImage($('.box-header .cover'), function (res) {
-        console.log(res)
-        if (res.code == 1) {
-            coverUrl = qiniuPrefixUrl + res.data;
-        } else {
-            alert(res.msg)
-        }
+    uploadImage($('.box-header .cover'), function (data) {
+        coverUrl = qiniuPrefixUrl + data;
     })
 
     function uploadImage($input, callback) {
@@ -91,7 +85,11 @@ $(function () {
                 contentType: false
             })
                 .done(function (res) {
-                    callback && callback(res);
+                    if (res.code == 1) {
+                        callback && callback(res.data);
+                    } else {
+                        alert(res.msg)
+                    }
                 })
                 .fail(function () {
                     console.log("error");

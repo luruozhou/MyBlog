@@ -1,6 +1,5 @@
 import {qiNiuConfig} from '../config-core/index';
 import {Promise} from './Promise';
-// var Promise =require('bluebird');
 var qiNiu = require('qiniu');
 
 export function qiNiuClient({key, filePath}) {
