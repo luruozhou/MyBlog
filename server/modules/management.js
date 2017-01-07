@@ -53,7 +53,7 @@ export function queryHotArticles(num) {
                    art.title,
                    art.description,
                    s.name as sName,
-                   s.tab as sTab,
+                   s.tab as sTab
             from articles as art
             left join sections as s on s.id = art.sid
             where art.hot = 1
