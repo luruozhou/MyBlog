@@ -1,7 +1,7 @@
 import Promise from "bluebird";
 import {default as sequelize} from './core/sequelize';
 import  ArticleModel from "../modules/mysql-models/article-model";
-// import  SectionModel from "../modules/mysql-models/section-model";
+import  SectionModel from "../modules/mysql-models/section-model";
 import  ArticleReplyModel from "../modules/mysql-models/article-reply-model";
 /**
  *查询板块列表信息
@@ -61,6 +61,47 @@ export function queryHotArticles(num) {
         `))
         .then(function (records) {
             return records[0];
+        })
+}
+
+/**
+ * 查询各板块文章列表
+ * num:条数
+ */
+export function querySectionArticlesByTab({sectionTab, pageNo, pageSize, baseNum}) {
+    baseNum = baseNum || 0;
+    let from = (pageNo - 1) * pageSize + baseNum;
+    return Promise.resolve(sequelize.query(`
+            select art.id,
+                   art.sid, 
+                   art.cover,
+                   art.title,
+                   art.description,
+                   s.name as sName,
+                   s.tab as sTab
+            from sections as s
+            inner join articles as art on s.id = art.sid
+            where s.tab = '${sectionTab}'
+            limit ${from},${pageSize}
+        `))
+        .then(function (records) {
+            return records[0];
+        })
+        .then(articleList => {
+            // return ArticleModel.count({where:{sid:1}})
+            return Promise.resolve(sequelize.query(`
+                    select count(1) as total
+                    from sections
+                    join articles on articles.sid = sections.id
+                    where sections.tab = '${sectionTab}'
+                `))
+                .then(count => {
+                    let total = count[0][0].total;
+                    return {
+                        total,
+                        data: articleList
+                    }
+                })
         })
 }
 

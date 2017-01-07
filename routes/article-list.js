@@ -2,16 +2,26 @@ import * as Management from "../server/modules/management";
 //路由的配置项
 export var routeSettings = {
     default: {
-    route:/^\/(front-end|back-end|mobile-end|dev-tools|career-life)$/,       //访问路径
-    // template:"",    //用到的模板
+        route: /^\/(front-end|back-end|mobile-end|dev-tools|career-life)$/,       //访问路径
+        // template:"",    //用到的模板
     }
 };
 
 export default function (req, res) {
-   return Management.queryHotArticles()
-        .then(hotArticles => {
+    let sectionTab = req.params[0];
+    let pageNo=1;
+    let pageSize=10;
+    let baseNum=0;
+    return Management.querySectionArticlesByTab({sectionTab,pageNo,pageSize,baseNum})
+        .then(articlesInfo => {
+            let articleList = articlesInfo.data;
+            let totalCount = articlesInfo.total;
             return {
-                hotArticles
+                articleList,
+                totalCount,
+                jsData:{
+                    totalCount
+                }
             }
         });
 }

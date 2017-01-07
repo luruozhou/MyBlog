@@ -1,7 +1,8 @@
 var RouterError = {
-    errorHandler: function(reason, routeSetting, req, res) {
+    errorHandler: function (reason, routeSetting, req, res) {
         console.log(reason, routeSetting);
-        res.redirect('/login?error=doNotHavePermission')
+        reason = reason || 'doNotHavePermission';
+        res.redirect('/login?error=' + reason);
         // res.render('login',{error:reason})
     }
 }

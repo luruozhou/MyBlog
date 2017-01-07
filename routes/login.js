@@ -22,7 +22,6 @@ export default function (req, res) {
     return userProvider
         .authenticate(req, res)
         .then(user => {
-            console.log(user)
             return User
                 .getLoginRedirectUrl(req, user)
                 .then(url => {

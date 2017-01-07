@@ -18,9 +18,9 @@
 
 <body>
     {% include "../widget/layout/header/header.tpl"%}
-    
+
 	<div class="masonry" data-optiones="">
-            {%for article in hotArticles%}
+            {%for article in articleList%}
                 <a class="masonry-block"  href="/article/{{article.id}}">
                     <img class="article-header" src="{{article.cover}}" alt="">
                     <div class="article-title"  title="{{article.title}}">
