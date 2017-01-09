@@ -12,6 +12,7 @@ export default function (req, res) {
     let pageNo=1;
     let pageSize=2;
     let baseNum=0;
+    
     return Management.querySectionArticlesByTab({sectionTab,pageNo,pageSize,baseNum})
         .then(articlesInfo => {
             let articleList = articlesInfo.data;
