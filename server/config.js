@@ -1,15 +1,14 @@
 export var db = {
     mysql: {
-        name: 'MyBlog',
-        host: '118.178.192.112',
+        name: 'test',
+        host: '111.111.111.111',
         port: 3306,
-        user: 'root',
-        password: '815815'
+        user: 'root11',
+        password: '111111'
     },
     mongodb:{
         db: 'mongodb://luruozhou:123456@127.0.0.1/luruozhou',//本地
         opts: {
-
             server: {poolSize: 20},
         }
     }

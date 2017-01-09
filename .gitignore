@@ -7,4 +7,5 @@ sessions/
 npm-debug.log
 dest/
 .vscode/
+server/config.js
 
