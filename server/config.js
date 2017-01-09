@@ -1,10 +1,10 @@
 export var db = {
     mysql: {
-        name: 'test',
-        host: '121.40.83.12',
+        name: 'MyBlog',
+        host: '118.178.192.112',
         port: 3306,
-        user: 'forge',
-        password: 'zhangmen1dui1'
+        user: 'root',
+        password: '815815'
     },
     mongodb:{
         db: 'mongodb://luruozhou:123456@127.0.0.1/luruozhou',//本地
