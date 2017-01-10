@@ -10,7 +10,7 @@
     "dev": "parallelshell \"npm run gulp\" \"npm run fis\" \"supervisor -e tpl,js -w dest/,app.js app.js\"",
     "start": "pm2 start app.js",
     "stop": "pm2 stop app.js",
-    "prod": "fis3 release prod -r ./views -d ./dest/views -wL"
+    "prod": "fis3 release prod -r ./views -d ./dest/views"
   },
   "author": "luruozhou",
   "license": "ISC",
