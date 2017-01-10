@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "name": "blog",
+      "script": "app.js",
+      "log_date_format": "HH:mm:ss",
+      "max_memory_restart": "1500M",
+      "instances": "1",
+      "exec_mode": "cluster"
+    }
+  ]
+}
