@@ -10,5 +10,5 @@ dest/
 server/config.js
 dest-tmp/
 nohup.out
-pm2.json
+#pm2.json
 

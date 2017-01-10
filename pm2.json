@@ -1,0 +1,12 @@
+{
+  "apps": [
+    {
+      "name": "app",
+      "script": "app.js",
+      "log_date_format": "HH:mm:ss",
+      "max_memory_restart": "1300M",
+      "instances": "1",
+      "exec_mode": "cluster"
+    }
+  ]
+}
