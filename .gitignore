@@ -8,4 +8,5 @@ npm-debug.log
 dest/
 .vscode/
 server/config.js
-
+dest-tmp/
+nohup.out
