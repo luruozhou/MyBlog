@@ -29,8 +29,9 @@
 }
 
 /* Top */
+@base-color:#05afd1;
 .cube {
-  background-color: #05afd1;
+  background-color: @base-color;
   position: relative;
   transform: translateZ(3em);
   transform-style: preserve-3d;
@@ -39,12 +40,12 @@
   animation: anim 1s infinite;
 }
 .cube:after {
-  background-color: #049dbc;
+  background-color: lighten(@base-color,2%);
   transform: rotateX(-90deg) translateY(3em);
   transform-origin: 100% 100%;
 }
 .cube:before {
-  background-color: #048ca7;
+  background-color: darken(@base-color,8%);
   transform: rotateY(90deg) translateX(3em);
   transform-origin: 100% 0;
 }

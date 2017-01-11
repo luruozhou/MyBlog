@@ -17,8 +17,8 @@
 </head>
 
 <body>
-    {% include "../widget/layout/header/header.tpl"%}
     {% include "../widget/components/loading/loading.tpl"%}
+    {% include "../widget/layout/header/header.tpl"%}
     <div class="bgi"></div>
     <div class="toggle">
         <div class="section">
@@ -52,8 +52,8 @@
             <div class="HotArticles">
                 {%for article in hotArticles%}
                     <div class="article article{{JSON.stringify(loop.key)}}">
-                        <!--<img src="{{article.cover}}" alt="">-->
-                        {{JSON.stringify(loop.key)}}
+                        <img src="{{article.cover}}" alt="">
+                        <!--{{JSON.stringify(loop.key)}}-->
                     </div>
                     <div class="articleInfor articleInfor{{JSON.stringify(loop.key)}}">
                         <p>
