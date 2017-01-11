@@ -49,7 +49,7 @@ export function queryArticleReplies(req, res) {
 }
 
 /**
- * 查询文章评论接口
+ * 添加文章评论接口
  */
 export function articleReply(req, res) {
     var Reply = req.body;

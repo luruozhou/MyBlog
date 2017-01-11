@@ -141,8 +141,8 @@ export function articleReply(Reply) {
     return ArticleReplyModel.create({
         art_id: Reply.artId,
         author_id: Reply.authorId,
-        rid: Reply.replyerId,
-        re_tid: Reply.replyId,
+        rid: Reply.replyerId||null,
+        re_tid: Reply.replyId||null,
         content: Reply.authorContent,
         in_time: Reply.inTime,
     })

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="./$fileName$.less">
 
 
 
@@ -7,6 +8,5 @@
 <script type="text/javascript">
     require ('./$fileName$')
 </script>
-<link rel="stylesheet" href="./$fileName$.less">
 
 
