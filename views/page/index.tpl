@@ -27,6 +27,8 @@
                     <img src="../static/index/img/lrz.jpg"/>
                 </div>
                 <div class="personright">
+                    {{test}}
+
                     <p>路若洲</p>
                     <p>选择题要点</p>
                     <p>三短一长选最长三长一端选最短</p>
