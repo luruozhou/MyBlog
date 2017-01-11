@@ -41,7 +41,7 @@ fis.match('mod.js', {
 });
 
 // 加 md5
-fis.media('prod').match('*.{js,css,png,less}', {
+fis.media('prod').match('*.{js,css,png,less,jpg}', {
     useHash: true
 });
 

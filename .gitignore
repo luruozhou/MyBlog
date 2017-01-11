@@ -7,7 +7,7 @@ sessions/
 npm-debug.log
 dest/
 .vscode/
-server/config.js
+#server/config.js
 dest-tmp/
 nohup.out
 #pm2.json
