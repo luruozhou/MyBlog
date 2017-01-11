@@ -17,8 +17,8 @@
 </head>
 
 <body>
-    {% include "../widget/layout/header/header.tpl"%}
-    {% include "../widget/components/loading/loading.tpl"%}
+{% include "../widget/components/loading/loading.tpl"%}
+{% include "../widget/layout/header/header.tpl"%}
     <div class="bgi"></div>
     <div class="toggle">
         <div class="section">
@@ -27,8 +27,6 @@
                     <img src="../static/index/img/lrz.jpg"/>
                 </div>
                 <div class="personright">
-                    {{test}}
-
                     <p>路若洲</p>
                     <p>选择题要点</p>
                     <p>三短一长选最长三长一端选最短</p>

@@ -11,7 +11,6 @@ export default function (req, res) {
         .then(hotArticles => {
             return {
                 hotArticles,
-                test:'sfsfsfsfsssss1111'
             }
         });
 }
