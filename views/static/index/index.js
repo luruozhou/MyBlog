@@ -1,5 +1,7 @@
 window.jQuery = window.$ = require('../libs/js/jquery');
 var EventUtil=require('../libs/js/util').EventUtil;
+var backImg1 = __uri("static/index/img/main_bg1.jpg"); //背景图定位，
+var backImg3 = __uri("static/index/img/main_bg3.jpg"); //背景图定位，
 $(function () {
 	//获取页面可用高度
 	var height = document.documentElement.clientHeight;
@@ -25,12 +27,12 @@ $(function () {
 		var now = 1;
 		//是不是结束
 		EventUtil.addHandler(doc,"mousewheel",function(){
+            var imgUrl;
 			if(isOverMove){
 				//滚轮上，内容下，背景上
 				if (event.wheelDelta > 0 && 1 < now && now < len + 1) {
-					
+
 					//锁定状态
-					console.log("上滚开始："+isOverMove);
 					isOverMove=false;
 					//前景位移
 					$(this).css({ "transform": "translate(0px,-" + (now - 2) * height + "px)" });
@@ -38,7 +40,8 @@ $(function () {
 					$(".bgi").css({ "transform": "translate(0px,-" + avgHeight * (len - now + 1) + "px)" })
 					//背景图切换
 					if (now % 2 == 0) {
-						$(".bgi").css({ "background-image": "url(static/index/img/main_bg" + (now - 1) + ".jpg)" });
+                        imgUrl=(now-1)==1?backImg1:backImg3;
+						$(".bgi").css({ "background-image": "url("+imgUrl+")" });
 					}
 					//第二屏滚动到第一屏幕
 					if(now==2){
@@ -56,11 +59,10 @@ $(function () {
 					}
 					now--;
 				}
-				
+
 				//滚轮下，内容上，背景下
 				if (event.wheelDelta < 0 && 0 < now && now < len) {
 					//锁定状态
-					console.log("下滚开始："+isOverMove);
 					isOverMove=false;
 					//前景位移
 					$(this).css({ "transform": "translate(0px,-" + (now * height) + "px)" });
@@ -68,7 +70,8 @@ $(function () {
 					$(".bgi").css({ "transform": "translate(0px,-" + avgHeight * (len - now-1 ) + "px)" });
 					//背景图切换
 					if (now % 2 == 0) {
-						$(".bgi").css({ "background-image": "url(static/index/img/main_bg" + (now + 1) + ".jpg)" });
+                        imgUrl=(now+1)==1?backImg1:backImg3;
+						$(".bgi").css({ "background-image": "url("+imgUrl+")" });
 					}
 					// 第一屏向第二屏滚动
 					if(now==1){
@@ -85,23 +88,17 @@ $(function () {
 					}
 					now++;
 				}
-				
+
 			}
-			// EventUtil.addHandler(doc,"transitionend",function(){
-			// 	console.log("event");
-			// })
-			
+
 		})
 		//解锁状态
 	}
 	//解锁状态函数
 	EventUtil.addHandler(doc,"webkitTransitionEnd",function(){
-		//console.log(this);
 		isOverMove=true;
-		//console.log(this.isOverMove);
-		console.log("每次动画结束后的isOverMove:"+isOverMove);
 	})
-	
+
 	//初始化整平切换
 	fullScreenToggle(doc,"0.5s");
 
@@ -114,7 +111,6 @@ $(function () {
 			loopWord=myWord.slice(0);
 		}
 		var num =parseInt(Math.random()*loopWord.length);
-		//console.log(loopWord.length);
 		var word = loopWord.splice(num,1);
 		return word;
 	}
@@ -150,7 +146,7 @@ $(function () {
 						$(this).css({display:'none'})
 					});
 				}
-				
+
 			}else{
 				$(articles[i]).css({"z-index":center-(i-center)});
 				$(articles[i]).css({"-webkit-transform":"rotate("+(center-i)*3+"deg) translate("+10*(i-center)+"px,0px)" });
@@ -165,8 +161,8 @@ $(function () {
 		articles.push(articles.shift());
 		// 文章简介变化
 		articlesInfor.push(articlesInfor.shift());
-		
-		
+
+
 	}
 	//所有文章向下
 	function downArticle(){
@@ -194,7 +190,6 @@ $(function () {
 			now++;
 		}
 
-		// console.log(articles[parseInt(articles.length/2)])
 	}
 	// 所有的文章
 	var art=$(".article");
@@ -215,13 +210,11 @@ $(function () {
 
 	// 点击文章切换到当前
 	$(".article").click(function(){
-		console.log("click");
 		for (var i = 0; i < articles.length; i++) {
 			if ($(articles[i]).attr("class")==$(this).attr("class")) {
 				break;
 			}
 		}
-		console.log(i);
 		//隐藏所有简介
 		// $(articleInfor).animate({"opacity":"0"},1000);
 		clearTimeout(articleTimer);
@@ -278,7 +271,6 @@ $(function () {
 		}
 		$(".tecDetails span").text(tecs[noStack]);
 	})
-	console.log($(".tecStack:nth-of-type(1)"));
 	$(".tecStack:nth-of-type(1)").trigger("click");
 	// 隐藏loading
 	$(".base-cover").fadeOut();

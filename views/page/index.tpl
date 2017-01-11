@@ -17,8 +17,8 @@
 </head>
 
 <body>
-    {% include "../widget/components/loading/loading.tpl"%}
-    {% include "../widget/layout/header/header.tpl"%}
+{% include "../widget/components/loading/loading.tpl"%}
+{% include "../widget/layout/header/header.tpl"%}
     <div class="bgi"></div>
     <div class="toggle">
         <div class="section">

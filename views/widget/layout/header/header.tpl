@@ -1,4 +1,5 @@
- <header  class="topbar">
+<link rel="stylesheet" href="./header.less">
+<header  class="topbar">
         <div class="logo">白鹭若舟
             <p></p>
         </div>
@@ -29,6 +30,5 @@
 <script type="text/javascript">
     require ('./header')
 </script>
-<link rel="stylesheet" href="./header.less">
 
 

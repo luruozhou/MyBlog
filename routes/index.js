@@ -10,7 +10,7 @@ export default function (req, res) {
     return Management.queryHotArticles()
         .then(hotArticles => {
             return {
-                hotArticles
+                hotArticles,
             }
         });
 }
