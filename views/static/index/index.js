@@ -280,5 +280,9 @@ $(function () {
 	})
 	console.log($(".tecStack:nth-of-type(1)"));
 	$(".tecStack:nth-of-type(1)").trigger("click");
+	// 隐藏loading
+	$(".base-cover").fadeOut();
+
+
 
 })

@@ -119,6 +119,11 @@
             "entry": "views/static/login/login",
             "template": "views/page/login.tpl",
             "type": "page"
+        },
+        {
+            "entry": "views/widget/components/loading/loading",
+            "template": "views/widget/components/loading/loading.tpl",
+            "type": "widget"
         }
     ]
 }
