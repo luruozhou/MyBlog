@@ -13,7 +13,7 @@
         {% autoescape false %} {{ jsData|json }} {% endautoescape %}
     </script>
     {%endif%}
-    <script src="../static/mod.js"></script><!--ignore-->{#这一行不要删掉，连注释都不要删，听话#}
+    <script src="../static/mod.js"></script><!--ignore-->{#这一行不要删掉，连注释都不要删#}
 </head>
 
 <body>
@@ -64,7 +64,7 @@
                         </p>
                         
                         <a class="articleTitle" href="/article/{{article.id}}" title="{{article.title}}">
-                            {{JSON.stringify(loop.key)}}
+                            {{loop.key+1}}&nbsp;&nbsp;
                             {{article.title}}
                         </a>
                         <p><span class="articleTime">2016.12.26</span></p>
