@@ -103,7 +103,7 @@ $(function () {
 	fullScreenToggle(doc,"0.5s");
 
 	//以下为header随机切换word
-	var myWord = ['第一句话', '第二句话', '第十句话，因为是三进制', '第100句话 '];
+	var myWord = ['时间向前走一定只有路口没有尽头', '如果你过的不幸福，我所做的一切才是徒劳', '和这世界交手的这许多年，你是否光彩依旧，兴致盎然'];
 	var loopWord = myWord.slice(0);
 
 	function getWord() {
