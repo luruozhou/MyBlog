@@ -10,37 +10,50 @@
 
     .logo{
         position: relative;
-        display: inline-block;
-        left: 0px;
-        font-size:2.5em;
-        line-height: 2.3em;
-        padding-left: 1em;
         animation-fill-mode:forwards;
-        p{
-            display: inline-block;
+        span{
+            display: block;
+            float:left;
+            box-sizing:border-box;
+        }
+        .name{
+            left: 0px;
+            font-size:2em;
+            line-height: 2em;
+            width:20%;
+            padding-left: 1.5em;
+        }
+        .word{
+            display:block;
             margin:0px;
-            font-size: 0.45em;
+            font-size: 1.1em;
             animation-fill-mode:forwards;
             opacity:0;
+            width: 32%;
+            text-align: left;
         }
+       
     }
     .topbar-nav{
         list-style: none;
-        display: inline-block;
+        // display: inline;
+        display: block;
         margin: 0px;
-        padding: 8px 46px 0 0;
-        position: relative;
-        float: right;
+        width: 45%;
+        text-align: right;
+        font-size: 1em;
+        position: absolute;
+        right: 2em;
+        height: 4em;
+        line-height: 4em;
         li{
             margin: 0px;
             padding: 0px;
             /* width: 4rem; */
             text-align: 4em;
             text-indent: 0.5em;
-            
         }
         &>li{
-            padding-top: 2em;
             display:inline-block;
             &>a{
                 padding-right:0.3em;
@@ -51,7 +64,7 @@
                 &:after{
                     content: '';
                     position: absolute;
-                    bottom: -7px;
+                    bottom: 16px;
                     left: 0;
                     width: 100%;
                     height: 2px;

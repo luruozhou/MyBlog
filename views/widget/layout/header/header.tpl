@@ -1,27 +1,30 @@
 <link rel="stylesheet" href="./header.less">
 <header  class="topbar">
-        <div class="logo">白鹭若舟
-            <p></p>
-        </div>
-        <ul  class="topbar-nav">
-            <li><a href="/" title="">首页</a></li>
-            {%for section in sections%}
-            <li><a href="/{{section.tab}}">{{section.name}}</a>
-                <!--<div class="line"></div>-->
-                {%if section.sons.length%}
-                    <ul class="dropdown-content">
-                        {%for son in section.sons%}
-                            <li>
-                                <a href="#">{{son.name}}</a>
-                            </li>
-                        {%endfor%}
-                    </ul>
-                {%endif%}
+        <div class="logo">
+            <span class="name">L's Blog</span>
             
-            </li>
+            <span class="word"></span>
+            <ul  class="topbar-nav">
+                <li><a href="/" title="">首页</a></li>
+                {%for section in sections%}
+                <li><a href="/{{section.tab}}">{{section.name}}</a>
+                    <!--<div class="line"></div>-->
+                    {%if section.sons.length%}
+                        <ul class="dropdown-content">
+                            {%for son in section.sons%}
+                                <li>
+                                    <a href="#">{{son.name}}</a>
+                                </li>
+                            {%endfor%}
+                        </ul>
+                    {%endif%}
                 
-            {%endfor%}
-        </ul>
+                </li>
+                    
+                {%endfor%}
+            </ul>
+        </div>
+       
     </header>
 
 
