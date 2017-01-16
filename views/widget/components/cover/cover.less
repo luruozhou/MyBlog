@@ -47,7 +47,11 @@
     }
     .coverContent--active{
         //写动画效果
-        .keyFramesContent(){
+        // .keyFramesContent(){
+           
+        // }
+        //生成动画
+        .keyframes(coverContentShow,{
             from {
                 .transform(translate(0px, -10%));
                 opacity: 0;
@@ -56,17 +60,16 @@
                 .transform(translate(0px, 0%));
                 opacity: 1;
             }
-        }
-        //生成动画
-        .keyframes(coverContentShow); 
+        }); 
         //引用动画
         .animation(coverContentShow,1s);
         .animation-fill-mode(forwards); 
     }
     .coverContent--close{
         //写动画效果
-        .keyFramesContent(){
-            from {
+        //生成动画
+        .keyframes(coverContentClose,{
+             from {
                 .transform(translate(0px, 0%));
                 opacity: 1;
             }
@@ -75,9 +78,7 @@
                 .transform(translate(0px, -10%));
                 opacity: 0;
             }
-        }
-        //生成动画
-        .keyframes(coverContentClose); 
+        }); 
         //引用动画
         .animation(coverContentClose,1s);
     }

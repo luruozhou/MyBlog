@@ -19,33 +19,30 @@
 <body>
 {% include "../widget/components/loading/loading.tpl"%}
 {% include "../widget/layout/header/header.tpl"%}
-    <div class="bgi"></div>
+    <div class="bgi">
+        <img src="../static/index/img/main_bg3.jpg" alt="" style="width: 0px;height: 0px;">
+    </div>
     <div class="toggle">
         <div class="section">
-            <div class="person1">
-                <div class="personleft">
+            <div class="person person1">
+                <p class="p-show">
+                    路若洲
                     <img src="../static/index/img/lrz.jpg"/>
-                </div>
-                <div class="personright">
-                    <p>路若洲</p>
-                    <p>选择题要点</p>
-                    <p>三短一长选最长三长一端选最短</p>
-                    <p>三长一端选最短</p>
-                    <p>所以这个题的答案是什么呢</p>
-                </div>
-                
+                </p>
+                <p class="p-show">三短一长选最长三长一端选最短</p>
+                <p class="p-show">三长一端选最短</p>
+                <p class="p-show">所以这个题的答案是什么呢</p>
             </div>
-            <div class="person2">
-                <div class="personleft">
+            <div class="person person2">
+                <p class="p-show">
                     <img src="../static/index/img/ljw.jpg"/>
-                </div>
-                <div class="personright">
-                    <p>李婧雯</p>
-                    <p>我也不知道写点啥啊就这么凑合着看吧</p>
-                    <p>这句话还要写点啥有啥建议么</p>
-                    <p>这是一个绝世无敌美少女</p>
-                </div>
-                
+                    Ctrl<i class="iconfont">&#xe69a;</i>
+                </p>
+                <p class="p-show">我也不知道写点啥啊就这么凑合着看吧</p>
+                <p class="p-show">这句话还要写点啥有啥建议么</p>
+                <p class="p-show">
+                    详情点击
+                </p>
             </div>
         </div>
         <div class="section">
@@ -120,7 +117,8 @@
         </div>
         
     </div>
-    <div class="down">
+    <div  class="down">
+        <i class="iconfont">&#xe69e;</i>
         
     </div>
 

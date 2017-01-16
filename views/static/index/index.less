@@ -1,23 +1,5 @@
 @import "../libs/css/_minxins.less";
-@media only screen and (min-width: 1200px) {
-    .blog-g-fixed {
-        max-width: 1200px;
-    }
-}
-
-@media only screen and (min-width: 641px) {
-    .blog-sidebar {
-        font-size: 1.4rem;
-    }
-}
-
-
-html,body{
-    
-    margin: 0px;
-    height:100%;
-    font-family: "Microsoft Yahei";
-}
+@import "../libs/css/common.less";
 @keyframes hid{
    0%{ opacity:1}
    100%{  opacity:0;} 
@@ -27,33 +9,6 @@ html,body{
    70%{bottom:0px;}
    100%{  opacity:1;} 
 }
-.down{
-    position:fixed;
-    bottom: 0px;
-    right:50%;
-    left: 50%;
-    width: 50px;
-    height: 50px;
-    background-image: url(img/down.png);
-    background-size: 100%;
-    z-index: 3;
-    animation:downkey 2.5s;
-    animation-fill-mode:forwards;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-}
-
-.bgi{
-    background-image: url(img/main_bg1.jpg);
-    background-size: 100% 100%;
-    //background-attachment: fixed;
-    position:fixed;
-    z-index:0;
-    width: 100%;
-    transform:translate(0px,-500px);//位移的高度
-    transition-timing-function:linear;
-}
-
 @keyframes openMenu{
    from{ opacity:0}
    to{  opacity:1} 
@@ -62,8 +17,77 @@ html,body{
    from{ top: -4em}
    to{  top:0em}
 }
+.keyframes(person1show,{
+    0%{
+       opacity:0;
+       right:1em;
+    }
+    100%{
+       opacity:1;
+       right:0;
+    }
+});
+.keyframes(person1hide,{
+    0%{
+        opacity:1;
+       right:0;  
+    }
+    100%{
+       opacity:0;
+       right:10em;
+    }
+});
+.keyframes(person2show,{
+    0%{
+       opacity:0;
+       left:1em;
+    }
+    100%{
+       opacity:1;
+       left:0;
+    }
+});
+.keyframes(person2hide,{
+    0%{
+       opacity:1;
+       left:0;
+    }
+    100%{
+       opacity:0;
+       left:10em;
+    }
+});
 a{
     .a-base(#000000);
+}
+.down{
+    position:fixed;
+    bottom: 0px;
+    right:50%;
+    left: 50%;
+    width: 50px;
+    height: 40px;
+    background-size: 100%;
+    z-index: 3;
+    animation:downkey 2.5s;
+    animation-fill-mode:forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    .iconfont{
+        font-size: 3em;
+        color: rgba(255, 255, 255, 0.6);
+    }
+}
+.bgi{
+    background-image: url(img/main_bg1.jpg);
+    background-size: auto 100%;
+    //background-attachment: fixed;
+    background-position:  center;
+    position:fixed;
+    z-index:0;
+    width: 100%;
+    transform:translate(0px,-500px);//位移的高度
+    transition-timing-function:linear;
 }
 .section{
     height:100%;
@@ -154,30 +178,70 @@ a{
         padding: 0px 0.5em;
     }
 }
-@keyframes perkey1{
-    0%{opacity: 0;left:-100%;}
-    50%{opacity: 0.3}
-    100%{opacity: 1;left: 0}
+// .animation(p-show);
+.person1{
+    // animation: perkey1 2s;
+    p{
+        text-align: right;
+        margin-right: 80px;
+    }
+    .p-show{
+        .animation(person1show,0.5s);
+        animation-fill-mode:forwards;
+    }
+    .p-hide{
+        .animation(person1hide,0.5s);
+        animation-fill-mode:forwards;
+    }
 }
-@keyframes perkey2{
-    0%{opacity: 0;left:100%;}
-    50%{opacity: 0.3}
-    100%{opacity: 1;left: 0}
+.person2{
+    // animation: perkey2 2s;
+    // margin-left: 0%;
+    // float:right;
+    p{
+        margin-left:80px;
+        
+    }
+    .p-show{
+        .animation(person2show,0.5s);
+        animation-fill-mode:forwards;
+    }
+    .p-hide{
+        .animation(person2hide,0.5s);
+        animation-fill-mode:forwards;
+    }
 }
- .person1{
-        animation: perkey1 2s;
-}
-
-.person1,.person2{
-    animation-fill-mode:forwards;
-    -webkit-transform:opcity 1s; 
-    transtion:opcity 1s;
-    position: relative;
-    width:43.5%;
-    height: 50%;
-    margin: 12% 0% 0% 5%;
+.person{
+    box-sizing:border-box;
+    width:50%;
+    height: 70%;
+    margin-top:100px;
     display: inline-block;
     float: left;
+    // border:1px solid;
+    color:#ffffff;
+    p{
+        animation-fill-mode: forwards;
+        opacity: 0;
+        padding: 0px;
+        font-size: 1.2em;
+        position: relative;
+        font-weight: 300;
+        &:nth-of-type(1){
+            font-size: 2em;
+            animation-delay:0.5s;
+        }
+        &:nth-of-type(2){
+            animation-delay:0.8s;
+        }
+        &:nth-of-type(3){
+            animation-delay:1.1s;
+        }
+        &:nth-of-type(4){
+            animation-delay:1.4s;
+        }
+       
+    }
     .personleft{
         height: 100%;
         width:35%;
@@ -191,32 +255,17 @@ a{
         height: 100%;
         margin:0px;
     }
-    p{
-        color: #ffffff;
-        margin: 0px;
-        padding: 7% 0 0% 9%;  
-        &:nth-of-type(1){
-            padding-top:15%;
-            font-size: 1.5em;
-        }     
-    }
-    @img-width:35%;
+    @img-width:100px;
     img{
         width: @img-width;
         // height: @img-width;
-        border-radius: @img-width*3;
+        border-radius: @img-width/2;
         border: 1px solid;
-        margin: auto 0;
-        position: absolute;
-        top: 50%;
-        bottom: 50%;
+            position: relative;
+        top: 12px;
     }
 }
-.person2{
-    animation: perkey2 2s;
-    margin-left: 0%;
-    float:right;
-}
+
 .sectionTitle{
     width: 100%;
     height: 2em;

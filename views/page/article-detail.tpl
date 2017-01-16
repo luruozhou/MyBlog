@@ -27,9 +27,7 @@
     {% include "../widget/components/replySomebody/replySomebody.tpl"%}
     
     <div class="article-type">
-        <a href="#">技术</a>
-        <a href="#">nodeJS</a>
-
+        <a href="#">{{articleRecord.sname}}</a>
     </div>
     <div class="article-title">
         {{articleRecord.title}}

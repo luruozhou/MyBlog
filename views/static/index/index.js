@@ -49,8 +49,7 @@ $(function () {
 						$(".topbar ").animate({"opacity":"1"},function(){
 							$(this).css({"display":"block"})
 						 });
-						$(" .person1").animate({"margin-left": "5%","opacity":1},800);
-						$(" .person2").animate({"margin-right": "0%","opacity":1},800);
+						  $(".person p").removeClass("p-hide").addClass("p-show");
 					}
 					// 最后一屏向倒数第二屏滚动
 					if(now<len+1){
@@ -79,8 +78,7 @@ $(function () {
 						 $(".topbar").animate({"opacity":"0"},function(){
 							$(this).css({"display":"none"})
 						 });
-						 $(" .person1").animate({"margin-left": "-100%","opacity":0},800);
-						$(" .person2").animate({"margin-right": "-100%","opacity":0},800);
+						 $(".person p").removeClass("p-show").addClass("p-hide");
 					}
 					//向下箭头显示隐藏
 					if(now==len-1){

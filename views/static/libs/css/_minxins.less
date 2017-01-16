@@ -16,21 +16,21 @@
     -moz-transform: @val;
 }
 //声明动画，使用前需要提前声明为.keyFramesContent的Minxins
-.keyframes(@name){
+.keyframes(@name,@content){
     @-webkit-keyframes @name {
-        .keyFramesContent();
+        @content();
     }
     @-moz-keyframes @name {
-        .keyFramesContent(); 
+        @content(); 
     }
-    @-o-keyframes @name {
-        .keyFramesContent();
+    @-o-keyframes @name {  
+        @content();
     }
     @-ms-keyframes @name {
-        .keyFramesContent();
+        @content();
     }
     @keyframes @name {
-        .keyFramesContent();
+        @content();
     }
 }
 //绑定动画
