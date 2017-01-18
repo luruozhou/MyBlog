@@ -7,13 +7,13 @@
     width:100%;
     position: fixed;
     background-color: rgba(255,255,255, 0.9);
-
+    display: relative;
     .logo{
         position: relative;
         animation-fill-mode:forwards;
+        
         span{
-            display: block;
-            float:left;
+            display: inline-block;
             box-sizing:border-box;
         }
         .name{
@@ -24,28 +24,26 @@
             padding-left: 1.5em;
         }
         .word{
-            display:block;
             margin:0px;
             font-size: 1.1em;
             animation-fill-mode:forwards;
             opacity:0;
-            width: 32%;
+            width: 40%;
             text-align: left;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
         }
-       
     }
     .topbar-nav{
         list-style: none;
-        // display: inline;
-        display: block;
+        display: inline-block;
         margin: 0px;
-        width: 45%;
-        text-align: right;
         font-size: 1em;
         position: absolute;
         right: 2em;
-        height: 4em;
-        line-height: 4em;
+        top: 50%;
+        transform: translateY(-50%);
         li{
             margin: 0px;
             padding: 0px;
