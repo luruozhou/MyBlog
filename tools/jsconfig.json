@@ -124,6 +124,11 @@
             "entry": "views/widget/components/loading/loading",
             "template": "views/widget/components/loading/loading.tpl",
             "type": "widget"
+        },
+        {
+            "entry": "views/static/resume/lijingwen/lijingwen",
+            "template": "views/page/resume/lijingwen.tpl",
+            "type": "page"
         }
     ]
 }

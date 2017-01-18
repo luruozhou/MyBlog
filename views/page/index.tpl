@@ -19,8 +19,14 @@
 <body>
 {% include "../widget/components/loading/loading.tpl"%}
 {% include "../widget/layout/header/header.tpl"%}
+    <div class="imgs">
+        <img src="../static/index/img/main_bg1.jpg" alt="" >
+        <img src="../static/index/img/main_bg2.jpg" alt="" >
+        <img src="../static/index/img/main_bg3.jpg" alt="" >
+        <img src="../static/index/img/main_bg4.jpg" alt="" >
+    </div>
     <div class="bgi">
-        <img src="../static/index/img/main_bg3.jpg" alt="" style="width: 0px;height: 0px;">
+        
     </div>
     <div class="toggle">
         <div class="section">

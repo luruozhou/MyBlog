@@ -244,8 +244,29 @@ $(function () {
 	})
 	$(".tecStack:nth-of-type(1)").trigger("click");
 	// 隐藏loading
-	$(".base-cover").fadeOut();
+	// $(".base-cover").fadeOut();
+	function allImgLoad($imgs,callback){
+		if(!($imgs instanceof jQuery )){
+			throw new Error('the first argument should be an jQuery object')
+		}
+		var i=0,len=$imgs.length;
+		callback=callback||$.noop;
+		len==0&&callback();
+		 $.each($imgs, function (index, img) {
+            if (img.complete) {
+                i++;
+                i == len && callback();
+                return;
+            }
 
-
+            $(img).load(function () {
+                i++;
+                i == len && callback();
+            })
+        })
+	}
+	allImgLoad($(".imgs>img"),function(){
+		$(".base-cover").fadeOut();
+	})
 
 })

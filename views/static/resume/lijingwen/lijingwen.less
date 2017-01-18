@@ -1,0 +1,215 @@
+body{
+	margin: 0px; 
+	font-family: "Microsoft YaHei"
+}
+@font-face {
+  font-family: 'iconfont';  /* project id 208999 */
+  src: url('//at.alicdn.com/t/font_5bv282t4l0qtcsor.eot');
+  src: url('//at.alicdn.com/t/font_5bv282t4l0qtcsor.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_5bv282t4l0qtcsor.woff') format('woff'),
+  url('//at.alicdn.com/t/font_5bv282t4l0qtcsor.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_5bv282t4l0qtcsor.svg#iconfont') format('svg');
+}
+.iconfont{ 
+    font-family:"iconfont" !important;
+    font-size:20px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+
+}
+.a-base(@color){
+    &:link    {color:@color;}
+    &:visited {color:@color;}
+    &:hover   {color:@color;}
+    &:active  {color:@color;}
+}
+//圆角
+.border-radius(@val){
+    border:1px solid;
+    border-radius: @val;
+    -moz-border-radius:@val;
+}
+//2D旋转前缀
+.transform(@val){
+    transform: @val;
+    -ms-transform: @val;
+    -webkit-transform: @val;
+    -o-transform: @val;
+    -moz-transform: @val;
+}
+//声明动画
+.keyframes(@name,@content){
+    @-webkit-keyframes @name {
+        @content();
+    }
+    @-moz-keyframes @name {
+        @content(); 
+    }
+    @-o-keyframes @name {
+        @content();
+    }
+    @-ms-keyframes @name {
+        @content();
+    }
+    @keyframes @name {
+        @content();
+    }
+}
+//绑定动画
+.animation(@name,@time){
+    animation:@name @time;
+    -moz-animation:@name @time;
+    -webkit-animation:@name @time;
+    -o-animation:@name @time;
+}
+//动画完成后的状态，默认值为forwards
+.animation-fill-mode(@val:forwards){
+    animation-fill-mode:@val;
+    -webkit-animation-fill-mode:@val; 
+    -o-animation-fill-mode: @val;
+}
+//过渡
+.transtion(@val){
+    transition: @val;
+    -moz-transition: @val; /* Firefox 4 */
+    -webkit-transition: @val; /* Safari 和 Chrome */
+    -o-transition: @val;
+}
+//动画
+.keyframes(showformleft,{
+	0%{
+		left:-10px;
+		opacity: 0;
+	}
+	100%{
+		left:0px;
+		opacity:1;
+	}
+});
+.keyframes(lefthide,{
+	0%{
+		opacity:1;
+		.transform( translate(-100%,-100%));
+	}
+	100%{
+		opacity:0;
+		.transform( translate(0%,0%));
+		
+	}
+});
+
+@base-color:#283C51; 
+.resume-block{
+	a{
+		.a-base(lighten(@base-color,75%));
+	}
+	width: 100%;
+	margin:0 auto;
+	height: 500px; 
+	.open{
+		position:fixed;
+		color:lighten(@base-color,75%);
+		border:1px solid;
+		font-size:2em;
+	}
+	.left{ 
+		width:20%;
+		height:100%;
+		background-color: lighten(@base-color,1%);
+		color: lighten(@base-color,75%);
+		float: left;
+		position:fixed;
+		box-sizing:border-box;
+		p {
+			
+			.animation(showformleft,1s);
+			.animation-fill-mode(forword);
+			font-size:0.9em;
+			&:nth-of-type(2){
+				font-weight:lighter;
+				font-size:1.5em;
+			}
+			word-break:break-all;
+			width:75%;
+			float: left;
+			position: relative;
+			padding: 0 10% 0 15%;
+			line-height:1.6em;
+			margin:1.5em 0 0 0 ;
+			text-align: center;
+			.iconfont{
+			    display:inline-block;
+			    top:0;
+			    height:100%; 
+			    width:20px;
+			    position:absolute;
+			    margin:0 0 0 -25px;
+			}
+		}
+		img{
+			width:100px;
+			height:100px;
+			.border-radius(50px);
+			margin:40px auto 0 auto;
+			display: block;
+			border:1px solid  lighten(@base-color,10%);
+			box-shadow: 0px 0px 7px 3px  lighten(@base-color,40%);
+		}
+	}
+	.right{
+		width:80%;
+		box-sizing:border-box;
+		padding:1px 1em;
+		height:1000px;
+		margin-left:20%;
+		background-color: lighten(@base-color,75%);
+		color: lighten(@base-color,1%);
+		table{
+			border-collapse: collapse;
+		}
+		.title{
+			box-sizing:content-box;
+			font-size:1.4em;
+			border-bottom: 1px solid lighten(@base-color,68%);
+			padding-bottom: 0.3em;
+		}
+		.main{
+			padding:0 1em;
+			.time{
+				color:lighten(@base-color,4%);
+				font-size:1em;
+				padding:0 1em 0 0;
+			}
+			.name{
+				color:lighten(@base-color,19%);
+				font-size:0.95em;
+			}
+			.main-content{
+				word-break: break-all;
+				text-indent:2em;
+				.important{
+					color:darken(@base-color,14%);
+					font-size:1.04em;
+				}
+				a{
+					color:lighten(@base-color,17%);
+					word-break: break-all;
+					padding:0 1em;
+				}
+			}
+		}
+	}
+}
+
+
+// .resume-block--mobile{
+// 	.left{
+// 		overflow: hidden;
+// 		.animation(lefthide,2s);
+// 		.animation-fill-mode(forwards);
+// 	}
+// 	.right{
+
+// 	}
+// }
