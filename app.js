@@ -14,10 +14,18 @@ var sessionMiddleware = require('./server/conf/session-middleware.js').sessionMi
 var app = express();
 
 log.use(app);
+app.use(function (req,res,next) {
+    res.set({
+        'Cache-Control': 'public, max-age=31536000000',
+        'expires':'Never Expires'
+    });
+    next();
+})
 app.use('/static', express.static('dest/views/static'));
 // app.use('/views/static', express.static('dest/views/static'));
 app.use('/widget', express.static('dest/views/widget'));
 // app.use('/views/widget', express.static('dest/views/widget'));
+
 app.use(bodyParser.json({limit: '50mb'})); // for parsing application/json
 app.use(bodyParser.urlencoded({extended: true, limit: '50mb'})); // for parsing application/x-www-form-urlencoded
 app.use(multer()); // for parsing multipart/form-data
