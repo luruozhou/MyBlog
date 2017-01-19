@@ -15,10 +15,12 @@ var app = express();
 
 log.use(app);
 app.use(function (req,res,next) {
-    res.set({
-        'Cache-Control': 'public, max-age=31536000000',
-        'expires':'Never Expires'
-    });
+    if(config.enableStrongCache){
+        res.set({
+            'Cache-Control': 'public, max-age=31536000000',
+            'expires':'Never Expires'
+        });
+    }
     next();
 })
 app.use('/static', express.static('dest/views/static'));

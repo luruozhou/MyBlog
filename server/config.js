@@ -25,3 +25,5 @@ export var ServerHost = {
     port:3000
 }
 
+/** 启用强缓存 */
+export var enableStrongCache = false;
