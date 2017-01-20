@@ -185,7 +185,7 @@ $(function () {
             },
             success:function(res){
                 console.log(res.msg);
-                location.href=location.href;
+                location.reload();
             },
             error:function(error){
                 console.log(res.msg)
