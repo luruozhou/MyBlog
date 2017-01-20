@@ -18,7 +18,7 @@ $(function () {
                 console.log(res);
                 switch(res.code){
                     case 1:{
-                        location.href = location.href;
+                        location.reload()
                         break;
                     }
                     case 0:{
