@@ -26,4 +26,4 @@ export var ServerHost = {
 }
 
 /** 启用强缓存 */
-export var enableStrongCache = false;
+export var enableStrongCache = true;
