@@ -1,6 +1,8 @@
 window.jQuery = window.$ = require('../../libs/js/jquery');
 require('../../libs/js/sceditor/jquery.sceditor.min.js');
 var getPageData = require('../../libs/js/util').getPageData;
+var scCSSRoot = __uri("/static/libs/js/sceditor/jquery.sceditor.default.min.css");
+var emojiRoot = __uri("/static/libs/js/sceditor/emoticons/");
 
 $(function () {
     let sections = getPageData("sections");
@@ -20,8 +22,8 @@ $(function () {
 
     $("textarea").sceditor({
         plugins: 'bbcode',
-        style: location.origin + "/static/libs/js/sceditor/jquery.sceditor.default.min.css",
-        emoticonsRoot: location.origin + "/static/libs/js/sceditor/emoticons/",
+        style: scCSSRoot,
+        emoticonsRoot: emojiRoot,
         uploadImage: uploadImage
     });
 
