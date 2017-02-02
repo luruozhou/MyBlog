@@ -10,7 +10,7 @@ export var routeSettings = {
 export default function (req, res) {
     let sectionTab = req.params[0];
     let pageNo=1;
-    let pageSize=2;
+    let pageSize=6;
     let baseNum=0;
     
     return Management.querySectionArticlesByTab({sectionTab,pageNo,pageSize,baseNum})

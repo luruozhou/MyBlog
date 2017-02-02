@@ -21,10 +21,7 @@
 </head>
 
 <body>
-    {% include "../widget/components/register/register.tpl"%}
     {% include "../widget/layout/header/header.tpl"%}
-    {% include "../widget/components/login/login.tpl"%}
-    {% include "../widget/components/replySomebody/replySomebody.tpl"%}
     
     <div class="article-type">
         <a href="#">{{articleRecord.sname}}</a>
@@ -61,12 +58,20 @@
     </div>
 
     <div class="back-top"></div>
+    {% if !isLogin %}
+     {% include "../widget/components/register/register.tpl"%}
+     {% include "../widget/components/login/login.tpl"%}
+    {%endif%}
+   
+    
+    {% include "../widget/components/replySomebody/replySomebody.tpl"%}
     {#下边不要写任何代码(注释也不要删)，否则会发生无法挽回的错误#}
     <!--SCRIPT_PLACEHOLDER-->
     <script type="text/javascript">
         require('../static/article-detail/article-detail')
     </script>
     <link rel="stylesheet" href="../static/article-detail/article-detail.less">
+
 </body>
 
 </html>
