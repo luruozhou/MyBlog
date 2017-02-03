@@ -42,12 +42,12 @@
             <div class="person person2">
                 <p class="p-show">
                     <img src="../static/index/img/ljw.jpg"/>
-                    Ctrl<i class="iconfont">&#xe69a;</i>
+                    Ctrl<!--<i class="iconfont">&#xe69a;</i>-->
                 </p>
-                <p class="p-show">我也不知道写点啥啊就这么凑合着看吧</p>
-                <p class="p-show">这句话还要写点啥有啥建议么</p>
+                <p class="p-show">90后天蝎座</p>
+                <p class="p-show">正在求职 坐标：北京</p>
                 <p class="p-show">
-                    详情点击
+                    
                 </p>
             </div>
         </div>
