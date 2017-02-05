@@ -296,17 +296,19 @@ $(function () {
 			'{{description}}' +
 			'</p>' +
 			'</a>';
+		//每一页几个
+		var pageSize = 3;
+		// 第几页
+		var pageNo = 1;
+		var isPending=false;
 		function BottomJumpPage() {
 			var scrollTop = $(window).scrollTop();
 			var scrollHeight = $(document).height();
 			var windowHeight = $(window).height();
-			//每一页几个
-			var pageSize = 2;
-			// 第几页
-			var pageNo = 2;
+
 			
-			if (scrollTop + windowHeight == scrollHeight) {  //滚动到底部执行事件
-				
+			if (scrollTop + windowHeight >= scrollHeight-1&&!isPending) {  //滚动到底部执行事件
+				isPending=true;
 				$.ajax({
 					url: "/management/querySectionArticlesByTab",
 					type: 'post',
@@ -316,8 +318,10 @@ $(function () {
 						pageSize: pageSize
 					},
 					success: function (res) {
+						isPending=false;
 						var thisTpls = [];
 						if (res.code) {
+							pageNo++;
 							var articles = res.data.data;
 							var articlesTpl = [];
 							$.each(articles, function (i, item) {
@@ -334,6 +338,7 @@ $(function () {
 						}
 					},
 					error: function (err) {
+						isPending=false;
 						console.log(err);
 					}
 				})
