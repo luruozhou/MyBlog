@@ -36,7 +36,7 @@ export function querySectionArticlesByTab(req, res) {
     var args = req.body;
     Validator.validate(args, ['sectionTab', 'pageNo', 'pageSize']);
 
-    // args.baseNum = 10;
+    args.baseNum = 6;
     return Management.querySectionArticlesByTab(args);
 }
 
