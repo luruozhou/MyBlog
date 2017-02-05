@@ -229,6 +229,8 @@ $(function () {
 				})(attr.length - 1);
 			},
 			setOneBlock:function($masonryBlock){
+				$(".masonry").append($masonryBlock);
+
 				$masonryBlock.css({
 							"top": parseInt(this.getMinHeight(this.heights).val) + "px"
 						});
@@ -265,6 +267,7 @@ $(function () {
 			},
 			setNextBlocks: function (NextBlocks) {
 				// console.log(NextBlocks[1].toString());
+				var self =this;
 				var blocksNum=$(".masonry-block").length;
 				var masonryWidth = parseInt($(".masonry").css("width"));
 				var masonryBlockWidth = this.masonryBlockWidth;
@@ -272,10 +275,12 @@ $(function () {
 				// console.log("blocksNum:"+blocksNum);
 				// console.log("heights:"+this.heights);
 				for(var i=0;i<NextBlocks.length;i++){
-					$(".masonry").append(NextBlocks[i]);
-					this.setOneBlock($($(".masonry-block")[$(".masonry-block").length-1]));
-					$(".masonry").css({ "height": this.getMaxHeight(this.heights) + "px", "width": this.masonryBlockWidth * lines + "px" });
-
+					(function (index) {
+						NextBlocks[index].find('.article-header').load(function () {
+							self.setOneBlock(NextBlocks[index]);
+							$(".masonry").css({ "height": self.getMaxHeight(self.heights) + "px", "width": self.masonryBlockWidth * lines + "px" });
+						})
+					})(i)
 					// this.setAllMasonry($(".masonry"),"90%");
 				}
 			}
@@ -351,10 +356,6 @@ $(function () {
 			console.log(pageNo, pageSize);
 		}
 
-		var pageSize = 2;
-		// 第几页
-		var pageNo = 2;
-		//每一页几个
 		$(window).scroll(function () {
 			BottomJumpPage();
 
