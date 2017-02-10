@@ -21,20 +21,32 @@ body .topbar{
     -webkit-transition:  0.8s;	/* Safari 和 Chrome */
     -o-transition:  0.8s;
 }
+.keyframes(show,{
+    0%{
+        opacity:0;
+        .transform(translate(-10px,0px));
+    }
+    100%{
+       opacity:1;
+       .transform(translate(0px,0px));
+    }
+});
 .masonry{
-    border:1px solid;
 	padding:0px; 
-	margin:10% auto;
+	margin:5% auto;
     list-style-type: none; 
     position:relative;
     display:block;
 	overflow: hidden;
     width: 85%;
 	.masonry-block{ 
+         .animation(show,0.5s);
+        animation-fill-mode:forwards;
 		width:320px;
 		position:absolute;
 		height:auto;
 		margin:30px;
+        box-shadow: 0px 0px 6px 0px  rgba(0,0,0,0.2);
         .a-base(lighten(@base-color,20%));
         background-color:rgba(255,255,255,1);
         .article-title{
@@ -53,6 +65,7 @@ body .topbar{
             padding: 0 25px;
             text-indent: 2em;
             font-size: 0.9em;
+            word-wrap: break-word;
         }
         &:hover{
             // box-shadow: 10px 10px 5px #888888;
