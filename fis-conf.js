@@ -19,6 +19,7 @@ fis.match(/(.*\.tpl)$/i, {
 
 fis.match(/(.*\.js)$/i, {
     parser: fis.plugin('babel-5.x', {
+        sourceMaps: true,
         // preset: [
         // 注意一旦这里在这里添加了preset配置，则会覆盖默认加载的preset-2015等插件，因此需要自行添加所有需要使用的preset
         // ]

@@ -58,6 +58,7 @@ export var userProvider = {
             } else {
                 throw "PermissionDenied";
             }
+            console.log(where,'===')
             // 普通登录验证
             var authPromise = Promise
                 .resolve(UserModel.find({where}))
@@ -107,24 +108,20 @@ export var userProvider = {
     get: (req, res) => {
         var uid = req.session['uid'];
         var {
-            mobile,
+            userName,
             password
         } = req.body;
-        if (mobile && password) {
-            return userProvider
-                .authenticate(req, res)
-                .fail(() => {
-                    // 可能 req.session['uid'] 不为空
-                    // 导致虽然通过验证用户 mobile 和 password 失败
-                    // 但 uid 依旧有效
-                    // 所以我们认为只要 mobile 和 password 不正确
-                    // 那么就需要把 session 中的也清除掉
-                    uid = undefined;
-                    return getUser();
-                });
-        } else {
-            return getUser();
-        }
+        // if (userName && password) {
+        //     return userProvider
+        //         .authenticate(req, res)
+        //         .fail(() => {
+        //             uid = undefined;
+        //             return getUser();
+        //         });
+        // } else {
+        //     return getUser();
+        // }
+        return getUser();
 
         function getUser() {
             return Promise
@@ -136,9 +133,6 @@ export var userProvider = {
                         return {
                             uid: undefined,
                             userRecord: undefined,
-                            studentRecord: undefined,
-                            teacherRecord: undefined,
-                            sellerRecord: undefined,
                             permission: Permission.none
                         };
                     }
@@ -151,7 +145,7 @@ export var userProvider = {
     /**
      * 清除用户登录状态
      */
-    clearSessionState: (req)=> {
+    clearSessionState: (req) => {
         req.session['uid'] = null;
     }
 
