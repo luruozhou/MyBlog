@@ -7,11 +7,12 @@ export var routeSettings = {
 };
 
 export default function (req, res) {
-    return Management.queryHotArticles()
-        .then(hotArticles => {
-            return {
-                hotArticles,
-            }
-        });
+    return res.redirect('http://www.baidu.com');
+    // return Management.queryHotArticles()
+    //     .then(hotArticles => {
+    //         return {
+    //             hotArticles,
+    //         }
+    //     });
 }
 
