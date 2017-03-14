@@ -45,7 +45,7 @@
                     Ctrl<!--<i class="iconfont">&#xe69a;</i>-->
                 </p>
                 <p class="p-show">90后天蝎座</p>
-                <p class="p-show">正在求职 坐标：北京</p>
+                <p class="p-show">正在求职 坐标：上海</p>
                 <p class="p-show">
                     
                 </p>
